@@ -10,6 +10,7 @@ in {
     ./cava.nix
     ./emoji.nix
     ./fastfetch
+    ./fish
     ./gh.nix
     ./ghostty.nix
     ./git.nix
