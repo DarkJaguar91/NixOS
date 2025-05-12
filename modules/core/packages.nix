@@ -62,5 +62,6 @@
     mangohud # onscreen toolkit
     protonup-qt # Proton toolkit
     spotify # Music
+    wev # Key detector
   ];
 }

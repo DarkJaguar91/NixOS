@@ -7,14 +7,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nvf.url = "github:notashelf/nvf";
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
+  outputs = {nixpkgs, nixos-hardware, ...} @ inputs: let
     system = "x86_64-linux";
-    host = "DarkJaguar-NixOS";
-    profile = "nvidia";
+    host = "Asus-Z13"; #gitignore
+    profile = "amd"; #gitignore
     username = "brandon";
   in {
     nixosConfigurations = {
@@ -26,7 +27,9 @@
           inherit host;
           inherit profile;
         };
-        modules = [./profiles/${profile}.nix];
+        modules = [
+          ./profiles/${profile}.nix
+        ];
       };
     };
   };

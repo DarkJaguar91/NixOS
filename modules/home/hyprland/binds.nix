@@ -92,6 +92,7 @@ in {
       ",XF86AudioPrev, exec, playerctl previous"
       ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
       ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
+      ",XF86KbdLightOnOff,exec,asusctl -k low"
     ];
 
     bindm = [
