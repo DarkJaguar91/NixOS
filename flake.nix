@@ -12,23 +12,49 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = {nixpkgs, nixos-hardware, ...} @ inputs: let
+  outputs = {
+    nixpkgs,
+    nixos-hardware,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
-    host = "Asus-Z13"; #gitignore
-    profile = "amd"; #gitignore
     username = "brandon";
   in {
     nixosConfigurations = {
-      default = nixpkgs.lib.nixosSystem {
+      Asus-Z13 = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
           inherit inputs;
           inherit username;
-          inherit host;
-          inherit profile;
+          host = "Asus-Z13";
+          profile = "amd";
         };
         modules = [
-          ./profiles/${profile}.nix
+          ./profiles/amd.nix
+        ];
+      };
+      DarkJaguar-NixOS = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit username;
+          host = "DarkJaguar-NixOS";
+          profile = "nvidia";
+        };
+        modules = [
+          ./profiles/nvidia.nix
+        ];
+      };
+      DellXPS13 = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit username;
+          host = "DellXPS13";
+          profile = "intel";
+        };
+        modules = [
+          ./profiles/intel.nix
         ];
       };
     };
