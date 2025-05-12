@@ -61,5 +61,6 @@
     zed-editor # GUI based editor
     mangohud # onscreen toolkit
     protonup-qt # Proton toolkit
+    spotify # Music
   ];
 }
