@@ -4,11 +4,12 @@
   ...
 }: {
   programs = {
-    firefox.enable = false; # Firefox is not installed by default
     hyprland.enable = true; #someone forgot to set this so desktop file is created
     dconf.enable = true;
+    seahorse.enable = true;
     fuse.userAllowOther = true;
     mtr.enable = true;
+    adb.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -18,7 +19,7 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    amfora # Fancy Terminal Browser For Gemini Protocol
+    appimage-run # Needed For AppImage Support
     brave # Brave Browser
     brightnessctl # For Screen Brightness Control
     cliphist # Clipboard manager using rofi menu
@@ -26,8 +27,8 @@
     cowsay # Great Fun Terminal Program
     duf # Utility For Viewing Disk Usage In Terminal
     eza # Beautiful ls Replacement
-    ffmpeg # Terminal Video / Audio Editing
     file-roller # Archive Manager
+    zed-editor # GUI Editor
     gimp # Great Photo Editor
     glxinfo #needed for inxi diag util
     greetd.tuigreet # The Login Manager (Sometimes Referred To As Display Manager)
@@ -44,7 +45,6 @@
     ncdu # Disk Usage Analyzer With Ncurses Interface
     nixfmt-rfc-style # Nix Formatter
     nwg-displays #configure monitor configs via GUI
-    onefetch #provides build info on current system
     pavucontrol # For Editing Audio Levels & Devices
     pciutils # Collection Of Tools For Inspecting PCI Devices
     picard # For Changing Music Metadata & Getting Cover Art
@@ -56,13 +56,9 @@
     unrar # Tool For Handling .rar Files
     unzip # Tool For Handling .zip Files
     usbutils # Good Tools For USB Devices
+    v4l-utils # Used For Things Like OBS Virtual Camera
     wget # Tool For Fetching Files With Links
     yazi #TUI File Manager
-    zed-editor # GUI based editor
-    mangohud # onscreen toolkit
-    goverlay # Mangohud configurator
-    protonup-qt # Proton toolkit
     spotify # Music
-    wev # Key detector
   ];
 }

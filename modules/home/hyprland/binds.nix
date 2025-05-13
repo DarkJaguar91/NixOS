@@ -9,7 +9,7 @@ in {
     bind = [
       "$modifier,Return,exec,${terminal}"
       "$modifier,K,exec,list-keybinds"
-      "$modifier, SPACE,exec,rofi-launcher"
+      "$modifier SHIFT,Return,exec,rofi-launcher"
       "$modifier SHIFT,W,exec,web-search"
       "$modifier ALT,W,exec,wallsetter"
       "$modifier SHIFT,N,exec,swaync-client -rs"
@@ -65,8 +65,8 @@ in {
       "$modifier,8,workspace,8"
       "$modifier,9,workspace,9"
       "$modifier,0,workspace,10"
-      "$modifier SHIFT,S,movetoworkspace,special"
-      "$modifier CTRL,S,togglespecialworkspace"
+      "$modifier SHIFT,SPACE,movetoworkspace,special"
+      "$modifier,SPACE,togglespecialworkspace"
       "$modifier SHIFT,1,movetoworkspace,1"
       "$modifier SHIFT,2,movetoworkspace,2"
       "$modifier SHIFT,3,movetoworkspace,3"
@@ -92,7 +92,6 @@ in {
       ",XF86AudioPrev, exec, playerctl previous"
       ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
       ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
-      ",XF86KbdLightOnOff,exec,asusctl -k low"
     ];
 
     bindm = [

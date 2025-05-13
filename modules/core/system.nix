@@ -13,7 +13,7 @@ in {
       trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
     };
   };
-  time.timeZone = "America/Vancouver";
+  time.timeZone = "America/Chicago";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -25,6 +25,10 @@ in {
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
+  };
+  environment.variables = {
+    ZANEYOS_VERSION = "2.3";
+    ZANEYOS = "true";
   };
   console.keyMap = "${consoleKeyMap}";
   system.stateVersion = "24.11"; # Do not change!

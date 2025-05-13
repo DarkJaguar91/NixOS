@@ -14,9 +14,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    hardware.graphics = {
-      enable = true;
-    };
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia = {
       # Modesetting is required.

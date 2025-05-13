@@ -118,15 +118,13 @@
         nvim-docs-view.enable = false;
       };
 
-      lsp.enable = true;
       languages = {
+        enableLSP = true;
         enableFormat = true;
         enableTreesitter = true;
         enableExtraDiagnostics = true;
 
         nix.enable = true;
-        java.enable = true;
-        kotlin.enable = true;
         clang.enable = true;
         zig.enable = true;
         python.enable = true;

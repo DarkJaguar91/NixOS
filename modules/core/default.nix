@@ -6,6 +6,7 @@
     ./greetd.nix
     ./hardware.nix
     ./network.nix
+    ./nfs.nix
     ./nh.nix
     ./packages.nix
     ./printing.nix
