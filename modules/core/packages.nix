@@ -60,6 +60,7 @@
     yazi #TUI File Manager
     zed-editor # GUI based editor
     mangohud # onscreen toolkit
+    goverlay # Mangohud configurator
     protonup-qt # Proton toolkit
     spotify # Music
     wev # Key detector
