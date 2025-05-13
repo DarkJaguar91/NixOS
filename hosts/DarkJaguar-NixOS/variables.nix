@@ -5,6 +5,7 @@
 
   # Hyprland Settings
   extraMonitorSettings = "";
+  extraDevicesSettings = [];
 
   # Waybar Settings
   clock24h = false;
@@ -41,4 +42,7 @@
 
   # Enable Thunar GUI File Manager
   thunarEnable = false;
+
+  # Nvidia Open Kernel Module (Should be true for Nvidia 200 series and higher, else false)
+  nvidiaOpenDriver = true;
 }

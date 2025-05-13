@@ -9,5 +9,6 @@ in {
     ./hyprlock.nix
     ./pyprland.nix
     ./windowrules.nix
+    ./devices.nix
   ];
 }

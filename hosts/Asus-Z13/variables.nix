@@ -7,6 +7,12 @@
   extraMonitorSettings = "
     monitor=eDP-1,preferred,auto,1
   ";
+  extraDevicesSettings = [
+    {
+      name = "asustek-computer-inc.-gz302ea-keyboard-touchpad";
+      sensitivity = 0.3;
+    }
+  ];
 
   # Waybar Settings
   clock24h = false;
@@ -43,4 +49,7 @@
 
   # Enable Thunar GUI File Manager
   thunarEnable = false;
+
+  # Nvidia Open Kernel Module (Should be true for Nvidia 200 series and higher, else false)
+  nvidiaOpenDriver = true;
 }
