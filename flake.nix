@@ -32,6 +32,19 @@
           ./profiles/nvidia
         ];
       };
+      Asus-Z13 = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit username;
+          profile = "amd";
+          host = "Asus-Z13";
+        };
+        modules = [
+          ./hosts/Asus-Z13
+          ./profiles/amd
+        ];
+      };
 
       amd = nixpkgs.lib.nixosSystem {
         inherit system;
