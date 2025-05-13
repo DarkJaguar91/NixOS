@@ -30,7 +30,7 @@
 
   # Set Waybar
   # Includes alternates such as waybar-curved.nix & waybar-ddubs.nix
-  waybarChoice = ../../modules/home/waybar/waybar-simple.nix;
+  waybarChoice = ../../modules/home/waybar/waybar-ddubs.nix;
 
   # Set Animation style
   # Available options are:
