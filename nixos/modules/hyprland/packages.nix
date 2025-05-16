@@ -14,11 +14,13 @@
 
     rofi-wayland # Spotlightesc tool
     hypridle # Idle toolchain
+    hyprcursor # cursor themes
     swww # Wallpaper thingy
     jq # needed for some wallpaper tooling
     ags # Desktop overview
     libnotify # notification tool used by scripts
     bc # ?? TODO Determine what this is
+    ags # Desktop overview
 
     pavucontrol # Sound control gui
     pamixer # Sound control cli toolkit
@@ -32,6 +34,7 @@
     swaynotificationcenter
     wallust
     wlogout
+    grim
   ];
 
   xdg.portal = {

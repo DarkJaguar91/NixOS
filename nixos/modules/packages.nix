@@ -26,6 +26,7 @@
     git
 
     neovim
+    clang
 
     orca-slicer
   ];
