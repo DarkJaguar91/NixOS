@@ -12,6 +12,7 @@
     libinput.enable = true; # Input service - helps with some HIDs
     blueman.enable = true; # Bluetooth manager :)
     upower.enable = true; # Powertoolkit obvs
+    openssh.enable = true;
   };
   powerManagement = {
     enable = true;

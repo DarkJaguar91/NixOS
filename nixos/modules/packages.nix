@@ -20,14 +20,22 @@
     killall
     lm_sensors
     ncdu
+    findutils
+    ffmpeg
+    openssl
 
     wget
     curl
     git
+    fastfetch
+    (mpv.override {scripts = [mpvScripts.mpris];}) # with tray
+
 
     neovim
     clang
 
     orca-slicer
+    spotify
+    discord
   ];
 }
