@@ -5,7 +5,7 @@
 
 {
   imports =
-    [ 
+    [
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
@@ -15,20 +15,26 @@
   boot.extraModulePackages = [ ];
   # Since this is a desktop, we want to only use the Nvidia card
   boot.kernelParams = ["module_blacklist=amdgpu"];
-  
+  boot.supportedFilesystems = ["ntfs"];
 
   fileSystems."/" =
-    { 
+    {
       device = "/dev/disk/by-uuid/f9696bab-db3b-4598-9ed3-de3678125c4a";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { 
+    {
       device = "/dev/disk/by-uuid/1E00-03D0";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
+
+  fileSystems."/DarkJaguar" = {
+    device = "/dev/disk/by-uuid/C8E424E1E424D40A";
+    fsType = "ntfs-3g";
+    options = ["rw" "uid=1000"];
+  };
 
   swapDevices = [ ];
 
