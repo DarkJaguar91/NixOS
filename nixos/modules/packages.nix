@@ -2,7 +2,9 @@
   nixpkgs.config.allowUnfree = true;
 
   programs = {
-    fish.enable = true;
+    fish = {
+      enable = true;
+    };
   };
   environment.systemPackages = with pkgs; [
     htop
@@ -30,7 +32,7 @@
     fastfetch
     (mpv.override {scripts = [mpvScripts.mpris];}) # with tray
 
-
+    fishPlugins.tide
     neovim
     clang
 
