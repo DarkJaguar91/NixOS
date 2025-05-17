@@ -12,7 +12,11 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = {nixpkgs, nixos-hardware, ...} @ inputs: let
+  outputs = {
+    nixpkgs,
+    nixos-hardware,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
     username = "brandon";
   in {
@@ -26,8 +30,20 @@
           gpuType = "amd";
         };
         modules = [
-	  ./hosts/Asus-Z13
-	];
+          ./hosts/Asus-Z13
+        ];
+      };
+      DarkJaguar-NixOS = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit username;
+          host = "DarkJaguar-NixOS";
+          gpuType = "nvidia";
+        };
+        modules = [
+          ./hosts/DarkJaguar-NixOS
+        ];
       };
     };
   };
