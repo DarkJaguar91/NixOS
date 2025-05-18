@@ -68,5 +68,6 @@
     spotify
     zed-editor
     orca-slicer
+    jstest-gtk
   ];
 }
