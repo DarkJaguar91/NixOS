@@ -51,6 +51,12 @@
           desc = "File browser toggle";
         }
         {
+          key = "<leader>fd";
+          mode = ["n"];
+          action = "<cmd>Neotree<cr>";
+          desc = "Focus Neotree";
+        }
+        {
           key = "<C-h>";
           mode = ["i"];
           action = "<Left>";
