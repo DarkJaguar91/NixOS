@@ -1,11 +1,13 @@
-{ pkgs, config, ... }:
-
 {
+  pkgs,
+  config,
+  ...
+}: {
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    
+
     # Appimage Support
     binfmt.registrations.appimage = {
       wrapInterpreterInShell = false;
@@ -16,5 +18,11 @@
       magicOrExtension = ''\x7fELF....AI\x02'';
     };
     plymouth.enable = true;
+
+    # Enable XBox controller services
+    extraModulePackages = with config.boot.kernelPackages; [xpadneo];
+    extraModprobeConfig = ''
+      options bluetooth disable_ertm=Y
+    '';
   };
 }

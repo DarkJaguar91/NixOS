@@ -11,15 +11,12 @@
     gamescope = {
       enable = true;
       capSysNice = true;
-      args = [
-        "--rt"
-        "--expose-wayland"
-      ];
     };
   };
 
   environment.systemPackages = with pkgs; [
     mangohud
+    goverlay
     protonup-qt
   ];
 }
