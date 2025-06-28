@@ -10,7 +10,7 @@ in {
       "$modifier,Return,exec,${terminal}"
       "$modifier,K,exec,list-keybinds"
       "$modifier,SPACE,exec,rofi-launcher"
-      "$modifier SHIFT,W,exec,web-search"
+      "$modifier SHIFT,W,exec,wallselect"
       "$modifier ALT,W,exec,wallsetter"
       "$modifier SHIFT,N,exec,swaync-client -rs"
       "$modifier,W,exec,${browser}"

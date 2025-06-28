@@ -20,18 +20,18 @@
   boot.supportedFilesystems = ["ntfs"];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/8ea220d5-ce42-4784-9238-6b9b9fe1e069";
+    device = "/dev/disk/by-uuid/cdeaa402-09e4-4cde-891d-734854bee869";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/1E00-03D0";
+    device = "/dev/disk/by-uuid/E876-D1E9";
     fsType = "vfat";
     options = ["fmask=0077" "dmask=0077"];
   };
 
   fileSystems."/DarkJaguar" = {
-    device = "/dev/disk/by-uuid/C8E424E1E424D40A";
+    device = "/dev/disk/by-uuid/5ED894AED89485C5";
     fsType = "ntfs-3g";
     options = ["rw" "uid=1000"];
   };

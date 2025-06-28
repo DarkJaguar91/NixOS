@@ -13,7 +13,7 @@
       inherit pkgs;
       inherit username;
     })
-    (import ./web-search.nix {inherit pkgs;})
+    (import ./wallselect.nix {inherit pkgs;})
     (import ./rofi-launcher.nix {inherit pkgs;})
     (import ./screenshootin.nix {inherit pkgs;})
   ];
