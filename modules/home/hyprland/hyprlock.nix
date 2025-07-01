@@ -1,4 +1,5 @@
-{username, ...}: {
+{ usr, ... }:
+{
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -10,14 +11,14 @@
       };
       background = [
         {
-          path = "/home/${username}/Pictures/Wallpapers/beautifulmountainscape.jpg";
+          path = "/home/${usr.login}/Pictures/Wallpapers/beautifulmountainscape.jpg";
           blur_passes = 3;
           blur_size = 8;
         }
       ];
       image = [
         {
-          path = "/home/${username}/.config/face.jpg";
+          path = "/home/${usr.login}/.config/face.jpg";
           size = 150;
           border_size = 4;
           border_color = "rgb(0C96F9)";

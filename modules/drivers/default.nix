@@ -1,0 +1,5 @@
+{ gpuType, ... }: {
+  imports = [
+    ./${gpuType}
+  ];
+}

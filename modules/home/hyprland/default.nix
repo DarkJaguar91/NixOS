@@ -1,13 +1,16 @@
-{host, ...}: let
-  inherit (import ../../../hosts/${host}/variables.nix) animChoice;
-in {
+{ ... }:
+{
   imports = [
-    animChoice
+    ./animations.nix
+    ./assets.nix
     ./binds.nix
+    ./decoration.nix
+    ./env.nix
     ./hypridle.nix
     ./hyprland.nix
     ./hyprlock.nix
-    ./pyprland.nix
+    ./input.nix
+    ./startup.nix
     ./windowrules.nix
   ];
 }

@@ -1,10 +1,9 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  inputs,
-  ...
-}: {
+  nixpkgs.config.allowUnfree = true;
+
   programs = {
-    hyprland.enable = true; #someone forgot to set this so desktop file is created
+    hyprland.enable = true;
     dconf.enable = true;
     seahorse.enable = true;
     fuse.userAllowOther = true;
@@ -14,60 +13,68 @@
       enable = true;
       enableSSHSupport = true;
     };
+    fish.enable = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
-    amfora # Fancy Terminal Browser For Gemini Protocol
-    appimage-run # Needed For AppImage Support
-    brave # Brave Browser
-    brightnessctl # For Screen Brightness Control
-    cliphist # Clipboard manager using rofi menu
-    cmatrix # Matrix Movie Effect In Terminal
-    duf # Utility For Viewing Disk Usage In Terminal
-    eza # Beautiful ls Replacement
-    ffmpeg # Terminal Video / Audio Editing
-    file-roller # Archive Manager
-    gedit # Simple Graphical Text Editor
-    gimp # Great Photo Editor
-    glxinfo #needed for inxi diag util
-    greetd.tuigreet # The Login Manager (Sometimes Referred To As Display Manager)
-    htop # Simple Terminal Based System Monitor
-    hyprpicker # Color Picker
-    eog # For Image Viewing
-    inxi # CLI System Information Tool
-    killall # For Killing All Instances Of Programs
-    libnotify # For Notifications
-    lm_sensors # Used For Getting Hardware Temps
-    lolcat # Add Colors To Your Terminal Command Output
-    lshw # Detailed Hardware Information
-    mpv # Incredible Video Player
-    ncdu # Disk Usage Analyzer With Ncurses Interface
-    nixfmt-rfc-style # Nix Formatter
-    nwg-displays #configure monitor configs via GUI
-    onefetch #provides zsaneyos build info on current system
-    pavucontrol # For Editing Audio Levels & Devices
-    pciutils # Collection Of Tools For Inspecting PCI Devices
-    picard # For Changing Music Metadata & Getting Cover Art
-    pkg-config # Wrapper Script For Allowing Packages To Get Info On Others
-    playerctl # Allows Changing Media Volume Through Scripts
-    rhythmbox
-    ripgrep # Improved Grep
-    socat # Needed For Screenshots
-    unrar # Tool For Handling .rar Files
-    unzip # Tool For Handling .zip Files
-    usbutils # Good Tools For USB Devices
-    wget # Tool For Fetching Files With Links
-    yazi #TUI File Manager
-    wev # event tool for keybinds
+    fishPlugins.tide
+
+    appimage-run # App image support
+
+    brave # Browser
+    spotify # Music player
+    discord # Chat utility
+    zed-editor # Gui text editor
+    orca-slicer # You guessed it - 3d printing
+
+    greetd.tuigreet # Login manager
+    file-roller # Archive manager
+    gimp # Image editor
+    hyprpicker # UI Color picker
+    eog # Image viewer
+    nwg-displays # Configure monitors
+    pavucontrol # Sound settings panel
+
+    brightnessctl # Control screen brightness
+    playerctl # Changing volume and media controls
+    cliphist # Clipboard manager
+    socat # Needed for screenshots
+    jstest-gtk # Gamepad tester
+
+    neovim # Vim editor
+    fastfetch # Terminal startup fetcher
+    onefetch # info fetcher
+    ripgrep # improved grep command
+    eza # LS Replacement
+    htop # System monitor
+    btop # system monitor
+    glxinfo # GFX Monitor, used by many other tools
+    inxi # CLI system Information tool
+    duf # Disk information CLI tool
+    lm_sensors # Sensors monitor
+    lolcat # Colors in terminal
+    lshw # Detailed hardware info tool
+    ncdu # Disk usage analyser
+    pciutils # Collects info on PCI devices
+    usbutils # Tools for USB devices
+    pkg-config # Wrapper script allowing package inspection
+
+    killall # Killing instances of programs
+    libnotify # Used to send notifications
+    unrar # Rar utility
+    unzip # Zip utility
+    git # Git... duh
+    wev # wayland based keytool
+    wget # Downloader
+    curl # Downloader
+    yazi # TUI file manger
+    cliphist # History manager
+
+    nixd # nix language server
+    nil # Nix language server
+    nixfmt-rfc-style # Formatting nix files
+    ffmpeg
     bc
     jq
-
-    discord
-    spotify
-    zed-editor
-    orca-slicer
-    jstest-gtk
   ];
 }

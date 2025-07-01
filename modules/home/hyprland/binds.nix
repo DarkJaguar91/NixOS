@@ -1,35 +1,21 @@
-{host, ...}: let
-  inherit
-    (import ../../../hosts/${host}/variables.nix)
-    browser
-    terminal
-    ;
-in {
+{ ... }:
+{
   wayland.windowManager.hyprland.settings = {
     bind = [
-      "$modifier,Return,exec,${terminal}"
-      "$modifier,K,exec,list-keybinds"
-      "$modifier,SPACE,exec,rofi-launcher"
-      "$modifier SHIFT,W,exec,wallselect"
-      "$modifier ALT,W,exec,wallsetter"
-      "$modifier SHIFT,N,exec,swaync-client -rs"
-      "$modifier,W,exec,${browser}"
-      "$modifier,Y,exec,kitty -e yazi"
-      "$modifier,E,exec,emopicker9000"
-      "$modifier,S,exec,screenshootin"
-      "$modifier,D,exec,discord"
-      "$modifier,C,exec,hyprpicker -a"
-      "$modifier,G,exec,gimp"
-      "$modifier,T,exec,pypr toggle term"
-      "$modifier,M,exec,pavucontrol"
+      "$modifier,Return,exec,kitty"
+      "$modifier,SPACE,exec,rofi-show"
+      "$modifier,W,exec,brave"
+      "$modifier SHIFT,W,exec,wall-select"
       "$modifier,Q,killactive,"
-      "$modifier,P,pseudo,"
+      "$modifier SHIFT,N,exec,swaync-client -rs"
       "$modifier,V,exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
-      "$modifier SHIFT,I,togglesplit,"
+      "$modifier SHIFT,S,exec,take-screenshot"
+
+      # Window
       "$modifier,F,fullscreen,"
-      "$modifier SHIFT,F,togglefloating,"
-      "$modifier ALT,F,workspaceopt, allfloat"
-      "$modifier SHIFT,C,exit,"
+      "$modifier SHIFT,I,togglesplit,"
+      "ALT,Tab,cyclenext"
+      "ALT,Tab,bringactivetotop"
       "$modifier SHIFT,left,movewindow,l"
       "$modifier SHIFT,right,movewindow,r"
       "$modifier SHIFT,up,movewindow,u"
@@ -54,6 +40,8 @@ in {
       "$modifier,l,movefocus,r"
       "$modifier,k,movefocus,u"
       "$modifier,j,movefocus,d"
+
+      # Workspace
       "$modifier,1,workspace,1"
       "$modifier,2,workspace,2"
       "$modifier,3,workspace,3"
@@ -64,8 +52,6 @@ in {
       "$modifier,8,workspace,8"
       "$modifier,9,workspace,9"
       "$modifier,0,workspace,10"
-      "$modifier CONTROL SHIFT,SPACE,movetoworkspace,special"
-      "$modifier CONTROL,SPACE,togglespecialworkspace"
       "$modifier SHIFT,1,movetoworkspace,1"
       "$modifier SHIFT,2,movetoworkspace,2"
       "$modifier SHIFT,3,movetoworkspace,3"
@@ -78,12 +64,14 @@ in {
       "$modifier SHIFT,0,movetoworkspace,10"
       "$modifier CONTROL,right,workspace,e+1"
       "$modifier CONTROL,left,workspace,e-1"
-      "$modifier,mouse_down,workspace, e+1"
-      "$modifier,mouse_up,workspace, e-1"
       "$modifier CONTROL SHIFT,right,movetoworkspace, e+1"
       "$modifier CONTROL SHIFT,left,movetoworkspace, e-1"
-      "ALT,Tab,cyclenext"
-      "ALT,Tab,bringactivetotop"
+      "$modifier,mouse_down,workspace, e+1"
+      "$modifier,mouse_up,workspace, e-1"
+      "$modifier CONTROL SHIFT,SPACE,movetoworkspace,special"
+      "$modifier CONTROL,SPACE,togglespecialworkspace"
+
+      # FN Keys
       ",XF86AudioRaiseVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
       ",XF86AudioLowerVolume,exec,wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
       " ,XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
@@ -94,11 +82,6 @@ in {
       ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
       ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
       ",XF86KbdLightOnOff,exec, asusctl -n"
-    ];
-
-    bindm = [
-      "$modifier, mouse:272, movewindow"
-      "$modifier, mouse:273, resizewindow"
     ];
   };
 }

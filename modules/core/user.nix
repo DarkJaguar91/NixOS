@@ -1,42 +1,46 @@
 {
   pkgs,
   inputs,
-  username,
+  usr,
   host,
-  gpuType,
   ...
-}: let
-  inherit (import ../../hosts/${host}/variables.nix) gitUsername;
-in {
-  imports = [inputs.home-manager.nixosModules.home-manager];
+}:
+{
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = false;
-    backupFileExtension = "backup";
-    extraSpecialArgs = {inherit inputs username host gpuType;};
-    users.${username} = {
-      imports = [./../home];
+    backupFileExtension = "bak";
+    extraSpecialArgs = { inherit inputs usr host; };
+
+    users.${usr.login} = {
+      imports = [ ../home ];
       home = {
-        username = "${username}";
-        homeDirectory = "/home/${username}";
+        username = "${usr.login}";
+        homeDirectory = "/home/${usr.login}";
         stateVersion = "25.05";
       };
     };
   };
-  users.mutableUsers = true;
-  users.users.${username} = {
-    isNormalUser = true;
-    description = "${gitUsername}";
-    extraGroups = [
-      "docker"
-      "libvirtd"
-      "lp"
-      "networkmanager"
-      "scanner"
-      "wheel"
-    ];
-    shell = pkgs.zsh;
-    ignoreShellProgramCheck = true;
+
+  users = {
+    mutableUsers = true;
+
+    users.${usr.login} = {
+      isNormalUser = true;
+      description = usr.name;
+      extraGroups = [
+        "libvirtd"
+        "lp"
+        "networkmanager"
+        "wheel"
+      ];
+      shell = pkgs.fish;
+      ignoreShellProgramCheck = true;
+    };
   };
-  nix.settings.allowed-users = ["${username}"];
+  nix.settings.allowed-users = [ "${usr.login}" ];
 }

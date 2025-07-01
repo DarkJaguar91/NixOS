@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.kitty = {
     enable = true;
     package = pkgs.kitty;
@@ -17,7 +18,6 @@
       tab_bar_edge = "top";
       tab_bar_margin_width = 0;
       tab_bar_style = "powerline";
-      #tab_bar_style = "fade";
       enabled_layouts = "splits";
     };
     extraConfig = ''

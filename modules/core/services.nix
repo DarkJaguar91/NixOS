@@ -1,21 +1,19 @@
-{gpuType, ...}: {
-  # Services to start
+{ ... }:
+{
   services = {
-    libinput.enable = true; # Input Handling
-    fstrim.enable = true; # SSD Optimizer
-    gvfs.enable = true; # For Mounting USB & More
-    openssh.enable = true; # Enable SSH
-    blueman.enable = true; # Bluetooth Support
-    tumbler.enable = true; # Image/video preview
-    gnome.gnome-keyring.enable = true;
+    libinput.enable = true;
+    fstrim.enable = true;
+    gvfs.enable = true;
+    openssh.enable = true;
+    blueman.enable = true;
+    tumbler.enable = true;
+    flatpak.enable = true;
 
     smartd = {
-      enable =
-        if gpuType == "vm"
-        then false
-        else true;
+      enable = true;
       autodetect = true;
     };
+
     pipewire = {
       enable = true;
       alsa.enable = true;
