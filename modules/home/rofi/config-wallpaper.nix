@@ -1,60 +1,86 @@
 {...}: {
   home.file.".config/rofi/config-wallpaper.rasi".text = ''
     @import "~/.config/rofi/config.rasi"
+
+    * {
+    	background-color: transparent;
+    	text-color:       white;
+    }
+
     window {
-      width: 750px;
-      border-radius: 20px;
+    	fullscreen:       true;
+    	padding:          4em;
+    	children:         [ wrap, listview-split];
+    	spacing:          1em;
     }
-    mainbox {
-      orientation: vertical;
-      children: [ "inputbar", "listbox" ];
+
+    icon-current-entry {
+      expand:          true;
+      size:            80%;
     }
+
+    listview-split {
+      orientation: horizontal;
+      spacing: 0.4em;
+      children: [listview, icon-current-entry];
+    }
+
+    wrap {
+    	expand: false;
+    	orientation: vertical;
+    	children: [ inputbar, message ];
+    	border-radius: 0.4em;
+    }
+
+    icon-ib {
+    	expand: false;
+    	filename: "system-search";
+    	vertical-align: 0.5;
+    	horizontal-align: 0.5;
+    	size: 1em;
+    }
+
     inputbar {
-      padding: 75px 40px;
-      background-color: transparent;
-      background-image: url("~/Pictures/Wallpapers/Rainnight.jpg", width);
-      text-color: @foreground;
-      children: [ "textbox-prompt-colon", "entry" ];
+    	spacing: 0.4em;
+    	padding: 0.4em;
+    	children: [ icon-ib, entry ];
     }
-    textbox-prompt-colon {
-      padding: 12px 20px;
-      border-radius: 100%;
-      background-color: @bg-alt;
-      text-color: @foreground;
-    }
+
     entry {
-      expand: true;
-      padding: 12px 16px;
-      border-radius: 100%;
-      background-color: @bg-alt;
-      text-color: @foreground;
+    	placeholder: "Search";
+    	placeholder-color: grey;
     }
-    button {
-      padding: 12px;
-      border-radius: 100%;
+
+    message {
+    	padding: 0.4em;
+    	spacing: 0.4em;
     }
+
+    listview {
+    	flow: horizontal;
+    	fixed-columns: true;
+    	columns: 7;
+    	lines: 5;
+    	spacing: 1.0em;
+      columns: 4;
+    }
+
     element {
-      spacing: 10px;
-      padding: 12px;
+    	orientation: vertical;
+    	padding: 0.1em;
+      children: [element-icon, element-text ];
     }
+
     element-icon {
-        text-color:                  inherit;
-        size:                        10%;
-        margin:                      -30px;
-        cursor:                      inherit;
+    	size: calc(((100% - 8em) / 5 ));
+    	horizontal-align: 0.5;
+    	vertical-align: 0.5;
     }
+
     element-text {
-      vertical-align: 0.5;
-      horizontal-align: 0.5;
-      padding: 6px;
-      margin: 6px;
-    }
-    textbox {
-      padding: 12px;
-      border-radius: 100%;
-    }
-    error-message {
-      border-radius: 0px;
+    	horizontal-align: 0.5;
+    	vertical-align: 0.5;
+      padding: 0.2em;
     }
   '';
 }

@@ -131,11 +131,11 @@
 
         nix.enable = true;
         clang.enable = true;
-        zig.enable = true;
         python.enable = true;
         markdown.enable = true;
         ts.enable = true;
         html.enable = true;
+        kotlin.enable = true;
       };
 
       visuals = {
@@ -165,6 +165,10 @@
       };
 
       treesitter.context.enable = true;
+
+      terminal.toggleterm = {
+        enable = true;
+      };
 
       binds = {
         whichKey.enable = true;

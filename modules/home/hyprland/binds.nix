@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   wayland.windowManager.hyprland.settings = {
     bind = [
       "$modifier,Return,exec,kitty"
@@ -82,6 +81,11 @@
       ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
       ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
       ",XF86KbdLightOnOff,exec, asusctl -n"
+    ];
+
+    bindm = [
+      "$modifier, mouse:272, movewindow"
+      "$modifier, mouse:273, resizewindow"
     ];
   };
 }
