@@ -1,10 +1,10 @@
-{ ... }:
-{
+_: {
   imports = [
     ./animations.nix
     ./assets.nix
     ./binds.nix
     ./decoration.nix
+    ./devices.nix
     ./env.nix
     ./hypridle.nix
     ./hyprland.nix

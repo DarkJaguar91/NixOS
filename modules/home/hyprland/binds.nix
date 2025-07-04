@@ -81,6 +81,8 @@ _: {
       ",XF86MonBrightnessDown,exec,brightnessctl set 5%-"
       ",XF86MonBrightnessUp,exec,brightnessctl set +5%"
       ",XF86KbdLightOnOff,exec, asusctl -n"
+      # Special Asus key
+      ",XF86Launch4,exec,asus-profile-switch"
     ];
 
     bindm = [

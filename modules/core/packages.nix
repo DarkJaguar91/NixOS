@@ -25,14 +25,17 @@
     discord # Chat utility
     zed-editor # Gui text editor
     orca-slicer # You guessed it - 3d printing
+    wvkbd # Onscreen keyboard
 
     greetd.tuigreet # Login manager
     file-roller # Archive manager
     gimp # Image editor
     hyprpicker # UI Color picker
     eog # Image viewer
+    mpv # Video player
     nwg-displays # Configure monitors
     pavucontrol # Sound settings panel
+    pwvucontrol # Pipewire control gui
 
     brightnessctl # Control screen brightness
     playerctl # Changing volume and media controls
