@@ -99,7 +99,7 @@ _: {
         ############
         "float, tag:settings*"
         "float, class:^([Ff]erdium)$"
-        "float, title:^(Picture-in-Picture)$"
+        "float, title:^([Pp]icture.in.[Pp]icture)$"
         "float, class:^(mpv|com.github.rafostar.Clapper)$"
         "float, title:^(Authentication Required)$"
         "float, class:(codium|codium-url-handler|VSCodium), title:negative:(.*codium.*|.*VSCodium.*)"
@@ -129,17 +129,17 @@ _: {
         "opacity 0.8 0.7, tag:settings*"
         "opacity 0.8 0.7, class:^(gedit|org.gnome.TextEditor|mousepad)$"
         "opacity 0.9 0.8, class:^(seahorse)$ # gnome-keyring gui"
-        "opacity 0.95 0.75, title:^(Picture-in-Picture)$"
+        "opacity 0.95 0.75, title:^(Picture.in.Picture)$"
 
         ############
         # Pinning  #
         ############
-        "pin, title:^(Picture-in-Picture)$"
+        "pin, title:^([Pp]icture.in.[Pp]icture)$"
 
         ############
         # Special  #
         ############
-        "keepaspectratio, title:^(Picture-in-Picture)$"
+        "keepaspectratio, title:^([Pp]icture.in.[Pp]icture)$"
         "noblur, tag:games*"
         "fullscreen, tag:games*"
       ];

@@ -79,6 +79,12 @@
         new_on_top = 1;
         mfact = 0.5;
       };
+
+      binds = {
+        workspace_back_and_forth = true;
+        allow_workspace_cycles = true;
+        pass_mouse_when_bound = false;
+      };
     };
 
     extraConfig = "

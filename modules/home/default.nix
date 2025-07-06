@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./fish
     ./git.nix
@@ -13,6 +12,7 @@
     ./stylix.nix
     ./swappy.nix
     ./swaync.nix
+    ./tmux.nix
     ./waybar
     ./wlogout
     ./xdg.nix
