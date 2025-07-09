@@ -5,5 +5,6 @@ _: {
     hyprland.enable = false;
     hyprlock.enable = false;
     qt.enable = true;
+    nixvim.enable = true;
   };
 }

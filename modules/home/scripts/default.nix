@@ -5,9 +5,10 @@
 }: let
   scripts = [
     ./asus-profile-switch.nix
+    ./record-screen-area.nix
+    ./rofi-show.nix
     ./take-screenshot.nix
     ./task-waybar.nix
-    ./rofi-show.nix
     ./wall-select.nix
   ];
 in {

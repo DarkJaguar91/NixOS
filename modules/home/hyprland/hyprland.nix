@@ -7,9 +7,13 @@
     swww # Wallpaper utility
     grim # screenshot tool
     slurp # Lightweight clipboard image editor
+    wf-recorder # CLI Screen recorder
+    pulseaudio # Get tools for WF Recorder
     wl-clipboard # clipboard history manager
     swappy # Screenshot utility
     ydotool # ?? TODO ??
+    kooha # Screen recorder 1
+    kazam # SCreen recorder 2
 
     hyprpolkitagent # Hyprland Polkit agent
     hyprland-qtutils # Needed for banners and ANR messages

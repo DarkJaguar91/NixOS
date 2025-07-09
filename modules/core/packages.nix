@@ -43,7 +43,6 @@
     socat # Needed for screenshots
     jstest-gtk # Gamepad tester
 
-    neovim # Vim editor
     fastfetch # Terminal startup fetcher
     onefetch # info fetcher
     ripgrep # improved grep command

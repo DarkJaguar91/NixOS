@@ -5,7 +5,8 @@
     ./gtk.nix
     ./hyprland
     ./kitty.nix
-    ./nvf.nix
+    #./nvf.nix
+    ./nixvim
     ./qt.nix
     ./rofi
     ./scripts

@@ -12,6 +12,10 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     rose-pine-hyprcursor = {
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,45 +26,42 @@
     };
   };
 
-  outputs =
-    { nixpkgs, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      theme = null;
-      usr = {
-        name = "Brandon Talbot";
-        login = "brandon";
-        email = "bjtal91@gmail.com";
+  outputs = {nixpkgs, ...} @ inputs: let
+    system = "x86_64-linux";
+    theme = null;
+    usr = {
+      name = "Brandon Talbot";
+      login = "brandon";
+      email = "bjtal91@gmail.com";
+    };
+  in {
+    nixosConfigurations = {
+      Asus-Z13 = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit usr;
+          inherit theme;
+          host = "Asus-Z13";
+          gpuType = "amd";
+        };
+        modules = [
+          ./hosts/Asus-Z13
+        ];
       };
-    in
-    {
-      nixosConfigurations = {
-        Asus-Z13 = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit usr;
-            inherit theme;
-            host = "Asus-Z13";
-            gpuType = "amd";
-          };
-          modules = [
-            ./hosts/Asus-Z13
-          ];
+      DarkJaguar-NixOS = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit usr;
+          inherit theme;
+          host = "DarkJaguar-NixOS";
+          gpuType = "nvidia";
         };
-        DarkJaguar-NixOS = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit usr;
-            inherit theme;
-            host = "DarkJaguar-NixOS";
-            gpuType = "nvidia";
-          };
-          modules = [
-            ./hosts/DarkJaguar-NixOS
-          ];
-        };
+        modules = [
+          ./hosts/DarkJaguar-NixOS
+        ];
       };
     };
+  };
 }

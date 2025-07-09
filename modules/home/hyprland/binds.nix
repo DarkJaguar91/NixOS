@@ -9,6 +9,7 @@ _: {
       "$modifier SHIFT,N,exec,swaync-client -rs"
       "$modifier,V,exec, cliphist list | rofi -dmenu | cliphist decode | wl-copy"
       "$modifier SHIFT,S,exec,take-screenshot"
+      "$modifier SHIFT,R,exec,record-screen-area"
 
       # Window
       "$modifier,F,fullscreen,"
