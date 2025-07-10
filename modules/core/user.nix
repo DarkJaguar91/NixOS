@@ -37,6 +37,7 @@
         "lp"
         "networkmanager"
         "wheel"
+	"inputs"
       ];
       shell = pkgs.fish;
       ignoreShellProgramCheck = true;

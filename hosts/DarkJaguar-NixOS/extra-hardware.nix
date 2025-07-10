@@ -15,4 +15,7 @@
       "gid=100"
     ];
   };
+  
+  # Enable wooting keyboard
+  hardware.wooting.enable = true;
 }
