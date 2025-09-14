@@ -55,5 +55,11 @@
     ffmpeg
     bc
     jq
+    
+    spotify-player
+    libsixel
+    kitty
+    youtube-tui
+    mpv
   ];
 }
