@@ -4,16 +4,18 @@
 
   programs = {
     dconf.enable = true;
-    seahorse.enable = true;
     fuse.userAllowOther = true;
     mtr.enable = true;
     hyprlock.enable = true;
+    firefox.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
     appimage-run # App image support
     zed-editor # Gui text editor
     brave # Browser
+    plex-desktop # Plex player
+    spotify # Dem musics
 
     brightnessctl # Control screen brightness
     playerctl # Changing volume and media controls
@@ -55,7 +57,7 @@
     ffmpeg
     bc
     jq
-    
+
     spotify-player
     libsixel
     kitty

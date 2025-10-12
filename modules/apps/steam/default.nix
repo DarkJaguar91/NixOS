@@ -1,6 +1,11 @@
-{ config, lib, pkgs, ... }: 
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib;
-let 
+let
   cfg = config.dj.steam;
 in
 {
@@ -9,28 +14,38 @@ in
   };
 
   config = mkIf cfg.enable {
-    programs ={
+    programs = {
       steam = {
         enable = true;
-  
+
         remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
         dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
         localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-  
+
         gamescopeSession.enable = true;
       };
-  
+
       gamescope = {
         enable = true;
         capSysNice = true;
       };
     };
-  
+
     environment.systemPackages = with pkgs; [
       mangohud
       goverlay
       protonup-qt
       heroic
-    ]; 
+
+      # Companion tools
+      discord
+
+      # help with installing deckyloader
+      zenity
+    ];
+
+    hardware.steam-hardware.enable = true;
+    # hardware.xpadneo.enable = true; # Xbox controller support
+    # hardware.xone.enable = true; # Xbox One controller support
   };
 }

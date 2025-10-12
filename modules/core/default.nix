@@ -12,6 +12,7 @@ _: {
     ./nvim.nix
     ./xserver.nix
     ./packages.nix
+    ./qmk.nix
     ./bluetooth.nix
   ];
 }

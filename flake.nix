@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    jovian-nixos.url = "github:jovian-experiments/jovian-nixos";
   };
 
   outputs =
@@ -28,6 +29,18 @@
           };
           modules = [
             ./hosts/DellXPS13
+          ];
+        };
+        DarkJaguar-NixOS = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit usr;
+            host = "DarkJaguar-NixOS";
+            gpuType = "nvidia";
+          };
+          modules = [
+            ./hosts/DarkJaguar-NixOS
           ];
         };
       };
