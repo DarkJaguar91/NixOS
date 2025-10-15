@@ -6,7 +6,6 @@
     dconf.enable = true;
     fuse.userAllowOther = true;
     mtr.enable = true;
-    hyprlock.enable = true;
     firefox.enable = true;
   };
 
@@ -16,12 +15,13 @@
     brave # Browser
     plex-desktop # Plex player
     spotify # Dem musics
+    cava
 
     brightnessctl # Control screen brightness
     playerctl # Changing volume and media controls
     cliphist # Clipboard manager
     socat # Needed for screenshots
-    jstest-gtk # Gamepad tester
+    tmux
 
     fastfetch # Terminal startup fetcher
     onefetch # info fetcher

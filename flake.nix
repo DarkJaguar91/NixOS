@@ -43,6 +43,18 @@
             ./hosts/DarkJaguar-NixOS
           ];
         };
+        AsusZ13 = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit usr;
+            host = "AsusZ13";
+            gpuType = "amd";
+          };
+          modules = [
+            ./hosts/AsusZ13
+          ];
+        };
       };
     };
 }

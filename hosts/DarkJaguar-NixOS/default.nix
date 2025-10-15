@@ -13,4 +13,7 @@ _: {
   # Apps
   dj.orca-slicer.enable = false;
   dj.steam.enable = true;
+
+  # hardware
+  dj.qmk.enable = false;
 }
