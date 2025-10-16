@@ -9,6 +9,8 @@ _: {
     ./plasma
     ./plex
     ./qmk
+    ./rofi
     ./steam
+    ./waybar
   ];
 }

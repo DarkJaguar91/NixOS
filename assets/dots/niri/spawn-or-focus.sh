@@ -23,11 +23,11 @@ fi
 terminal="kitty"
 
 # Commands to run the programs
-term="$terminal --app-id special-term -e zsh -ic 'tmux new-session -As Terminal'"
-btop="$terminal --app-id special-btop -e zsh -ic btop"
-nvim="$terminal --app-id special-nvim --working-directory=$HOME/dotfiles/ -e zsh -ic 'tmux new-session -As Editor nvim'"
-files="$terminal --app-id special-files -e zsh -ic yazi"
-projectTerm="$terminal --app-id special-project -e zsh -ic '$HOME/scripts/project.tmux'"
+term="$terminal --app-id special-term -e fish -ic 'tmux new-session -As Terminal'"
+btop="$terminal --app-id special-btop -e fish -ic btop"
+nvim="$terminal --app-id special-nvim --working-directory=$HOME/dotfiles/ -e fish -ic 'tmux new-session -As Editor nvim'"
+files="$terminal --app-id special-files -e fish -ic yazi"
+projectTerm="$terminal --app-id special-project -e fish -ic '$HOME/scripts/project.tmux'"
 spotify="spotify"
 ticktick="ticktick"
 

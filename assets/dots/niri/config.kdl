@@ -307,6 +307,7 @@ window-rule {
     match title="popup title with spaces"
     match title="zoom"
     match title="Picture-in-Picture"
+    match title="Picture in picture"
     match app-id="anki" title="Profile Name"
 
     open-floating true
@@ -389,7 +390,6 @@ binds {
     Mod+Shift+N hotkey-overlay-title="Nvim scratchpad"     { spawn "~/.config/niri/spawn-or-focus.sh" "special-nvim";    }
     Mod+Shift+P hotkey-overlay-title="Project scratchpad"  { spawn "~/.config/niri/spawn-or-focus.sh" "special-project"; }
     Mod+Shift+S hotkey-overlay-title="Spotify scratchpad"  { spawn "~/.config/niri/spawn-or-focus.sh" "Spotify";         }
-    Mod+Shift+I hotkey-overlay-title="Ticktick scratchpad" { spawn "~/.config/niri/spawn-or-focus.sh" "ticktick";        }
 
     // Scripts
     Mod+V      { spawn "~/.config/scripts/rofi-clipboard";   }
