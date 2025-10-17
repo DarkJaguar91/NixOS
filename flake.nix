@@ -16,6 +16,7 @@
         login = "brandon";
         email = "bjtal91@gmail.com";
       };
+      nixConfigPath = "/home/${usr.login}/.config/nixos";
     in
     {
       nixosConfigurations = {
@@ -24,6 +25,7 @@
           specialArgs = {
             inherit inputs;
             inherit usr;
+            inherit nixConfigPath;
             host = "DellXPS13";
             gpuType = "intel";
           };
@@ -36,6 +38,7 @@
           specialArgs = {
             inherit inputs;
             inherit usr;
+            inherit nixConfigPath;
             host = "DarkJaguar-NixOS";
             gpuType = "nvidia";
           };
@@ -48,6 +51,7 @@
           specialArgs = {
             inherit inputs;
             inherit usr;
+            inherit nixConfigPath;
             host = "AsusZ13";
             gpuType = "amd";
           };

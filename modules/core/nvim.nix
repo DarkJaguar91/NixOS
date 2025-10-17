@@ -1,4 +1,9 @@
-{ pkgs, usr, ... }:
+{
+  pkgs,
+  usr,
+  nixConfigPath,
+  ...
+}:
 {
   environment.systemPackages = with pkgs; [
     neovim
@@ -25,6 +30,6 @@
   programs.nix-ld.enable = true;
 
   environment.etc."tmpfiles.d/home-${usr.login}-nvim.conf".text = ''
-    L+    /home/${usr.login}/.config/nvim                   -    ${usr.login}    -     -           /home/${usr.login}/.config/nixos/assets/dots/nvim
+    L+    /home/${usr.login}/.config/nvim                   -    ${usr.login}    -     -           ${nixConfigPath}/assets/dots/nvim
   '';
 }

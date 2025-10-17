@@ -3,6 +3,7 @@
   lib,
   pkgs,
   usr,
+  nixConfigPath,
   ...
 }:
 with lib;
@@ -20,7 +21,7 @@ in
     ];
 
     environment.etc."tmpfiles.d/home-${usr.login}-rofi.conf".text = ''
-      L+    /home/${usr.login}/.config/rofi                   -    ${usr.login}    -     -           /home/${usr.login}/.config/nixos/assets/dots/rofi
+      L+    /home/${usr.login}/.config/rofi                   -    ${usr.login}    -     -           ${nixConfigPath}/assets/dots/rofi
     '';
   };
 }

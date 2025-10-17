@@ -1,4 +1,9 @@
-{ pkgs, usr, ... }:
+{
+  pkgs,
+  usr,
+  nixConfigPath,
+  ...
+}:
 {
   programs.fish.enable = true;
 
@@ -7,6 +12,6 @@
   ];
 
   environment.etc."tmpfiles.d/home-${usr.login}-fish.conf".text = ''
-    L+    /home/${usr.login}/.config/fish                   -    ${usr.login}    -     -           /home/${usr.login}/.config/nixos/assets/dots/fish
+    L+    /home/${usr.login}/.config/fish                   -    ${usr.login}    -     -           ${nixConfigPath}/assets/dots/fish
   '';
 }

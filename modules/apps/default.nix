@@ -11,6 +11,8 @@ _: {
     ./qmk
     ./rofi
     ./steam
+    ./ui-scripts
+    ./wal
     ./waybar
   ];
 }

@@ -2,6 +2,7 @@
   config,
   lib,
   usr,
+  nixConfigPath,
   ...
 }:
 with lib;
@@ -19,7 +20,7 @@ in
     };
 
     environment.etc."tmpfiles.d/home-${usr.login}-waybar.conf".text = ''
-      L+    /home/${usr.login}/.config/waybar                   -    ${usr.login}    -     -           /home/${usr.login}/.config/nixos/assets/dots/waybar
+      L+    /home/${usr.login}/.config/waybar                   -    ${usr.login}    -     -           ${nixConfigPath}/assets/dots/waybar
     '';
   };
 }

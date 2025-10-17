@@ -3,6 +3,7 @@
   lib,
   pkgs,
   usr,
+  nixConfigPath,
   ...
 }:
 with lib;
@@ -17,6 +18,7 @@ in
   config = mkIf cfg.enable {
     dj.rofi.enable = lib.mkForce true;
     dj.waybar.enable = lib.mkForce true;
+    dj.wal.enable = lib.mkForce true;
 
     services = {
       greetd = {
@@ -41,7 +43,6 @@ in
       swayidle
       pwvucontrol
       swaynotificationcenter
-      pywal
       swww
 
       brightnessctl
@@ -52,9 +53,7 @@ in
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
     environment.etc."tmpfiles.d/home-${usr.login}-niri.conf".text = ''
-      L+    /home/${usr.login}/.config/niri                   -    ${usr.login}    -     -           /home/${usr.login}/.config/nixos/assets/dots/niri
-      L+    /home/${usr.login}/.config/wal                   -    ${usr.login}    -     -           /home/${usr.login}/.config/nixos/assets/dots/wal
-      L+    /home/${usr.login}/.config/scripts                   -    ${usr.login}    -     -           /home/${usr.login}/.config/nixos/assets/dots/scripts
+      L+    /home/${usr.login}/.config/niri                   -    ${usr.login}    -     -           ${nixConfigPath}/assets/dots/niri
     '';
   };
 }

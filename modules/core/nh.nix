@@ -1,4 +1,8 @@
-{ pkgs, usr, ... }:
+{
+  pkgs,
+  nixConfigPath,
+  ...
+}:
 {
   programs.nh = {
     enable = true;
@@ -6,7 +10,7 @@
       enable = true;
       extraArgs = "--keep-since 7d --keep 5";
     };
-    flake = "/home/${usr.login}/.config/nixos";
+    flake = "${nixConfigPath}";
   };
 
   environment.systemPackages = with pkgs; [
