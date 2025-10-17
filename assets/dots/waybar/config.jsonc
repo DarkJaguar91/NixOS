@@ -122,6 +122,7 @@
     "format": "{icon} {volume:>3}%",
     "format-muted": "󰖁 {volume:>3}%",
     "format-icons": ["", "", ""],
+    "on-click": "pwvucontrol",
   },
 
   "bluetooth": {

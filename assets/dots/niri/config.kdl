@@ -399,16 +399,16 @@ binds {
     Mod+Escape { spawn "~/.config/scripts/rofi-power";       }
     Mod+Ctrl+W { spawn "~/.config/scripts/rofi-wifi";        }
     Mod+Ctrl+B { spawn "~/.config/scripts/rofi-bluetooth";   }
-    Mod+Ctrl+S { spawn "~/.config/scripts/rofi-wall";        }
+    Mod+Ctrl+S { spawn "wall-select";        }
     Mod+Ctrl+C { spawn "~/.config/scripts/text-picker";      }
     Mod+Ctrl+D { spawn "~/.config/scripts/rofi-docs";        }
 
-    XF86AudioRaiseVolume cooldown-ms=150 allow-when-locked=true { spawn "~/.config/scripts/volume" "up";   }
-    XF86AudioLowerVolume cooldown-ms=150 allow-when-locked=true { spawn "~/.config/scripts/volume" "down"; }
-    XF86AudioMute        cooldown-ms=150 allow-when-locked=true { spawn "~/.config/scripts/volume" "mute"; }
+    XF86AudioRaiseVolume cooldown-ms=150 allow-when-locked=true { spawn "volume" "up";   }
+    XF86AudioLowerVolume cooldown-ms=150 allow-when-locked=true { spawn "volume" "down"; }
+    XF86AudioMute        cooldown-ms=150 allow-when-locked=true { spawn "volume" "mute"; }
 
-    XF86MonBrightnessUp   cooldown-ms=150 { spawn "~/.config/scripts/brightness" "up";   }
-    XF86MonBrightnessDown cooldown-ms=150 { spawn "~/.config/scripts/brightness" "down"; }
+    XF86MonBrightnessUp   cooldown-ms=150 { spawn "brightness" "up";   }
+    XF86MonBrightnessDown cooldown-ms=150 { spawn "brightness" "down"; }
 
     XF86AudioMedia { spawn "playerctl" "play-pause"; }
     XF86AudioPlay  { spawn "playerctl" "play-pause"; }
@@ -416,11 +416,11 @@ binds {
     XF86AudioNext  { spawn "playerctl" "next";       }
 
     // Similarly, you can bind touchpad scroll "ticks".
-    Mod+TouchpadScrollDown  cooldown-ms=150 { spawn "~/.config/scripts/volume"     "up";   }
-    Mod+TouchpadScrollUp    cooldown-ms=150 { spawn "~/.config/scripts/volume"     "down"; }
+    Mod+TouchpadScrollDown  cooldown-ms=150 { spawn "volume"     "up";   }
+    Mod+TouchpadScrollUp    cooldown-ms=150 { spawn "volume"     "down"; }
 
-    Mod+TouchpadScrollLeft  cooldown-ms=150 { spawn "~/.config/scripts/brightness" "up";   }
-    Mod+TouchpadScrollRight cooldown-ms=150 { spawn "~/.config/scripts/brightness" "down"; }
+    Mod+TouchpadScrollLeft  cooldown-ms=150 { spawn "brightness" "up";   }
+    Mod+TouchpadScrollRight cooldown-ms=150 { spawn "brightness" "down"; }
 
     Print      { screenshot;        }
     Ctrl+Print { screenshot-screen; }

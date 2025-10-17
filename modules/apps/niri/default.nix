@@ -19,6 +19,7 @@ in
     dj.rofi.enable = lib.mkForce true;
     dj.waybar.enable = lib.mkForce true;
     dj.wal.enable = lib.mkForce true;
+    dj.ui-scripts.enable = lib.mkForce true;
 
     services = {
       greetd = {
