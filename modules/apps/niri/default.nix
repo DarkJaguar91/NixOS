@@ -20,6 +20,8 @@ in
     dj.waybar.enable = lib.mkForce true;
     dj.wal.enable = lib.mkForce true;
     dj.ui-scripts.enable = lib.mkForce true;
+    dj.wallpapers.enable = lib.mkForce true;
+    dj.yazi.enable = lib.mkForce true;
 
     services = {
       greetd = {
@@ -27,7 +29,7 @@ in
         settings = {
           default_session = {
             user = usr.login;
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd niri-session"; # start Hyprland with a TUI login manager
+            command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session"; # start Hyprland with a TUI login manager
           };
         };
       };
@@ -50,6 +52,11 @@ in
       playerctl
       pamixer
       xwayland-satellite
+
+      # Screenshots
+      grim
+      slurp
+      swappy
     ];
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
 

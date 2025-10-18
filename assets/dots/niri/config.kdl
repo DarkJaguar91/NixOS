@@ -218,7 +218,6 @@ spawn-at-startup "xwayland-satellite"
 spawn-at-startup "swww-daemon" "--format" "xrgb"
 spawn-at-startup "swaync"
 spawn-at-startup "~/.config/waybar/launch.sh"
-// spawn-at-startup "~/.config/dunst/launch-dunst.sh"
 //spawn-at-startup "/usr/bin/kdeconnectd"
 //spawn-at-startup "/usr/bin/kdeconnect-indicator"
 //spawn-at-startup "nm-applet" "--indicator"
@@ -226,9 +225,9 @@ spawn-at-startup "~/.config/waybar/launch.sh"
 //spawn-at-startup "foot" "--server"
 spawn-at-startup "swayidle" "-w"
 //spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-//spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
-//spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
-//spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 spawn-at-startup "systemctl" "--user" "import-environment" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=niri"
 
 workspace "Scratchpad"
@@ -262,7 +261,7 @@ window-rule {
     open-on-workspace "Scratchpad"
 }
 
- window-rule {
+window-rule {
   match app-id="foot"
   match app-id="footclient"
   match title="foot"
@@ -380,7 +379,6 @@ binds {
     Mod+R      hotkey-overlay-title="Run an Application: Rofi" { spawn "rofi" "-show" "drun"; }
     Mod+B      hotkey-overlay-title="Open Browser"             { spawn "brave"; }
     Mod+D      hotkey-overlay-title="Open Discord"             { spawn "vesktop"; }
-    Mod+S      hotkey-overlay-title="Open Spotify"             { spawn "spotify"; }
     Mod+N      hotkey-overlay-title="Open Notification Center" { spawn "swaync-client" "-t" "-sw"; }
 
     // Scratchpads
@@ -392,16 +390,16 @@ binds {
     Mod+Shift+S hotkey-overlay-title="Spotify scratchpad"  { spawn "~/.config/niri/spawn-or-focus.sh" "Spotify";         }
 
     // Scripts
-    Mod+V      { spawn "~/.config/scripts/rofi-clipboard";   }
-    Mod+C      { spawn "~/.config/scripts/colorpicker";      }
-    Mod+Tab    { spawn "~/.config/scripts/random-swwwbg";    }
-    Mod+Grave  { spawn "~/.config/scripts/list-niri-window"; }
-    Mod+Escape { spawn "~/.config/scripts/rofi-power";       }
-    Mod+Ctrl+W { spawn "~/.config/scripts/rofi-wifi";        }
-    Mod+Ctrl+B { spawn "~/.config/scripts/rofi-bluetooth";   }
-    Mod+Ctrl+S { spawn "wall-select";        }
-    Mod+Ctrl+C { spawn "~/.config/scripts/text-picker";      }
-    Mod+Ctrl+D { spawn "~/.config/scripts/rofi-docs";        }
+    Mod+V      { spawn "rofi-clipboard";   }
+    Mod+Tab    { spawn "random-swwwbg";    }
+    Mod+Grave  { spawn "list-niri-window"; }
+    Mod+S      { spawn "take-screenshot"; }
+    Mod+Escape { spawn "rofi-power";       }
+    Mod+Ctrl+W { spawn "rofi-wifi";        }
+    Mod+Ctrl+B { spawn "rofi-bluetooth";   }
+    Mod+Ctrl+S { spawn "rofi-wall";        }
+    Mod+Ctrl+C { spawn "text-picker";      }
+    Mod+Ctrl+D { spawn "rofi-docs";        }
 
     XF86AudioRaiseVolume cooldown-ms=150 allow-when-locked=true { spawn "volume" "up";   }
     XF86AudioLowerVolume cooldown-ms=150 allow-when-locked=true { spawn "volume" "down"; }

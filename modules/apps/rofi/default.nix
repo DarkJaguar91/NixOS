@@ -18,6 +18,8 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       rofi
+      cliphist
+      wl-clipboard
     ];
 
     environment.etc."tmpfiles.d/home-${usr.login}-rofi.conf".text = ''

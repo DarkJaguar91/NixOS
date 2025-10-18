@@ -1,0 +1,10 @@
+{ pkgs }:
+pkgs.writeShellScriptBin "set-wall" ''
+  cp "$1" ~/.config/wall.png &&
+    swww img "$1" \
+      --transition-type=any \
+      --transition-step=60 \
+      --transition-fps=60 \
+      --transition-duration=.7 &&
+    wal -n -e -a 80 -i "$HOME/.config/wall.png" && swaync-client -rs
+''

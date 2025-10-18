@@ -1,0 +1,23 @@
+{ pkgs }:
+pkgs.writeShellScriptBin "rofi-wall" ''
+  walldir="$HOME/Wallpapers"
+  lines=5
+  columns=10
+  icons_size=128
+  width=$((columns * icons_size / 8))
+
+  theme="window { width: ${"$"}{width}ch; }
+        listview { lines: ${"$"}{lines}; columns: ${"$"}{columns}; cycle:true; spacing:5px;}
+        element { padding:0px; margin:0px; }
+        element-icon { size: ${"$"}{icons_size}px; }
+        element-text { text-color: rgba(0,0,0,0%); }"
+
+  selected=$(find -L "$walldir" -type f |
+    while read -r A; do echo -en "$A\x00icon\x1f$A\n"; done |
+    rofi -dmenu \
+      -show-icons \
+      -p "Wallpaper" \
+      -theme-str "${"$"}{theme}")
+
+  [[ -n "$selected" ]] && "set-wall" "$selected"
+''

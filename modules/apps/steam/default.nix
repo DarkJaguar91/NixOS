@@ -36,6 +36,7 @@ in
       goverlay
       protonup-qt
       heroic
+      steamtinkerlaunch
 
       # Companion tools
       discord

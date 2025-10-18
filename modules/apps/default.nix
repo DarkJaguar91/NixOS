@@ -3,7 +3,6 @@ _: {
     ./arr-services
     ./cosmic
     ./gnome
-    ./hyprland
     ./niri
     ./orca-slicer
     ./plasma
@@ -13,6 +12,8 @@ _: {
     ./steam
     ./ui-scripts
     ./wal
+    ./wallpapers
     ./waybar
+    ./yazi
   ];
 }

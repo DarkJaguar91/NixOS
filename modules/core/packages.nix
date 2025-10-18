@@ -7,6 +7,7 @@
     fuse.userAllowOther = true;
     mtr.enable = true;
     firefox.enable = true;
+    thunar.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -48,7 +49,6 @@
     wev # wayland based keytool
     wget # Downloader
     curl # Downloader
-    yazi # TUI file manger
     cliphist # History manager
 
     nixd # nix language server

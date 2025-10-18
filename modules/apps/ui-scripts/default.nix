@@ -2,7 +2,6 @@
   pkgs,
   config,
   lib,
-  usr,
   ...
 }:
 with lib;
@@ -10,6 +9,14 @@ let
   cfg = config.dj.ui-scripts;
   scripts = [
     ./brightness.nix
+    ./list-niri-window.nix
+    ./rofi-bluetooth.nix
+    ./rofi-clipboard.nix
+    ./rofi-power.nix
+    ./rofi-wall.nix
+    ./rofi-wifi.nix
+    ./set-wall.nix
+    ./take-screenshot.nix
     ./volume.nix
     ./wall-select.nix
   ];
@@ -20,10 +27,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.etc."tmpfiles.d/home-${usr.login}-ui-scripts.conf".text = ''
-      L+    /home/${usr.login}/.config/scripts                   -    ${usr.login}    -     -           ${builtins.toString ./.}/scripts
-    '';
-
     environment.systemPackages = forEach scripts (script: (import script { inherit pkgs; }));
   };
 }
