@@ -16,6 +16,7 @@ let
     ./rofi-wall.nix
     ./rofi-wifi.nix
     ./set-wall.nix
+    ./steam-deck-ui.nix
     ./take-screenshot.nix
     ./volume.nix
     ./wall-select.nix

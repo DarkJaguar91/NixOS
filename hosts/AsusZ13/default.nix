@@ -12,7 +12,7 @@ _: {
   dj.niri.enable = true;
 
   # Apps
-  dj.orca-slicer.enable = false;
+  dj.orca-slicer.enable = true;
   dj.steam.enable = true;
 
   # hardware

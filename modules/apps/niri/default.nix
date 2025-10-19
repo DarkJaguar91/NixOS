@@ -31,6 +31,10 @@ in
             user = usr.login;
             command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd niri-session"; # start Hyprland with a TUI login manager
           };
+          steam-deck = {
+            user = usr.login;
+            command = "steam-deck-ui";
+          };
         };
       };
     };
@@ -47,6 +51,7 @@ in
       pwvucontrol
       swaynotificationcenter
       swww
+      nautilus
 
       brightnessctl
       playerctl
