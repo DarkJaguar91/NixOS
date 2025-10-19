@@ -5,16 +5,22 @@ _: {
     ../../modules
   ];
 
-  # Desktop Environments (only enable 1 for best experience)
-  dj.cosmic.enable = false;
-  dj.gnome.enable = false;
-  dj.plasma.enable = false;
-  dj.niri.enable = true;
+  dj = {
+    # Desktop Environments
+    cosmic.enable = false;
+    gnome.enable = false;
+    plasma.enable = false;
+    niri.enable = true;
 
-  # Apps
-  dj.orca-slicer.enable = false;
-  dj.steam.enable = true;
+    # Apps
+    btop.enable = true;
+    cava.enable = true;
+    kitty.enable = true;
+    orca-slicer.enable = true;
+    steam.enable = true;
+    tmux.enable = true;
 
-  # hardware
-  dj.qmk.enable = true;
+    # Hardware
+    qmk.enable = true;
+  };
 }

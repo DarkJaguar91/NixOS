@@ -16,11 +16,12 @@ in
   };
 
   config = mkIf cfg.enable {
+    dj.kitty.enable = lib.mkForce true;
     dj.rofi.enable = lib.mkForce true;
     dj.waybar.enable = lib.mkForce true;
     dj.wal.enable = lib.mkForce true;
-    dj.ui-scripts.enable = lib.mkForce true;
     dj.wallpapers.enable = lib.mkForce true;
+    dj.ui-scripts.enable = lib.mkForce true;
     dj.yazi.enable = lib.mkForce true;
 
     services = {
@@ -67,6 +68,9 @@ in
 
     environment.etc."tmpfiles.d/home-${usr.login}-niri.conf".text = ''
       L+    /home/${usr.login}/.config/niri                   -    ${usr.login}    -     -           ${nixConfigPath}/assets/dots/niri
+      L+    /home/${usr.login}/.config/swaylock                   -    ${usr.login}    -     -           ${nixConfigPath}/assets/dots/swaylock
+      L+    /home/${usr.login}/.config/swayidle                   -    ${usr.login}    -     -           ${nixConfigPath}/assets/dots/swayidle
+      L+    /home/${usr.login}/.config/swaync                   -    ${usr.login}    -     -           ${nixConfigPath}/assets/dots/swaync
     '';
   };
 }

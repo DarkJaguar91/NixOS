@@ -1,8 +1,11 @@
 _: {
   imports = [
     ./arr-services
+    ./btop
+    ./cava
     ./cosmic
     ./gnome
+    ./kitty
     ./niri
     ./orca-slicer
     ./plasma
@@ -10,6 +13,7 @@ _: {
     ./qmk
     ./rofi
     ./steam
+    ./tmux
     ./ui-scripts
     ./wal
     ./wallpapers

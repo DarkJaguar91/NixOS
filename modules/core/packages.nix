@@ -16,20 +16,17 @@
     brave # Browser
     plex-desktop # Plex player
     spotify # Dem musics
-    cava
 
     brightnessctl # Control screen brightness
     playerctl # Changing volume and media controls
     cliphist # Clipboard manager
     socat # Needed for screenshots
-    tmux
 
     fastfetch # Terminal startup fetcher
     onefetch # info fetcher
     ripgrep # improved grep command
     eza # LS Replacement
     htop # System monitor
-    btop # system monitor
     glxinfo # GFX Monitor, used by many other tools
     inxi # CLI system Information tool
     duf # Disk information CLI tool
@@ -60,7 +57,6 @@
 
     spotify-player
     libsixel
-    kitty
     youtube-tui
     mpv
   ];
