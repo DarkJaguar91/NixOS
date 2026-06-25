@@ -55,6 +55,21 @@
             }
           ];
         };
+
+        DarkJaguar = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = nixosModules ++ [
+            ./hosts/DarkJaguar
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.brandon = import ./users/brandon;
+              home-manager.sharedModules = [ nixvim.homeModules.nixvim ];
+              home-manager.extraSpecialArgs = { inherit nixpkgs; };
+            }
+          ];
+        };
       };
     };
 }
