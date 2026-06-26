@@ -166,12 +166,20 @@ _:
     bind=ALT,Right,focusdir,right
     bind=ALT,Up,focusdir,up
     bind=ALT,Down,focusdir,down
+    bind=ALT,h,focusdir,left
+    bind=ALT,l,focusdir,right
+    bind=ALT,k,focusdir,up
+    bind=ALT,j,focusdir,down
 
     # Swap
     bind=SUPER+SHIFT,Up,exchange_client,up
     bind=SUPER+SHIFT,Down,exchange_client,down
     bind=SUPER+SHIFT,Left,exchange_client,left
     bind=SUPER+SHIFT,Right,exchange_client,right
+    bind=SUPER+SHIFT,k,exchange_client,up
+    bind=SUPER+SHIFT,j,exchange_client,down
+    bind=SUPER+SHIFT,h,exchange_client,left
+    bind=SUPER+SHIFT,l,exchange_client,right
 
     # Window state
     bind=SUPER,g,toggleglobal,
@@ -199,6 +207,12 @@ _:
     bind=CTRL,Right,viewtoright_have_client,0
     bind=CTRL+SUPER,Left,tagtoleft,0
     bind=CTRL+SUPER,Right,tagtoright,0
+    bind=SUPER,h,viewtoleft,0
+    bind=CTRL,h,viewtoleft_have_client,0
+    bind=SUPER,l,viewtoright,0
+    bind=CTRL,l,viewtoright_have_client,0
+    bind=CTRL+SUPER,h,tagtoleft,0
+    bind=CTRL+SUPER,l,tagtoright,0
 
     bind=Ctrl,1,view,1,0
     bind=Ctrl,2,view,2,0
@@ -225,6 +239,10 @@ _:
     bind=alt+shift,Right,focusmon,right
     bind=SUPER+Alt,Left,tagmon,left
     bind=SUPER+Alt,Right,tagmon,right
+    bind=alt+shift,h,focusmon,left
+    bind=alt+shift,l,focusmon,right
+    bind=SUPER+Alt,h,tagmon,left
+    bind=SUPER+Alt,l,tagmon,right
 
     # Gaps
     bind=ALT+SHIFT,X,incgaps,1
@@ -236,11 +254,19 @@ _:
     bind=CTRL+SHIFT,Down,movewin,+0,+50
     bind=CTRL+SHIFT,Left,movewin,-50,+0
     bind=CTRL+SHIFT,Right,movewin,+50,+0
+    bind=CTRL+SHIFT,k,movewin,+0,-50
+    bind=CTRL+SHIFT,j,movewin,+0,+50
+    bind=CTRL+SHIFT,h,movewin,-50,+0
+    bind=CTRL+SHIFT,l,movewin,+50,+0
 
     bind=CTRL+ALT,Up,resizewin,+0,-50
     bind=CTRL+ALT,Down,resizewin,+0,+50
     bind=CTRL+ALT,Left,resizewin,-50,+0
     bind=CTRL+ALT,Right,resizewin,+50,+0
+    bind=CTRL+ALT,k,resizewin,+0,-50
+    bind=CTRL+ALT,j,resizewin,+0,+50
+    bind=CTRL+ALT,h,resizewin,-50,+0
+    bind=CTRL+ALT,l,resizewin,+50,+0
 
     # Media keys (handled by Noctalia)
     bind=NONE,XF86AudioRaiseVolume,spawn,noctalia-shell ipc call volume increase
