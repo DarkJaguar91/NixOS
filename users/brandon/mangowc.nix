@@ -145,7 +145,7 @@ _:
 
     # Noctalia shell
     bind=SUPER,space,spawn,noctalia-shell ipc call launcher toggle
-    bind=SUPER,s,spawn_shell,mkdir -p ~/Pictures/Screenshots && grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y%m%d_%H%M%S).png
+    bind=SUPER,s,spawn_shell,grim -g "$(slurp)" - | swappy -f -
     bind=SUPER+SHIFT,s,spawn_shell,pgrep wf-recorder && pkill wf-recorder || (mkdir -p ~/Videos/Recordings && wf-recorder -g "$(slurp)" -f ~/Videos/Recordings/$(date +%Y%m%d_%H%M%S).mp4)
     bind=SUPER,comma,spawn,noctalia-shell ipc call settings toggle
 

@@ -16,6 +16,7 @@
       noctalia-qs
       grim
       slurp
+      swappy
       wf-recorder
     ];
   };
