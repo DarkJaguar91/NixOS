@@ -2,59 +2,69 @@
   pkgs,
   lib,
   nixpkgs,
+  nixosConfig,
   ...
 }:
 
 {
-  imports = [ ./neovim.nix ];
-  home.username = "brandon";
-  home.homeDirectory = "/home/brandon";
-  home.stateVersion = "26.05";
+  imports = [ ./neovim.nix ] ++ lib.optional nixosConfig.modules.mangowc.enable ./mangowc.nix;
 
-  home.packages = with pkgs; [
-    kdePackages.kate
-  ];
-
-  programs.fish = {
-    enable = true;
-    plugins = [
-      {
-        name = "tide";
-        src = pkgs.fishPlugins.tide.src;
-      }
+  home = {
+    username = "brandon";
+    homeDirectory = "/home/brandon";
+    stateVersion = "26.05";
+    packages = with pkgs; [
+      kdePackages.kate
     ];
+    activation.setDefaultTerminal = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 --file kdeglobals --group General --key TerminalApplication kitty
+      ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 --file kdeglobals --group General --key TerminalService kitty.desktop
+      ${pkgs.kdePackages.kservice}/bin/kbuildsycoca6 --noincremental 2>/dev/null || true
+    '';
   };
 
-  programs.kitty = {
-    enable = true;
-    font = {
-      name = "JetBrainsMono Nerd Font";
-      size = 12;
+  programs = {
+    fish = {
+      enable = true;
+      plugins = [
+        {
+          name = "tide";
+          src = pkgs.fishPlugins.tide.src;
+        }
+      ];
     };
-    settings = {
-      scrollback_lines = 10000;
-      enable_audio_bell = false;
+    kitty = {
+      enable = true;
+      font = {
+        name = "JetBrainsMono Nerd Font";
+        size = 12;
+      };
+      settings = {
+        scrollback_lines = 10000;
+        enable_audio_bell = false;
+      };
     };
+    git = {
+      enable = true;
+      settings = {
+        user = {
+          name = "Brandon Talbot";
+          email = "bjtal91@gmail.com";
+        };
+        init.defaultBranch = "main";
+        pull.rebase = true;
+        push.autoSetupRemote = true;
+      };
+    };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+    mangohud.enable = true;
+    nixvim = {
+      nixpkgs.source = nixpkgs;
+      version.enableNixpkgsReleaseCheck = false;
+    };
+    home-manager.enable = true;
   };
-
-  home.activation.setDefaultTerminal = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 --file kdeglobals --group General --key TerminalApplication kitty
-    ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 --file kdeglobals --group General --key TerminalService kitty.desktop
-    ${pkgs.kdePackages.kservice}/bin/kbuildsycoca6 --noincremental 2>/dev/null || true
-  '';
-
-  programs.git = {
-    enable = true;
-    settings.user = {
-      name = "Brandon Talbot";
-      email = "bjtal91@gmail.com";
-    };
-  };
-
-  programs.mangohud.enable = true;
-
-  programs.nixvim.nixpkgs.source = nixpkgs;
-  programs.nixvim.version.enableNixpkgsReleaseCheck = false;
-
-  programs.home-manager.enable = true;
 }

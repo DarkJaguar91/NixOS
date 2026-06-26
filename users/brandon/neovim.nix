@@ -181,31 +181,35 @@
         enable = true;
         settings = {
           close_if_last_window = true;
-          window.width = 30;
-          window.mappings."l" = {
-            __raw = ''
-              function(state)
-                local node = state.tree:get_node()
-                if node.type == "directory" then
-                  state.commands["toggle_node"](state)
-                else
-                  state.commands["open"](state)
-                  vim.schedule(function() vim.cmd("wincmd l") end)
-                end
-              end
-            '';
-          };
-          window.mappings."h" = {
-            __raw = ''
-              function(state)
-                local node = state.tree:get_node()
-                if node.type == "directory" and node:is_expanded() then
-                  state.commands["toggle_node"](state)
-                else
-                  state.commands["navigate_up"](state)
-                end
-              end
-            '';
+          window = {
+            width = 30;
+            mappings = {
+              "l" = {
+                __raw = ''
+                  function(state)
+                    local node = state.tree:get_node()
+                    if node.type == "directory" then
+                      state.commands["toggle_node"](state)
+                    else
+                      state.commands["open"](state)
+                      vim.schedule(function() vim.cmd("wincmd l") end)
+                    end
+                  end
+                '';
+              };
+              "h" = {
+                __raw = ''
+                  function(state)
+                    local node = state.tree:get_node()
+                    if node.type == "directory" and node:is_expanded() then
+                      state.commands["toggle_node"](state)
+                    else
+                      state.commands["navigate_up"](state)
+                    end
+                  end
+                '';
+              };
+            };
           };
           filesystem = {
             filtered_items = {
@@ -329,9 +333,12 @@
               telemetry.enable = false;
             };
           };
-          nil_ls = {
+          nixd = {
             enable = true;
-            settings."nil".formatting.command = [ "nixfmt" ];
+            settings.nixd = {
+              nixpkgs.expr = "import (builtins.getFlake \"/home/brandon/nixos-config\").inputs.nixpkgs { }";
+              options.nixos.expr = "(builtins.getFlake \"/home/brandon/nixos-config\").nixosConfigurations.AsusZ13.options";
+            };
           };
         };
       };
@@ -451,6 +458,7 @@
       fd
       stylua
       nixfmt
+      nixd
     ];
 
     keymaps = [
