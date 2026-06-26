@@ -14,6 +14,9 @@
     environment.systemPackages = with pkgs; [
       noctalia-shell
       noctalia-qs
+      grim
+      slurp
+      wf-recorder
     ];
   };
 }
