@@ -12,5 +12,10 @@
     hardware.amdgpu.opencl.enable = true;
 
     boot.initrd.kernelModules = [ "amdgpu" ];
+
+    environment.sessionVariables = {
+      LIBVA_DRIVER_NAME = "radeonsi";
+      LIBVA_DRIVERS_PATH = "/run/opengl-driver/lib/dri";
+    };
   };
 }
