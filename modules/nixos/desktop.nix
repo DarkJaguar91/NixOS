@@ -55,6 +55,7 @@ in
 
     environment.systemPackages = with pkgs; [
       brave
+      swappy
     ];
 
     fonts.packages = with pkgs; [

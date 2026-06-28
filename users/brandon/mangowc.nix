@@ -235,6 +235,10 @@ _:
     gesturebind=none,up,4,toggleoverview
     gesturebind=none,down,4,toggleoverview
 
+    # Window rules
+    windowrule=appid:steam,tags:3
+    windowrule=appid:steam_app_.*,tags:3
+
     # Layer rules
     layerrule=animation_type_open:zoom,layer_name:noctalia
     layerrule=animation_type_close:zoom,layer_name:noctalia

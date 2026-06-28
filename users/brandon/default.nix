@@ -6,6 +6,21 @@
   ...
 }:
 
+let
+  screenshotScript = pkgs.writeShellScript "nixos-screenshot" ''
+    TMPFILE=$(mktemp /tmp/screenshot-XXXXXX.png)
+    spectacle --region --background --nonotify --output "$TMPFILE" && swappy -f "$TMPFILE"
+    rm -f "$TMPFILE"
+  '';
+  screenrecordScript = pkgs.writeShellScript "nixos-screenrecord" ''
+    if pgrep spectacle > /dev/null; then
+      pkill spectacle
+    else
+      spectacle --record region
+    fi
+  '';
+in
+
 {
   imports = [ ./neovim.nix ] ++ lib.optional nixosConfig.modules.mangowc.enable ./mangowc.nix;
 
@@ -67,4 +82,30 @@
     };
     home-manager.enable = true;
   };
+
+  xdg.desktopEntries = lib.mkIf nixosConfig.modules.desktop.plasma.enable {
+    nixos-screenshot = {
+      name = "Screenshot (Select Area)";
+      exec = "${screenshotScript}";
+      noDisplay = true;
+    };
+    nixos-screenrecord = {
+      name = "Screen Recording (Toggle)";
+      exec = "${screenrecordScript}";
+      noDisplay = true;
+    };
+  };
+
+  home.activation.kdeShortcuts = lib.mkIf nixosConfig.modules.desktop.plasma.enable (
+    lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 \
+        --file kglobalshortcutsrc \
+        --group "nixos-screenshot.desktop" \
+        --key "_launch" "Meta+S,none,Take Screenshot"
+      ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 \
+        --file kglobalshortcutsrc \
+        --group "nixos-screenrecord.desktop" \
+        --key "_launch" "Meta+Shift+S,none,Toggle Screen Recording"
+    ''
+  );
 }

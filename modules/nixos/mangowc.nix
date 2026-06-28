@@ -14,10 +14,6 @@
     environment.systemPackages = with pkgs; [
       noctalia-shell
       noctalia-qs
-      grim
-      slurp
-      swappy
-      wf-recorder
     ];
   };
 }
