@@ -11,6 +11,7 @@
       mangowc.enable = true;
     };
     kitty.enable = true;
+    media.enable = true;
     steam.enable = true;
     gpu.amd.enable = true;
     ai-tools.enable = true;

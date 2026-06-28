@@ -9,7 +9,7 @@ let
   cfg = config.modules.ai-tools;
 in
 {
-  options.modules.kitty = {
+  options.modules.ai-tools = {
     enable = mkEnableOption "AI Tools (Claude code)";
   };
 

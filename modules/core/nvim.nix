@@ -20,7 +20,7 @@
     # LSPs
     nil
     nixd
-    nixfmt-rfc-style # Formatting nix files
+    nixfmt # Formatting nix files
 
     # Compilers
     gcc # Needed for treesitter
