@@ -34,7 +34,9 @@
     settings = {
       scrollback_lines = 10000;
       enable_audio_bell = false;
+      shell = "fish";
     };
+    shellIntegration.enableFishIntegration = true;
   };
 
   home.activation.setDefaultTerminal = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
@@ -50,8 +52,6 @@
       email = "bjtal91@gmail.com";
     };
   };
-
-  programs.mangohud.enable = true;
 
   programs.nixvim.nixpkgs.source = nixpkgs;
   programs.nixvim.version.enableNixpkgsReleaseCheck = false;

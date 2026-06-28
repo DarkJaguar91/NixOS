@@ -38,38 +38,30 @@
         ) (builtins.attrNames (builtins.readDir dir));
 
       nixosModules = collectModules ./modules;
+
+      hmConfig = {
+        home-manager.useGlobalPkgs = true;
+        home-manager.useUserPackages = true;
+        home-manager.users.brandon = import ./users/brandon;
+        home-manager.sharedModules = [ nixvim.homeModules.nixvim ];
+        home-manager.extraSpecialArgs = { inherit nixpkgs; };
+      };
+
+      mkHost =
+        host:
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = nixosModules ++ [
+            ./hosts/${host}
+            home-manager.nixosModules.home-manager
+            hmConfig
+          ];
+        };
     in
     {
       nixosConfigurations = {
-        AsusZ13 = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = nixosModules ++ [
-            ./hosts/AsusZ13
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.brandon = import ./users/brandon;
-              home-manager.sharedModules = [ nixvim.homeModules.nixvim ];
-              home-manager.extraSpecialArgs = { inherit nixpkgs; };
-            }
-          ];
-        };
-
-        DarkJaguar = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = nixosModules ++ [
-            ./hosts/DarkJaguar
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.brandon = import ./users/brandon;
-              home-manager.sharedModules = [ nixvim.homeModules.nixvim ];
-              home-manager.extraSpecialArgs = { inherit nixpkgs; };
-            }
-          ];
-        };
+        AsusZ13 = mkHost "AsusZ13";
+        DarkJaguar = mkHost "DarkJaguar";
       };
     };
 }

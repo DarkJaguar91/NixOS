@@ -40,7 +40,7 @@
     nh
   ];
 
-  environment.sessionVariables.NH_FLAKE = "/home/brandon/nixos-config";
+  environment.sessionVariables.NH_FLAKE = "/home/brandon/NixOS";
 
   nix.settings.experimental-features = [
     "nix-command"
