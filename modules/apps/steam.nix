@@ -6,9 +6,9 @@
 }:
 
 {
-  options.modules.gaming.enable = lib.mkEnableOption "gaming";
+  options.modules.steam.enable = lib.mkEnableOption "Steam gaming setup";
 
-  config = lib.mkIf config.modules.gaming.enable {
+  config = lib.mkIf config.modules.steam.enable {
     programs = {
       steam = {
         enable = true;

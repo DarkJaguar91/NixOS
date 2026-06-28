@@ -3,14 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
-    home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     mangowc = {
       url = "github:DreamMaoMao/mangowc";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,13 +10,7 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      home-manager,
-      nixvim,
-      mangowc,
-      ...
-    }:
+    { nixpkgs, mangowc, ... }:
     let
       collectModules =
         dir:
@@ -44,30 +30,23 @@
 
       nixosModules = collectModules ./modules;
 
-      hmModule =
-        { config, ... }:
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.brandon = import ./users/brandon;
-            sharedModules = [ nixvim.homeModules.nixvim ];
-            extraSpecialArgs = {
-              inherit nixpkgs;
-              nixosConfig = config;
-            };
-          };
-        };
+      usr = {
+        name = "Brandon Talbot";
+        login = "brandon";
+        email = "bjtal91@gmail.com";
+      };
+      nixConfigPath = "/home/${usr.login}/NixOS";
 
       mkHost =
         host:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = {
+            inherit usr nixConfigPath host;
+          };
           modules = nixosModules ++ [
             mangowc.nixosModules.mango
             ./hosts/${host}
-            home-manager.nixosModules.home-manager
-            hmModule
           ];
         };
     in

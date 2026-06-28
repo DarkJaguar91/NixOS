@@ -6,16 +6,14 @@
   modules = {
     bluetooth.enable = true;
     desktop = {
-      enable = true;
-      displayManager = "sddm";
+      sddm.enable = true;
       plasma.enable = true;
+      mangowc.enable = true;
     };
-    mangowc.enable = true;
-    gaming.enable = true;
+    kitty.enable = true;
+    steam.enable = true;
     gpu.amd.enable = true;
     laptop.enable = true;
-    media.enable = true;
-    social.enable = true;
   };
 
   networking.hostName = "AsusZ13";

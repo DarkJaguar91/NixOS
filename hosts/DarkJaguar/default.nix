@@ -6,14 +6,14 @@
   modules = {
     bluetooth.enable = true;
     desktop = {
-      enable = true;
-      displayManager = "sddm";
+      sddm.enable = true;
       plasma.enable = true;
+      mangowc.enable = true;
     };
-    gaming.enable = true;
+    kitty.enable = true;
+    steam.enable = true;
     gpu.amd.enable = true;
-    media.enable = true;
-    social.enable = true;
+    ai-tools.enable = true;
   };
 
   networking.hostName = "DarkJaguar";

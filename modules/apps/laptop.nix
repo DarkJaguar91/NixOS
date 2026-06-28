@@ -1,5 +1,4 @@
 { config, lib, ... }:
-
 {
   options.modules.laptop.enable = lib.mkEnableOption "laptop power management";
 
