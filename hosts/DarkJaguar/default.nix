@@ -3,18 +3,28 @@
 {
   imports = [ ./hardware-configuration.nix ];
 
-  modules.bluetooth.enable = true;
-  modules.desktop.enable = true;
-  modules.gaming.enable = true;
-  modules.gpu.amd.enable = true;
-  modules.media.enable = true;
-  modules.social.enable = true;
+  modules = {
+    bluetooth.enable = true;
+    desktop = {
+      enable = true;
+      displayManager = "sddm";
+      plasma.enable = true;
+    };
+    gaming.enable = true;
+    gpu.amd.enable = true;
+    media.enable = true;
+    social.enable = true;
+  };
 
   networking.hostName = "DarkJaguar";
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.linuxPackages_latest;
+  };
 
   fileSystems."/storage" = {
     device = "/dev/disk/by-uuid/c6ad7265-5c71-4fe1-85a9-4e5e77282909";

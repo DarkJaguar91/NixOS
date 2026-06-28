@@ -11,6 +11,10 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mangowc = {
+      url = "github:DreamMaoMao/mangowc";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -18,6 +22,7 @@
       nixpkgs,
       home-manager,
       nixvim,
+      mangowc,
       ...
     }:
     let
@@ -39,22 +44,30 @@
 
       nixosModules = collectModules ./modules;
 
-      hmConfig = {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.users.brandon = import ./users/brandon;
-        home-manager.sharedModules = [ nixvim.homeModules.nixvim ];
-        home-manager.extraSpecialArgs = { inherit nixpkgs; };
-      };
+      hmModule =
+        { config, ... }:
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.brandon = import ./users/brandon;
+            sharedModules = [ nixvim.homeModules.nixvim ];
+            extraSpecialArgs = {
+              inherit nixpkgs;
+              nixosConfig = config;
+            };
+          };
+        };
 
       mkHost =
         host:
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = nixosModules ++ [
+            mangowc.nixosModules.mango
             ./hosts/${host}
             home-manager.nixosModules.home-manager
-            hmConfig
+            hmModule
           ];
         };
     in
