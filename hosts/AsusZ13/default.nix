@@ -4,18 +4,19 @@
   imports = [ ./hardware-configuration.nix ];
 
   modules = {
-    bluetooth.enable = true;
     desktop = {
       sddm.enable = true;
       plasma.enable = true;
       mangowc.enable = true;
     };
+    "3d-printing".enable = true;
+    ai-tools.enable = true;
+    bluetooth.enable = true;
+    gpu.amd.enable = true;
     kitty.enable = true;
+    laptop.enable = true;
     media.enable = true;
     steam.enable = true;
-    gpu.amd.enable = true;
-    ai-tools.enable = true;
-    laptop.enable = true;
   };
 
   networking.hostName = "AsusZ13";

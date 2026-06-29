@@ -21,6 +21,7 @@ in
     ];
 
     environment.etc."tmpfiles.d/home-${usr.login}-kitty.conf".text = ''
+      R  /home/${usr.login}/.config/kitty - - - -
       L+ /home/${usr.login}/.config/kitty - ${usr.login} - - ${nixConfigPath}/dots/kitty
     '';
   };

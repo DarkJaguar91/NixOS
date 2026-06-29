@@ -30,6 +30,7 @@
   programs.nix-ld.enable = true;
 
   environment.etc."tmpfiles.d/home-${usr.login}-nvim.conf".text = ''
+    R  /home/${usr.login}/.config/nvim - - - -
     L+ /home/${usr.login}/.config/nvim - ${usr.login} - - ${nixConfigPath}/dots/nvim
   '';
 }
