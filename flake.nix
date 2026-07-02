@@ -2,15 +2,16 @@
   description = "Brandon's NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     mangowc = {
       url = "github:DreamMaoMao/mangowc";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
   };
 
   outputs =
-    { nixpkgs, mangowc, ... }:
+    { nixpkgs, mangowc, jovian-nixos, ... }:
     let
       collectModules =
         dir:
@@ -46,6 +47,7 @@
           };
           modules = nixosModules ++ [
             mangowc.nixosModules.mango
+            jovian-nixos.nixosModules.default
             ./hosts/${host}
           ];
         };

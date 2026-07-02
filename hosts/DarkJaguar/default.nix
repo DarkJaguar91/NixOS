@@ -16,6 +16,7 @@
     kitty.enable = true;
     media.enable = true;
     steam.enable = true;
+    steam.decky.enable = true;
   };
 
   networking.hostName = "DarkJaguar";
