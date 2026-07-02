@@ -16,6 +16,7 @@
     kitty.enable = true;
     laptop.enable = true;
     media.enable = true;
+    netbird.enable = true;
     steam.enable = true;
   };
 
