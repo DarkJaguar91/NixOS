@@ -16,8 +16,53 @@
     # dns.enable = true;
   };
 
-  networking.hostName = "DJServer";
-  networking.hostId = "b13430a2"; # required by ZFS
+  networking = {
+    hostName = "DJServer";
+    hostId = "b13430a2"; # required by ZFS
+
+    # Both ethernet ports bonded into one logical interface; balance-alb
+    # needs no switch support
+    networkmanager.ensureProfiles.profiles = {
+      bond0 = {
+        connection = {
+          id = "bond0";
+          type = "bond";
+          interface-name = "bond0";
+        };
+        bond = {
+          mode = "balance-alb";
+          miimon = "100";
+        };
+        ipv4 = {
+          method = "manual";
+          addresses = "192.168.68.254/24";
+          gateway = "192.168.68.1";
+          dns = "1.1.1.1,8.8.8.8";
+          ignore-auto-dns = true;
+        };
+      };
+
+      bond0-port1 = {
+        connection = {
+          id = "bond0-port1";
+          type = "ethernet";
+          interface-name = "enp94s0";
+          master = "bond0";
+          slave-type = "bond";
+        };
+      };
+
+      bond0-port2 = {
+        connection = {
+          id = "bond0-port2";
+          type = "ethernet";
+          interface-name = "enp95s0";
+          master = "bond0";
+          slave-type = "bond";
+        };
+      };
+    };
+  };
 
   boot = {
     loader = {
@@ -40,48 +85,6 @@
   fileSystems."/var/lib/postgresql" = {
     device = "fast/immich-pg";
     fsType = "zfs";
-  };
-
-  networking.networkmanager.ensureProfiles.profiles = {
-    bond0 = {
-      connection = {
-        id = "bond0";
-        type = "bond";
-        interface-name = "bond0";
-      };
-      bond = {
-        mode = "balance-alb";
-        miimon = "100";
-      };
-      ipv4 = {
-        method = "manual";
-        addresses = "192.168.68.254/24";
-        gateway = "192.168.68.1";
-        dns = "1.1.1.1,8.8.8.8";
-
-        ignore-auto-dns = true;
-      };
-    };
-
-    bond0-port1 = {
-      connection = {
-        id = "bond0-port1";
-        type = "ethernet";
-        interface-name = "enp94s0";
-        master = "bond0";
-        slave-type = "bond";
-      };
-    };
-
-    bond0-port2 = {
-      connection = {
-        id = "bond0-port2";
-        type = "ethernet";
-        interface-name = "enp95s0";
-        master = "bond0";
-        slave-type = "bond";
-      };
-    };
   };
 
   services.openssh.enable = true;

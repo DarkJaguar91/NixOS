@@ -6,13 +6,10 @@
   };
 
   config = lib.mkMerge [
-    (lib.mkIf
-      (config.modules.streaming.plex.enable || config.modules.streaming.jellyfin.enable)
-      {
-        users.groups.media = { };
-        hardware.graphics.enable = true; # VAAPI transcoding
-      }
-    )
+    (lib.mkIf (config.modules.streaming.plex.enable || config.modules.streaming.jellyfin.enable) {
+      users.groups.media = { };
+      hardware.graphics.enable = true; # VAAPI transcoding
+    })
 
     (lib.mkIf config.modules.streaming.plex.enable {
       services.plex = {

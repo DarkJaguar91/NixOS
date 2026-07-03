@@ -1,15 +1,14 @@
-{ lib, config, pkgs, ... }:
-with lib;
-let
-  cfg = config.modules.netbird;
-in
 {
-  options.modules.netbird = {
-    enable = mkEnableOption "Netbird VPN client";
-  };
+  lib,
+  config,
+  pkgs,
+  ...
+}:
+{
+  options.modules.netbird.enable = lib.mkEnableOption "Netbird VPN client";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf config.modules.netbird.enable {
     services.netbird.enable = true;
-    environment.systemPackages = with pkgs; [ netbird-ui ];
+    environment.systemPackages = [ pkgs.netbird-ui ];
   };
 }

@@ -6,19 +6,11 @@
   nixConfigPath,
   ...
 }:
-with lib;
-let
-  cfg = config.modules.kitty;
-in
 {
-  options.modules.kitty = {
-    enable = mkEnableOption "kitty Term";
-  };
+  options.modules.kitty.enable = lib.mkEnableOption "kitty Term";
 
-  config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      kitty
-    ];
+  config = lib.mkIf config.modules.kitty.enable {
+    environment.systemPackages = [ pkgs.kitty ];
 
     environment.etc."tmpfiles.d/home-${usr.login}-kitty.conf".text = ''
       R  /home/${usr.login}/.config/kitty - - - -

@@ -35,7 +35,12 @@
     };
     kmscon = {
       enable = true;
-      fonts = [{ name = "FiraCode Nerd Font Mono"; package = pkgs.nerd-fonts.fira-code; }];
+      fonts = [
+        {
+          name = "FiraCode Nerd Font Mono";
+          package = pkgs.nerd-fonts.fira-code;
+        }
+      ];
       extraConfig = "font-size=14";
     };
   };

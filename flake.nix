@@ -58,7 +58,7 @@
             inherit usr nixConfigPath host;
           };
           modules = nixosModules ++ [
-            { nixpkgs.overlays = [ (_: _: { gamescope = pkgsUnstable.gamescope; }) ]; }
+            { nixpkgs.overlays = [ (_: _: { inherit (pkgsUnstable) gamescope; }) ]; }
             mangowc.nixosModules.mango
             jovian-nixos.nixosModules.default
             ./hosts/${host}
