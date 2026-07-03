@@ -37,7 +37,12 @@
         # (config, queue metadata) stays on the root disk; downloads get
         # pointed at the media pool in the web UI
         allowConfigWrite = true; # let the web UI save settings
-        settings.misc.host = "0.0.0.0"; # default 127.0.0.1 is LAN-inaccessible
+        settings.misc = {
+          host = "0.0.0.0"; # default 127.0.0.1 is LAN-inaccessible
+          # unset, completed folders inherit the service umask (700) and
+          # sonarr/radarr can't enter them to import
+          permissions = "775";
+        };
       };
     };
 
