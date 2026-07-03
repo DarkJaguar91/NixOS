@@ -12,6 +12,17 @@
       brave
       spotify
       discord
+      # QtWebEngine 6.11's GBM zero-copy path breaks video playback on native
+      # Wayland (black video, "non-existent mailbox" GPU errors)
+      (symlinkJoin {
+        name = "jellyfin-desktop";
+        paths = [ jellyfin-desktop ];
+        nativeBuildInputs = [ makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/jellyfin-desktop \
+            --set QTWEBENGINE_FORCE_USE_GBM 0
+        '';
+      })
     ];
   };
 }
