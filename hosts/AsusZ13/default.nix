@@ -18,6 +18,7 @@
     media.enable = true;
     netbird.enable = true;
     steam.enable = true;
+    steam.decky.enable = true;
   };
 
   networking.hostName = "AsusZ13";

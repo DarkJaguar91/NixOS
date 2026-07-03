@@ -26,6 +26,20 @@
       ];
     };
   };
+  services = {
+    libinput.enable = true;
+    fstrim.enable = true;
+    smartd = {
+      enable = true;
+      autodetect = true;
+    };
+    kmscon = {
+      enable = true;
+      fonts = [{ name = "FiraCode Nerd Font Mono"; package = pkgs.nerd-fonts.fira-code; }];
+      extraConfig = "font-size=14";
+    };
+  };
+
   i18n = {
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {

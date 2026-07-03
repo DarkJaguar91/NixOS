@@ -2,7 +2,8 @@
   description = "Brandon's NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     mangowc = {
       url = "github:DreamMaoMao/mangowc";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -11,7 +12,13 @@
   };
 
   outputs =
-    { nixpkgs, mangowc, jovian-nixos, ... }:
+    {
+      nixpkgs,
+      nixpkgs-unstable,
+      mangowc,
+      jovian-nixos,
+      ...
+    }:
     let
       collectModules =
         dir:
@@ -38,6 +45,11 @@
       };
       nixConfigPath = "/home/${usr.login}/NixOS";
 
+      pkgsUnstable = import nixpkgs-unstable {
+        system = "x86_64-linux";
+        config.allowUnfree = true;
+      };
+
       mkHost =
         host:
         nixpkgs.lib.nixosSystem {
@@ -46,6 +58,7 @@
             inherit usr nixConfigPath host;
           };
           modules = nixosModules ++ [
+            { nixpkgs.overlays = [ (_: _: { gamescope = pkgsUnstable.gamescope; }) ]; }
             mangowc.nixosModules.mango
             jovian-nixos.nixosModules.default
             ./hosts/${host}
@@ -56,6 +69,7 @@
       nixosConfigurations = {
         AsusZ13 = mkHost "AsusZ13";
         DarkJaguar = mkHost "DarkJaguar";
+        DJServer = mkHost "DJServer";
       };
     };
 }
