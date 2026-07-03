@@ -1,5 +1,9 @@
 log/
 cache/
 ota/
+system/Custom/
 system/OrcaFilamentLibrary/
 system/Prusa/
+system/Voron/
+user/hints.cereal
+user_backup*/
