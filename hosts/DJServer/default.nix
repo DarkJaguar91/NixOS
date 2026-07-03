@@ -3,39 +3,45 @@
   imports = [ ./hardware-configuration.nix ];
 
   modules = {
+    ai-tools.enable = true; # claude-code
+    gpu.nvidia.enable = true; # RTX 2000 Ada — NVENC transcoding + Immich ML
+
     servarr.enable = true;
     recyclarr.enable = true;
+    seerr.enable = true;
+    netdata.enable = true;
     streaming.plex.enable = true;
     streaming.jellyfin.enable = true;
     immich.enable = true;
-    dns.enable = true;
+    # dns.enable = true;
   };
+
+  networking.hostName = "DJServer";
+  networking.hostId = "b13430a2"; # required by ZFS
 
   boot = {
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    # default LTS kernel — ZFS lags behind linuxPackages_latest
     supportedFilesystems = [ "zfs" ];
+    zfs.forceImportRoot = false;
     zfs.extraPools = [
       "fast"
       "media"
     ];
   };
 
-  # TODO: replace with this machine's id: head -c4 /dev/urandom | od -A none -t x4
-  networking.hostId = "8425e349";
-
   services.zfs = {
     autoScrub.enable = true;
     trim.enable = true;
   };
 
-  # Both ethernet ports bonded into one logical interface.
-  # balance-alb needs no switch support; use "802.3ad" instead if the
-  # switch has LACP configured on these ports.
-  # TODO: replace interface names with the real ones (`ip link` on the box)
+  fileSystems."/var/lib/postgresql" = {
+    device = "fast/immich-pg";
+    fsType = "zfs";
+  };
+
   networking.networkmanager.ensureProfiles.profiles = {
     bond0 = {
       connection = {
@@ -51,7 +57,9 @@
         method = "manual";
         addresses = "192.168.68.254/24";
         gateway = "192.168.68.1";
-        dns = "127.0.0.1";
+        dns = "1.1.1.1,8.8.8.8";
+
+        ignore-auto-dns = true;
       };
     };
 
@@ -59,7 +67,7 @@
       connection = {
         id = "bond0-port1";
         type = "ethernet";
-        interface-name = "enp1s0";
+        interface-name = "enp94s0";
         master = "bond0";
         slave-type = "bond";
       };
@@ -69,12 +77,14 @@
       connection = {
         id = "bond0-port2";
         type = "ethernet";
-        interface-name = "enp2s0";
+        interface-name = "enp95s0";
         master = "bond0";
         slave-type = "bond";
       };
     };
   };
+
+  services.openssh.enable = true;
 
   zramSwap.enable = true;
 
