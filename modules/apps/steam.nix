@@ -3,11 +3,42 @@
   lib,
   pkgs,
   usr,
+  nixConfigPath,
   ...
 }:
 
 let
   cfg = config.modules.steam;
+
+  # ReShade shaders for vkBasalt: SweetFX (Vibrance, Tonemap, ...) merged with
+  # crosire's base repo, which provides the ReShade.fxh headers SweetFX includes.
+  reshadeShaders =
+    let
+      base = pkgs.fetchFromGitHub {
+        owner = "crosire";
+        repo = "reshade-shaders";
+        rev = "6db142b4b1a05c764222e5b0bd9a644b7ccfe1dc";
+        hash = "sha256-WqT4eU8ZlGwKEgUEGlivz+35GprKX4goBeLnp9D5lTY=";
+      };
+      sweetfx = pkgs.fetchFromGitHub {
+        owner = "CeeJayDK";
+        repo = "SweetFX";
+        rev = "16d1a42247cb5baaf660120ee35c9a33bb94649c";
+        hash = "sha256-h7nqn4aQHomrI/NG0Oj2R9bBT8VfzRGVSZ/CSi/Ishs=";
+      };
+    in
+    pkgs.runCommand "reshade-shaders" { } ''
+      mkdir -p $out/Shaders $out/Textures
+      cp -r ${base}/Shaders/. ${sweetfx}/Shaders/SweetFX/. $out/Shaders/
+      cp -r ${base}/Textures/. ${sweetfx}/Textures/SweetFX/. $out/Textures/
+      chmod -R u+w $out
+
+      # Tonemap's stock FogColor is pure blue, so any Defog yellow-shifts the
+      # image. Neutral white makes Defog a plain haze/contrast lift instead.
+      # (float3 uniforms can't be overridden from vkBasalt.conf, only scalars.)
+      substituteInPlace $out/Shaders/Tonemap.fx \
+        --replace-fail "float3(0.0, 0.0, 1.0)" "float3(1.0, 1.0, 1.0)"
+    '';
 in
 {
   options.modules.steam = {
@@ -26,7 +57,10 @@ in
       };
       gamescope = {
         enable = true;
-        capSysNice = true;
+        # capSysNice grants CAP_SYS_NICE ambiently, which leaks into Steam's
+        # bwrap sandbox and kills the gamescope session at launch:
+        # "bwrap: Unexpected capabilities but not setuid"
+        capSysNice = false;
       };
       gamemode.enable = true;
     };
@@ -36,7 +70,16 @@ in
       protonplus
       protontricks
       goverlay
+      vkbasalt
+      pkgsi686Linux.vkbasalt # 32-bit games
     ];
+
+    # vkBasalt: config lives in dots/, shaders come from the nix store via a
+    # stable symlink so the conf can reference fixed paths.
+    environment.etc."tmpfiles.d/home-${usr.login}-vkbasalt.conf".text = ''
+      L+ /home/${usr.login}/.config/vkBasalt/vkBasalt.conf - ${usr.login} - - ${nixConfigPath}/dots/vkbasalt/vkBasalt.conf
+      L+ /home/${usr.login}/.config/vkBasalt/reshade - ${usr.login} - - ${reshadeShaders}
+    '';
 
     # Decky Loader: standalone in desktop mode, no Jovian steam session needed.
     # CEF remote debugging lets Decky inject into Steam's UI.
