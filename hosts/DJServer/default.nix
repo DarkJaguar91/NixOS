@@ -15,7 +15,6 @@
     streaming.plex.enable = true;
     streaming.jellyfin.enable = true;
     immich.enable = true;
-    # dns.enable = true;
   };
 
   networking = {
@@ -42,7 +41,8 @@
           method = "manual";
           addresses = "192.168.68.254/24";
           gateway = "192.168.68.1";
-          dns = "1.1.1.1,8.8.8.8";
+          # keyfile format: semicolon-separated, unlike nmcli's commas
+          dns = "1.1.1.1;8.8.8.8;";
           ignore-auto-dns = true;
         };
       };

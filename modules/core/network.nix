@@ -7,16 +7,8 @@
 {
   networking = {
     hostName = "${host}";
-    networkmanager = {
-      enable = true;
-      dns = "systemd-resolved";
-    };
+    networkmanager.enable = true;
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
-  };
-
-  services.resolved = {
-    enable = true;
-    settings.Resolve.DNSSEC = "allow-downgrade";
   };
 
   services.automatic-timezoned.enable = true;
