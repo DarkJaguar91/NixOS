@@ -9,6 +9,7 @@
 
   config = lib.mkIf config.modules.netbird.enable {
     services.netbird.enable = true;
-    environment.systemPackages = [ pkgs.netbird-ui ];
+    # tray UI only makes sense on graphical hosts; servers get the CLI alone
+    environment.systemPackages = lib.optional config.services.xserver.enable pkgs.netbird-ui;
   };
 }

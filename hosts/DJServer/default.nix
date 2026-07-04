@@ -5,6 +5,8 @@
   modules = {
     ai-tools.enable = true; # claude-code
     gpu.nvidia.enable = true; # RTX 2000 Ada — NVENC transcoding + Immich ML
+    netbird.enable = true; # mesh access alongside the PiKVM routing peer
+    caddy.enable = true; # public HTTPS for jellyfin + seerr + immich only
 
     servarr.enable = true;
     recyclarr.enable = true;
@@ -33,6 +35,9 @@
           mode = "balance-alb";
           miimon = "100";
         };
+        # Pin the bond to port1's permanent hardware MAC; otherwise the
+        # kernel generates a random locally-administered MAC on every boot
+        ethernet.cloned-mac-address = "00:E0:4C:0F:31:D6";
         ipv4 = {
           method = "manual";
           addresses = "192.168.68.254/24";
