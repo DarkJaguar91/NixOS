@@ -50,6 +50,14 @@ in
     programs = {
       steam = {
         enable = true;
+        # tzdata 2026b changed America/Vancouver's DST rules to ones Wine can't
+        # map to any Windows timezone ("find_reg_tz_info: Can't find matching
+        # timezone information"), so Proton apps that look up the local zone
+        # (GW2 addon loader, Blish HUD) fail-fast at launch. Pin Steam to a
+        # zone Wine still recognizes; LA keeps Pacific wall time.
+        package = pkgs.steam.override {
+          extraEnv.TZ = "America/Los_Angeles";
+        };
         remotePlay.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
         extraCompatPackages = [ pkgs.proton-ge-bin ];

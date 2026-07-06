@@ -12,6 +12,7 @@
       brave
       spotify
       discord
+      yacreader
       # QtWebEngine 6.11's GBM zero-copy path breaks video playback on native
       # Wayland (black video, "non-existent mailbox" GPU errors)
       (symlinkJoin {
