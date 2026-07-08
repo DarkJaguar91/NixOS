@@ -1,0 +1,37 @@
+// More options: https://niri-wm.github.io/niri/Configuration:-Introduction
+
+// Autostart
+spawn-at-startup "noctalia-shell"
+spawn-at-startup "niri-touch-gestures"
+
+// Sources
+include "./outputs.kdl"
+include "./style.kdl"
+include "./animations.kdl"
+include "./keybinds.kdl"
+include "./rules.kdl"
+
+prefer-no-csd
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+        repeat-delay 600
+        repeat-rate 25
+    }
+
+    // Trackpad
+    touchpad {
+        tap
+        drag-lock
+        dwt
+    }
+
+    focus-follows-mouse max-scroll-amount="0%"
+    warp-mouse-to-focus
+}
+
+// This sources the noctalia theme
+include "./noctalia.kdl"

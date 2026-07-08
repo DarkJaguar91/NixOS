@@ -6,8 +6,8 @@
   modules = {
     desktop = {
       sddm.enable = true;
-      plasma.enable = true;
       mangowc.enable = true;
+      niri.enable = true;
     };
     "3d-printing".enable = true;
     ai-tools.enable = true;
@@ -22,6 +22,17 @@
   };
 
   networking.hostName = "AsusZ13";
+
+  # Stable symlink + user access for the touchscreen, used by lisgd gestures
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+      name = "touchscreen-udev-rules";
+      destination = "/etc/udev/rules.d/70-touchscreen.rules";
+      text = ''
+        SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="ELAN9008:00 04F3:43C7", SYMLINK+="input/touchscreen", TAG+="uaccess"
+      '';
+    })
+  ];
 
   boot = {
     loader = {

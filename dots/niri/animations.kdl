@@ -1,0 +1,27 @@
+// Animations, durations and curves ported from mango's animations.conf
+animations {
+    window-open {
+        duration-ms 400
+        curve "cubic-bezier" 0.46 1.0 0.29 1.0
+    }
+
+    window-close {
+        duration-ms 800
+        curve "cubic-bezier" 0.08 0.92 0.0 1.0
+    }
+
+    window-movement {
+        duration-ms 500
+        curve "cubic-bezier" 0.46 1.0 0.29 1.0
+    }
+
+    horizontal-view-movement {
+        duration-ms 500
+        curve "cubic-bezier" 0.46 1.0 0.29 1.0
+    }
+
+    workspace-switch {
+        duration-ms 350
+        curve "cubic-bezier" 0.46 1.0 0.29 1.0
+    }
+}
