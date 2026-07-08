@@ -1,0 +1,30 @@
+{
+    "compatible_printers": [
+        "Prusa CORE One HF 0.4 nozzle"
+    ],
+    "enable_pressure_advance": [
+        "1"
+    ],
+    "filament_extruder_variant": [
+        "Direct Drive Standard"
+    ],
+    "filament_flow_ratio": [
+        "1.05"
+    ],
+    "filament_max_volumetric_speed": [
+        "12"
+    ],
+    "filament_settings_id": [
+        "Elegoo Matte PLA"
+    ],
+    "from": "User",
+    "inherits": "Elegoo Rapid PLA+ @System",
+    "name": "Elegoo Matte PLA",
+    "nozzle_temperature": [
+        "220"
+    ],
+    "nozzle_temperature_initial_layer": [
+        "215"
+    ],
+    "version": "2.3.2.60"
+}
