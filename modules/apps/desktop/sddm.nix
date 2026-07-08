@@ -10,7 +10,12 @@
       displayManager = {
         sddm = {
           enable = true;
-          wayland.enable = true;
+          wayland = {
+            enable = true;
+            # The default weston greeter has broken cursor/touchpad input;
+            # kwin was what Plasma set before it was removed from AsusZ13
+            compositor = "kwin";
+          };
           theme = "sddm-astronaut-theme";
           extraPackages = [ pkgs.kdePackages.qtmultimedia ];
         };
