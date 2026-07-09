@@ -5,5 +5,5 @@ output "eDP-1" {
 
 // DarkJaguar main display - AORUS FO48U 48" 4K
 output "DP-3" {
-    scale 1.2
+    scale 1.1
 }
