@@ -18,11 +18,17 @@
           };
           theme = "sddm-astronaut-theme";
           extraPackages = [ pkgs.kdePackages.qtmultimedia ];
+          # No cursor theme survived the Plasma removal, so the greeter's kwin
+          # had nothing to render ("Unable to load any cursor theme")
+          settings.Theme.CursorTheme = "breeze_cursors";
         };
       };
     };
 
-    environment.systemPackages = [ pkgs.sddm-astronaut ];
+    environment.systemPackages = [
+      pkgs.sddm-astronaut
+      pkgs.kdePackages.breeze # provides breeze_cursors for the greeter
+    ];
 
     security.rtkit.enable = true;
   };
