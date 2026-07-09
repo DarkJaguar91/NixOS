@@ -6,8 +6,8 @@
   modules = {
     desktop = {
       sddm.enable = true;
-      plasma.enable = true;
       mangowc.enable = true;
+      niri.enable = true;
     };
     "3d-printing".enable = true;
     ai-tools.enable = true;
