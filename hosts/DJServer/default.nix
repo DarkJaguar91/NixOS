@@ -8,6 +8,8 @@
     netbird.enable = true; # mesh access alongside the PiKVM routing peer
     caddy.enable = true; # public HTTPS for jellyfin + seerr + immich only
 
+    homepage.enable = true; # dashboard at http://192.168.68.254:8082
+    ollama.enable = true; # local LLMs on the RTX 2000 Ada + Open WebUI
     servarr.enable = true;
     recyclarr.enable = true;
     seerr.enable = true;
