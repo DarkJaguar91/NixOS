@@ -55,8 +55,17 @@ in
         # timezone information"), so Proton apps that look up the local zone
         # (GW2 addon loader, Blish HUD) fail-fast at launch. Pin Steam to a
         # zone Wine still recognizes; LA keeps Pacific wall time.
+        #
+        # NixOS also exports TZDIR=/etc/zoneinfo globally, but that path
+        # doesn't exist inside the pressure-vessel runtime container, so glibc
+        # there fails to resolve TZ at all and Rust apps that unwrap
+        # local-time (e.g. Gw2-Simple-Addon-Loader) abort with c0000409.
+        # Point TZDIR at a path valid in both the FHS env and the container.
         package = pkgs.steam.override {
-          extraEnv.TZ = "America/Los_Angeles";
+          extraEnv = {
+            TZ = "America/Los_Angeles";
+            TZDIR = "/usr/share/zoneinfo";
+          };
         };
         remotePlay.openFirewall = true;
         localNetworkGameTransfers.openFirewall = true;
