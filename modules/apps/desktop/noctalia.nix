@@ -38,7 +38,7 @@
         d  /home/${usr.login}/.config/swappy                         0755 ${usr.login} users -
         L+ /home/${usr.login}/.config/swappy/config                  -    ${usr.login} -     - ${nixConfigPath}/dots/swappy/config
         d  /home/${usr.login}/.config/gtk-3.0                        0755 ${usr.login} users -
-        f+ /home/${usr.login}/.config/gtk-3.0/settings.ini           0644 ${usr.login} users - [Settings]\ngtk-icon-theme-name=breeze
+        f+ /home/${usr.login}/.config/gtk-3.0/settings.ini           0644 ${usr.login} users - [Settings]\ngtk-theme-name=adw-gtk3-dark\ngtk-icon-theme-name=breeze
       '';
     };
   };
