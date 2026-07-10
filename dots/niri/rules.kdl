@@ -16,3 +16,10 @@ window-rule {
     match app-id="^steam_app_.*$"
     open-on-workspace "games"
 }
+
+// Games open fullscreen; this also prevents niri from keeping them as a
+// floating tile that breaks exclusive fullscreen for vsync/VRR.
+window-rule {
+    match app-id="^steam_app_.*$"
+    open-fullscreen true
+}
