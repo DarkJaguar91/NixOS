@@ -27,6 +27,8 @@
     };
   };
   services = {
+    udisks2.enable = true;
+    gvfs.enable = true;
     libinput.enable = true;
     fstrim.enable = true;
     smartd = {
