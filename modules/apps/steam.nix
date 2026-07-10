@@ -120,9 +120,27 @@ in
     # CEF remote debugging lets Decky inject into Steam's UI.
     jovian.decky-loader.enable = lib.mkIf cfg.decky.enable true;
 
-    systemd.tmpfiles.rules = lib.mkIf cfg.decky.enable [
-      "d /home/${usr.login}/.local/share/Steam 0700 ${usr.login} users -"
-      "f /home/${usr.login}/.local/share/Steam/.cef-enable-remote-debugging 0644 ${usr.login} users -"
-    ];
+    systemd.tmpfiles = {
+      # Steam's bwrap FHS wrapper creates a user namespace that maps only the
+      # session UID (1000); root (UID 0) has no entry. Any file owned by real
+      # root appears as the overflow UID 65534 inside that namespace. Gamescope's
+      # wlroots check ("st_uid == 0 || st_uid == getuid()") then fails for
+      # /tmp/.X11-unix — 65534 satisfies neither condition.
+      # systemd creates the dir as root:root via x11.conf (D! type). This
+      # package installs a zzz-* file so it sorts after x11.conf and the
+      # subsequent `d` action re-owns the dir to the session user. gamescope
+      # then sees st_uid == getuid() and passes the check.
+      packages = [
+        (pkgs.writeTextFile {
+          name = "zzz-x11-unix-steam-fix";
+          destination = "/lib/tmpfiles.d/zzz-x11-unix-steam-fix.conf";
+          text = "d /tmp/.X11-unix 1777 ${usr.login} users -\n";
+        })
+      ];
+      rules = lib.mkIf cfg.decky.enable [
+        "d /home/${usr.login}/.local/share/Steam 0700 ${usr.login} users -"
+        "f /home/${usr.login}/.local/share/Steam/.cef-enable-remote-debugging 0644 ${usr.login} users -"
+      ];
+    };
   };
 }
