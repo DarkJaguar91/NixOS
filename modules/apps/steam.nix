@@ -78,6 +78,24 @@ in
         # bwrap sandbox and kills the gamescope session at launch:
         # "bwrap: Unexpected capabilities but not setuid"
         capSysNice = false;
+        # Steam prepends STEAM_RUNTIME_LIBRARY_PATH to LD_LIBRARY_PATH before
+        # launching any child, including gamescope. NixOS binaries use
+        # DT_RUNPATH (lower priority than LD_LIBRARY_PATH), so gamescope ends
+        # up loading the Steam runtime's ancient libstdc++ and immediately
+        # crashes with missing GLIBCXX symbols. Unsetting LD_LIBRARY_PATH
+        # before exec lets gamescope fall back to its RUNPATH (nix store).
+        # steam-launch-wrapper reconstructs LD_LIBRARY_PATH from
+        # STEAM_RUNTIME_LIBRARY_PATH anyway, so the game still gets the right
+        # Steam runtime libraries.
+        package = pkgs.symlinkJoin {
+          name = "gamescope-steam-fixed";
+          paths = [ pkgs.gamescope ];
+          buildInputs = [ pkgs.makeWrapper ];
+          postBuild = ''
+            wrapProgram $out/bin/gamescope \
+              --unset LD_LIBRARY_PATH
+          '';
+        };
       };
       gamemode.enable = true;
     };
