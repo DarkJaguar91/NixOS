@@ -65,12 +65,6 @@ in
           extraEnv = {
             TZ = "America/Los_Angeles";
             TZDIR = "/usr/share/zoneinfo";
-            # Keep pipeline cache hot so the first frames after switching back
-            # to the game workspace don't stutter waiting on PSO compilation.
-            PROTON_ENABLE_ASYNC_PIPELINE = "1";
-            # Strip any DXVK-side frame cap so the game runs uncapped inside
-            # its own vsync/FPS-limit settings.
-            DXVK_FRAME_RATE = "0";
           };
         };
         remotePlay.openFirewall = true;
