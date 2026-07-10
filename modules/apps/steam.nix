@@ -78,24 +78,6 @@ in
         # bwrap sandbox and kills the gamescope session at launch:
         # "bwrap: Unexpected capabilities but not setuid"
         capSysNice = false;
-        # Steam prepends STEAM_RUNTIME_LIBRARY_PATH to LD_LIBRARY_PATH before
-        # launching any child, including gamescope. NixOS binaries use
-        # DT_RUNPATH (lower priority than LD_LIBRARY_PATH), so gamescope ends
-        # up loading the Steam runtime's ancient libstdc++ and immediately
-        # crashes with missing GLIBCXX symbols. Unsetting LD_LIBRARY_PATH
-        # before exec lets gamescope fall back to its RUNPATH (nix store).
-        # steam-launch-wrapper reconstructs LD_LIBRARY_PATH from
-        # STEAM_RUNTIME_LIBRARY_PATH anyway, so the game still gets the right
-        # Steam runtime libraries.
-        package = pkgs.symlinkJoin {
-          name = "gamescope-steam-fixed";
-          paths = [ pkgs.gamescope ];
-          buildInputs = [ pkgs.makeWrapper ];
-          postBuild = ''
-            wrapProgram $out/bin/gamescope \
-              --unset LD_LIBRARY_PATH
-          '';
-        };
       };
       gamemode.enable = true;
     };
@@ -120,27 +102,9 @@ in
     # CEF remote debugging lets Decky inject into Steam's UI.
     jovian.decky-loader.enable = lib.mkIf cfg.decky.enable true;
 
-    systemd.tmpfiles = {
-      # Steam's bwrap FHS wrapper creates a user namespace that maps only the
-      # session UID (1000); root (UID 0) has no entry. Any file owned by real
-      # root appears as the overflow UID 65534 inside that namespace. Gamescope's
-      # wlroots check ("st_uid == 0 || st_uid == getuid()") then fails for
-      # /tmp/.X11-unix — 65534 satisfies neither condition.
-      # systemd creates the dir as root:root via x11.conf (D! type). This
-      # package installs a zzz-* file so it sorts after x11.conf and the
-      # subsequent `d` action re-owns the dir to the session user. gamescope
-      # then sees st_uid == getuid() and passes the check.
-      packages = [
-        (pkgs.writeTextFile {
-          name = "zzz-x11-unix-steam-fix";
-          destination = "/lib/tmpfiles.d/zzz-x11-unix-steam-fix.conf";
-          text = "d /tmp/.X11-unix 1777 ${usr.login} users -\n";
-        })
-      ];
-      rules = lib.mkIf cfg.decky.enable [
-        "d /home/${usr.login}/.local/share/Steam 0700 ${usr.login} users -"
-        "f /home/${usr.login}/.local/share/Steam/.cef-enable-remote-debugging 0644 ${usr.login} users -"
-      ];
-    };
+    systemd.tmpfiles.rules = lib.mkIf cfg.decky.enable [
+      "d /home/${usr.login}/.local/share/Steam 0700 ${usr.login} users -"
+      "f /home/${usr.login}/.local/share/Steam/.cef-enable-remote-debugging 0644 ${usr.login} users -"
+    ];
   };
 }
