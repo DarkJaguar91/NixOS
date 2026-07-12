@@ -27,6 +27,7 @@
       loadModels = [
         "gpt-oss:20b" # ~13GB MoE — primary; fully fits in VRAM
         "qwen3:14b" # ~9GB — dense all-rounder
+        "qwen3.6:35b-a3b" # MoE; 35B total / 3.6B active — fits in VRAM
         "qwen3-coder:30b" # ~19GB MoE — spills to CPU, testing only
         "qwen2.5-coder:14b" # ~9GB — testing only
       ];
