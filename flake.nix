@@ -58,7 +58,16 @@
             inherit usr nixConfigPath host;
           };
           modules = nixosModules ++ [
-            { nixpkgs.overlays = [ (_: _: { inherit (pkgsUnstable) gamescope; }) ]; }
+            {
+              nixpkgs.overlays = [
+                (_: _: {
+                  inherit (pkgsUnstable) gamescope;
+                  # see pkgs/orca-slicer-wrapped.nix for why unstable's package
+                  # can't be used as-is
+                  orca-slicer = pkgsUnstable.callPackage ./pkgs/orca-slicer-wrapped.nix { };
+                })
+              ];
+            }
             mangowc.nixosModules.mango
             jovian-nixos.nixosModules.default
             ./hosts/${host}

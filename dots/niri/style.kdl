@@ -1,6 +1,6 @@
 // Rounded corners on all windows, matching mango's border_radius
 window-rule {
-    geometry-corner-radius 6
+    geometry-corner-radius 10
     clip-to-geometry true
 }
 

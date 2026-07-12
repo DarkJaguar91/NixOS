@@ -1,0 +1,15 @@
+{
+	"from": "User",
+	"inherits": "Voron 2.4 300 0.4 nozzle",
+	"machine_start_gcode": "PRINT_START BED_TEMP=[first_layer_bed_temperature] EXTRUDER_TEMP=[first_layer_temperature]",
+	"name": "Voron 2.4 300 0.4",
+	"print_host": "192.168.68.248",
+	"printer_extruder_id": [
+		"1"
+	],
+	"printer_extruder_variant": [
+		"Direct Drive Standard"
+	],
+	"printer_settings_id": "Voron 2.4 300 0.4",
+	"version": "2.4.0.2"
+}
