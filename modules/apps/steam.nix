@@ -10,6 +10,62 @@
 let
   cfg = config.modules.steam;
 
+  # Quickshell (used by Noctalia) doesn't strip XDG field codes like %U from
+  # Exec= lines before passing them to niri spawn, so Steam receives "%U" as a
+  # literal argument, interprets it as an invalid steam:// URL, and exits. A
+  # user-level desktop entry at ~/.local/share/applications/ overrides the
+  # system one; dropping %U from the main Exec= fixes the icon launch.
+  steamDesktopOverride = pkgs.writeText "steam.desktop" ''
+    [Desktop Entry]
+    Name=Steam
+    Comment=Application for managing and playing games on Steam
+    Exec=steam
+    Icon=steam
+    Terminal=false
+    Type=Application
+    Categories=Network;FileTransfer;Game;
+    MimeType=x-scheme-handler/steam;x-scheme-handler/steamlink;
+    Actions=Store;Community;Library;Servers;Screenshots;News;Settings;BigPicture;Friends;
+    PrefersNonDefaultGPU=true
+    X-KDE-RunOnDiscreteGpu=true
+
+    [Desktop Action Store]
+    Name=Store
+    Exec=steam steam://store
+
+    [Desktop Action Community]
+    Name=Community
+    Exec=steam steam://url/CommunityHome/
+
+    [Desktop Action Library]
+    Name=Library
+    Exec=steam steam://open/games
+
+    [Desktop Action Servers]
+    Name=Servers
+    Exec=steam steam://open/servers
+
+    [Desktop Action Screenshots]
+    Name=Screenshots
+    Exec=steam steam://open/screenshots
+
+    [Desktop Action News]
+    Name=News
+    Exec=steam steam://openurl/https://store.steampowered.com/news
+
+    [Desktop Action Settings]
+    Name=Settings
+    Exec=steam steam://open/settings
+
+    [Desktop Action BigPicture]
+    Name=Big Picture
+    Exec=steam steam://open/bigpicture
+
+    [Desktop Action Friends]
+    Name=Friends
+    Exec=steam steam://open/friends
+  '';
+
   # ReShade shaders for vkBasalt: SweetFX (Vibrance, Tonemap, ...) merged with
   # crosire's base repo, which provides the ReShade.fxh headers SweetFX includes.
   reshadeShaders =
@@ -90,6 +146,12 @@ in
       vkbasalt
       pkgsi686Linux.vkbasalt # 32-bit games
     ];
+
+    # Deploy the patched steam.desktop so it overrides the system one.
+    environment.etc."tmpfiles.d/home-${usr.login}-steam-desktop.conf".text = ''
+      d  /home/${usr.login}/.local/share/applications        0755 ${usr.login} users -
+      L+ /home/${usr.login}/.local/share/applications/steam.desktop - ${usr.login} - - ${steamDesktopOverride}
+    '';
 
     # vkBasalt: config lives in dots/, shaders come from the nix store via a
     # stable symlink so the conf can reference fixed paths.
