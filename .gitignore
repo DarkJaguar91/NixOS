@@ -1,0 +1,4 @@
+# Noctalia/matugen auto-generated theme files (rewritten on every wallpaper change)
+dotfiles/kitty/current-theme.conf
+dotfiles/kitty/themes/noctalia.conf
+dotfiles/nvim/lua/matugen.lua
