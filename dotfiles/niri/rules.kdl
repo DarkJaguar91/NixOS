@@ -1,0 +1,23 @@
+// Named workspaces; declaration order pins them to indices 1-3, so
+// Mod+2 = web and Mod+3 = games.
+workspace "main"
+workspace "web"
+workspace "games"
+
+window-rule {
+    match app-id="^brave-browser$"
+    open-on-workspace "web"
+}
+
+window-rule {
+    match app-id="^steam$"
+    match app-id="^steam_app_.*$"
+    open-on-workspace "games"
+}
+
+// Games open fullscreen; this also prevents niri from keeping them as a
+// floating tile that breaks exclusive fullscreen for vsync/VRR.
+window-rule {
+    match app-id="^steam_app_.*$"
+    open-fullscreen true
+}
