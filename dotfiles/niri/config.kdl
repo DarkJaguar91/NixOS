@@ -62,8 +62,11 @@ layout {
     }
 
     default-column-width {
-        proportion 1.0
+        proportion 0.5
     }
+
+    // A lone 50% column sits centered instead of hugging the left edge
+    always-center-single-column
 }
 
 // Rounded corners on all windows

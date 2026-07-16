@@ -17,9 +17,3 @@ tab_bar_edge     top
 tab_bar_style    powerline
 
 enabled_layouts  splits
-
-
-# BEGIN_KITTY_THEME
-# Noctalia
-include current-theme.conf
-# END_KITTY_THEME

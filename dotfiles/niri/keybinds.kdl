@@ -2,13 +2,13 @@ binds {
     // Session
     Mod+Ctrl+Shift+Q { quit; }
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+Escape { spawn "noctalia-shell" "ipc" "call" "lockScreen" "lock"; }
+    Mod+Escape { spawn "noctalia" "msg" "session" "lock"; }
 
     // Apps & shell
     Mod+Return { spawn "kitty"; }
-    Mod+Space { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
-    Mod+V { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
-    Mod+Comma { spawn "noctalia-shell" "ipc" "call" "settings" "toggle"; }
+    Mod+Space { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+V { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
+    Mod+Comma { spawn "noctalia" "msg" "settings-toggle"; }
 
     // Screenshots (niri built-in: interactive / full screen / focused window)
     Mod+S { screenshot; }
@@ -17,11 +17,11 @@ binds {
     Alt+Print { screenshot-window; }
 
     // Media keys
-    XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "increase"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "decrease"; }
-    XF86AudioMute allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
-    XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "increase"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "noctalia" "msg" "volume-up"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "noctalia" "msg" "volume-down"; }
+    XF86AudioMute allow-when-locked=true { spawn "noctalia" "msg" "volume-mute"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "noctalia" "msg" "brightness-up"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "noctalia" "msg" "brightness-down"; }
 
     // Window management
     Mod+Q { close-window; }

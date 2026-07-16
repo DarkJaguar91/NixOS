@@ -4,9 +4,6 @@
     {
       programs.steam = {
         enable = true;
-        # tzdata 2026b broke Wine's Windows-timezone mapping for
-        # America/Vancouver; LA keeps Pacific wall time. TODO: test a Proton
-        # game that reads local time without this, then delete.
         package = pkgs.steam.override {
           extraEnv = {
             TZ = "America/Los_Angeles";
