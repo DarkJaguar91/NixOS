@@ -41,6 +41,11 @@ input {
 layout {
     gaps 4
 
+    // Workspaces draw no background of their own; the wallpaper lives in the
+    // backdrop (layer-rule below), so the overview shows it behind
+    // transparent workspace cards.
+    background-color "transparent"
+
     border {
         width 1.5
     }
@@ -73,4 +78,17 @@ layout {
 window-rule {
     geometry-corner-radius 10
     clip-to-geometry true
+}
+
+// Wallpaper as the overview backdrop instead of a flat color
+layer-rule {
+    match namespace="^noctalia-wallpaper$"
+    place-within-backdrop true
+}
+
+overview {
+    // no drop shadows around the now-transparent workspace cards
+    workspace-shadow {
+        off
+    }
 }
