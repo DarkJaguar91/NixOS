@@ -62,17 +62,6 @@
       };
       environment.systemPackages = [ pkgs.handheld-daemon-ui ];
 
-      # Stable symlink + user access for the touchscreen (lisgd gestures)
-      services.udev.packages = [
-        (pkgs.writeTextFile {
-          name = "touchscreen-udev-rules";
-          destination = "/etc/udev/rules.d/70-touchscreen.rules";
-          text = ''
-            SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="ELAN9008:00 04F3:43C7", SYMLINK+="input/touchscreen", TAG+="uaccess"
-          '';
-        })
-      ];
-
       system.stateVersion = "26.05";
     };
 }

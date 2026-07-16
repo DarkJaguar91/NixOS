@@ -10,9 +10,6 @@ include "./rules.kdl"
 // created empty by the system config)
 include "./noctalia.kdl"
 
-// Touchscreen swipe gestures; exits quietly on hosts without a touchscreen
-spawn-at-startup "niri-touch-gestures"
-
 prefer-no-csd
 
 hotkey-overlay {
