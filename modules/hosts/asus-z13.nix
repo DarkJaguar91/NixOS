@@ -54,11 +54,25 @@
       # screen auto-rotation
       hardware.sensor.iio.enable = true;
 
-      # TDP / fan control for the Strix Halo APU
+      # TDP / fan control for the Strix Halo APU. Also owns the battery charge
+      # limit (hhd-ui -> Battery Settings), which writes BAT0's
+      # charge_control_end_threshold.
       services.handheld-daemon = {
         enable = true;
         user = "brandon";
         adjustor.enable = true;
+        # nixpkgs' 4.1.10 imports pkg_resources, gone from setuptools 82, so
+        # the service crash-loops; 4.1.11 moved to importlib.metadata.
+        # Drop this override once nixpkgs ships >= 4.1.11.
+        package = pkgs.handheld-daemon.overridePythonAttrs (old: rec {
+          version = "4.1.12";
+          src = pkgs.fetchFromGitHub {
+            owner = "hhd-dev";
+            repo = "hhd";
+            tag = "v${version}";
+            hash = "sha256-Cv6kDrPm8AIB+JleZ8e17NF3EX+lOFk4Ndc1eJO3J8Y=";
+          };
+        });
       };
       environment.systemPackages = [ pkgs.handheld-daemon-ui ];
 
