@@ -22,6 +22,9 @@
         wl-clipboard
         brightnessctl
 
+        # region selection for the record-region keybind (dotfiles/niri/scripts)
+        slurp
+
         # file manager (pairs with gvfs for browsing USB drives)
         nautilus
 

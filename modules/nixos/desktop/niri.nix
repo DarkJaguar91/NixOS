@@ -28,6 +28,7 @@ in
         ".config/niri/keybinds.kdl" = "niri/keybinds.kdl";
         ".config/niri/outputs.kdl" = "niri/outputs.kdl";
         ".config/niri/rules.kdl" = "niri/rules.kdl";
+        ".config/niri/scripts/record-region.sh" = "niri/scripts/record-region.sh";
       };
 
       # noctalia's niri template writes theme colors here; config.kdl includes

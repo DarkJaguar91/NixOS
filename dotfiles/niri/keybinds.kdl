@@ -10,6 +10,10 @@ binds {
     Mod+V { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
     Mod+Comma { spawn "noctalia" "msg" "settings-toggle"; }
 
+    // Screen recording (noctalia plugin: toggle focused monitor; script: slurp region)
+    Mod+Shift+R { spawn "noctalia" "msg" "plugin" "noctalia/screen_recorder:service" "all" "toggle" "focused"; }
+    Mod+Shift+S { spawn "sh" "-c" "$HOME/.config/niri/scripts/record-region.sh"; }
+
     // Screenshots (niri built-in: interactive / full screen / focused window)
     Mod+S { screenshot; }
     Print { screenshot; }
