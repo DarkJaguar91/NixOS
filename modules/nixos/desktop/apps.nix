@@ -5,6 +5,7 @@
       environment.systemPackages = with pkgs; [
         brave
         discord
+        mpv
         spotify
       ];
 
