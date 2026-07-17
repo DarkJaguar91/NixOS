@@ -31,7 +31,6 @@ input {
         tap
         dwt
         drag-lock
-        natural-scroll
     }
 
     focus-follows-mouse max-scroll-amount="0%"
