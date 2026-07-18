@@ -13,6 +13,52 @@ on_force_close "detach"
 
 show_startup_tips false
 
+// Publishes the current mode's keybinding hints to the zjstatus bar (the
+// {pipe_zjstatus_hints} widget in layouts/default.kdl), replacing the hints
+// the stock status-bar used to show.
+plugins {
+    zjstatus-hints location="file:/etc/zellij/zjstatus-hints.wasm"
+    // Fuzzy tab switcher (Ctrl+t /) and fuzzy file finder (Ctrl+o f).
+    room location="file:/etc/zellij/room.wasm"
+    monocle location="file:/etc/zellij/monocle.wasm"
+}
+load_plugins {
+    zjstatus-hints
+}
+
+// Move mode on Ctrl+m instead of the default Ctrl+h, which collides with
+// nvim's window-left navigation. Ctrl+m is only distinguishable from Enter
+// via the kitty keyboard protocol, which kitty + zellij negotiate by default;
+// in terminals without it the bind simply never fires (Enter is unaffected).
+keybinds {
+    shared_except "move" "locked" {
+        unbind "Ctrl h"
+        bind "Ctrl m" { SwitchToMode "Move"; }
+    }
+    move {
+        unbind "Ctrl h"
+        bind "Ctrl m" { SwitchToMode "Normal"; }
+    }
+    tab {
+        bind "/" {
+            LaunchOrFocusPlugin "room" {
+                floating true
+                ignore_case true
+                quick_jump true
+            }
+            SwitchToMode "Normal"
+        }
+    }
+    session {
+        bind "f" {
+            LaunchOrFocusPlugin "monocle" {
+                floating true
+            }
+            SwitchToMode "Normal"
+        }
+    }
+}
+
 // Zellij's built-in default theme hardcodes 256-palette indexes above 15
 // (green=154, orange=166, ...), which terminal themes don't remap. This
 // theme mirrors the default's structure using only ANSI slots 0-15, so the

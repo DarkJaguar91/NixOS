@@ -1,0 +1,45 @@
+// Default layout: replaces the stock tab-bar + status-bar (the two chunky
+// keybind-ribbon bars) with a single slim zjstatus powerline bar at the
+// bottom. All colors are ANSI palette slots (0-15), so like the "ansi" theme
+// in config.kdl the bar follows kitty's palette and noctalia's wallpaper
+// theming live. Powerline glyphs match kitty's angled tab bar.
+layout {
+    default_tab_template {
+        children
+        pane size=1 borderless=true {
+            plugin location="file:/etc/zellij/zjstatus.wasm" {
+                format_left   "{mode}#[bg=default] {tabs}"
+                format_center "{pipe_zjstatus_hints}"
+                format_right  "#[fg=0,bg=default]#[bg=0,fg=7] {session} #[fg=2,bg=0]#[bg=2,fg=0,bold] 󰉼 "
+                format_space  "#[bg=default]"
+
+                pipe_zjstatus_hints_format "#[fg=8,bg=default]{output}"
+                format_hide_on_overlength "true"
+                format_precedence "lrc"
+
+                // Never enable zjstatus's hide_frame_* options: they work by
+                // blindly *toggling* zellij's global frame setting and cause
+                // violent screen flicker when the state guess is wrong.
+                border_enabled "false"
+
+                mode_normal        "#[bg=2,fg=0,bold] NORMAL #[fg=2,bg=default]"
+                mode_locked        "#[bg=8,fg=0,bold] LOCKED #[fg=8,bg=default]"
+                mode_pane          "#[bg=4,fg=0,bold] PANE #[fg=4,bg=default]"
+                mode_tab           "#[bg=5,fg=0,bold] TAB #[fg=5,bg=default]"
+                mode_resize        "#[bg=3,fg=0,bold] RESIZE #[fg=3,bg=default]"
+                mode_scroll        "#[bg=6,fg=0,bold] SCROLL #[fg=6,bg=default]"
+                mode_enter_search  "#[bg=6,fg=0,bold] SEARCH #[fg=6,bg=default]"
+                mode_search        "#[bg=6,fg=0,bold] SEARCH #[fg=6,bg=default]"
+                mode_rename_tab    "#[bg=5,fg=0,bold] RENAME #[fg=5,bg=default]"
+                mode_rename_pane   "#[bg=4,fg=0,bold] RENAME #[fg=4,bg=default]"
+                mode_session       "#[bg=13,fg=0,bold] SESSION #[fg=13,bg=default]"
+                mode_move          "#[bg=3,fg=0,bold] MOVE #[fg=3,bg=default]"
+                mode_prompt        "#[bg=6,fg=0,bold] PROMPT #[fg=6,bg=default]"
+                mode_tmux          "#[bg=3,fg=0,bold] TMUX #[fg=3,bg=default]"
+
+                tab_normal   "#[fg=8,bg=default] {name} "
+                tab_active   "#[fg=0,bg=default]#[bg=0,fg=2,bold] {name} #[fg=0,bg=default]"
+            }
+        }
+    }
+}
