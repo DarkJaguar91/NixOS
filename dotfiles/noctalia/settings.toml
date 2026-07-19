@@ -1,0 +1,123 @@
+config_version = 2
+
+[audio]
+enable_overdrive = true
+
+[bar.default]
+center = [ "workspaces", "weather" ]
+end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
+margin_ends = 0
+start = [ "control-center", "launcher", "clock", "wallpaper", "media" ]
+
+[calendar]
+enabled = true
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 600.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 900.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 660.0
+
+[location]
+address = "Vancouver, Canada"
+auto_locate = true
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-1", "lockscreen-login-box@DP-3" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 1746.0
+    cy = 1845.0
+    output = "DP-3"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 1097.0
+    cy = 1115.0
+    output = "HDMI-A-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_password_hint = true
+
+[shell]
+font_family = "Ubuntu Nerd Font"
+
+    [shell.panel]
+    launcher_placement = "attached"
+
+[theme]
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "cava", "gtk3", "gtk4", "kitty", "niri", "qt" ]
+    community_ids = [ "neovim", "discord", "steam" ]
+
+[wallpaper]
+directory = "/home/brandon/Pictures/Wallpapers"
+
+    [wallpaper.default]
+    path = "/home/brandon/Pictures/Wallpapers/1408328.png"
+
+    [wallpaper.last]
+    path = "/home/brandon/Pictures/Wallpapers/1408328.png"
+
+    [wallpaper.monitors.DP-3]
+    path = "/home/brandon/Pictures/Wallpapers/1408328.png"
+
+    [wallpaper.monitors.HDMI-A-1]
+    path = "/home/brandon/Pictures/Wallpapers/1408328.png"
+
+[widget.network]
+show_label = false
+
+[widget.workspaces]
+hide_when_empty = true
+style = "minimal"

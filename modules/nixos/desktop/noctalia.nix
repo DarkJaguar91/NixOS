@@ -1,7 +1,8 @@
 # Noctalia shell (bar, launcher, notifications, lock screen), latest from its
 # flake, running as a systemd user service bound to the niri session.
-# Its settings (~/.config/noctalia) are runtime state managed through its own
-# UI — deliberately not symlinked into this repo.
+# Its settings file is symlinked into this repo so UI changes land in the
+# checkout and sync between hosts; the rest of ~/.local/state/noctalia
+# (caches, notification history) stays runtime-only.
 { inputs, ... }:
 {
   flake.modules.nixos.desktop =
@@ -43,5 +44,6 @@
       programs.dconf.enable = true;
 
       dots.files.".config/gtk-3.0/settings.ini" = "gtk-3.0/settings.ini";
+      dots.files.".local/state/noctalia/settings.toml" = "noctalia/settings.toml";
     };
 }
