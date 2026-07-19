@@ -16,8 +16,15 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   spec = {
-    -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- LazyVim, vendored into this repo (vendor/LazyVim, Apache-2.0) so its
+    -- options/keymaps/plugin specs are ordinary files here instead of being
+    -- fetched from the LazyVim/LazyVim GitHub repo. To update it, copy a
+    -- newer checkout's lua/, queries/, doc/ and NEWS.md over vendor/LazyVim.
+    -- The dir entry and the import must stay separate: combined, lazy.nvim
+    -- records the import under the plugin name and LazyVim's import-order
+    -- check no longer sees `lazyvim.plugins`.
+    { dir = vim.fn.stdpath("config") .. "/vendor/LazyVim", name = "LazyVim" },
+    { import = "lazyvim.plugins" },
     -- import/override with your plugins
     { import = "plugins" },
   },
