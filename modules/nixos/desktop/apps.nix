@@ -27,6 +27,7 @@
         image/svg+xml=org.gnome.Loupe.desktop
         image/avif=org.gnome.Loupe.desktop
         image/heif=org.gnome.Loupe.desktop
+        inode/directory=thunar.desktop
       '';
     };
 }

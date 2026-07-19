@@ -1,5 +1,5 @@
 # USB drives: udisks2 does the mounting, udiskie triggers it automatically on
-# hotplug (with a notification through noctalia), gvfs lets nautilus browse
+# hotplug (with a notification through noctalia), gvfs lets thunar browse
 # mtp/smb and show mounts.
 {
   flake.modules.nixos.desktop =

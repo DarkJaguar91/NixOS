@@ -23,6 +23,22 @@ in
         pkgs.xwayland-satellite-unstable
       ];
 
+      # xdg-desktop-portal-gnome's FileChooser is implemented by nautilus
+      # (D-Bus activated at runtime), which would force nautilus as the file
+      # manager. Route FileChooser to the self-contained portal-gtk dialog
+      # instead; the gnome portal stays for screencast/remote-desktop. This
+      # /etc copy shadows the niri package's niri-portals.conf entirely, so
+      # it restates the upstream entries too.
+      xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+      environment.etc."xdg/xdg-desktop-portal/niri-portals.conf".text = ''
+        [preferred]
+        default=gnome;gtk;
+        org.freedesktop.impl.portal.Access=gtk;
+        org.freedesktop.impl.portal.Notification=gtk;
+        org.freedesktop.impl.portal.Secret=gnome-keyring;
+        org.freedesktop.impl.portal.FileChooser=gtk;
+      '';
+
       dots.files = {
         ".config/niri/config.kdl" = "niri/config.kdl";
         ".config/niri/keybinds.kdl" = "niri/keybinds.kdl";

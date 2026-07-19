@@ -26,13 +26,16 @@
         # region selection for the record-region keybind (dotfiles/niri/scripts)
         slurp
 
-        # file manager (pairs with gvfs for browsing USB drives)
-        nautilus
-
         # noctalia's gtk template targets adw-gtk3; breeze fills in icons
         adw-gtk3
         kdePackages.breeze-icons
       ];
+
+      # file manager (pairs with gvfs for browsing USB drives); xfconf
+      # persists its settings, tumbler renders thumbnails
+      programs.thunar.enable = true;
+      programs.xfconf.enable = true;
+      services.tumbler.enable = true;
 
       # backend for noctalia's screen recorder (control center)
       programs.gpu-screen-recorder.enable = true;
