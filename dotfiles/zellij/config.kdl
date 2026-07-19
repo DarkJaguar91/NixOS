@@ -17,7 +17,12 @@ show_startup_tips false
 // {pipe_zjstatus_hints} widget in layouts/default.kdl), replacing the hints
 // the stock status-bar used to show.
 plugins {
-    zjstatus-hints location="file:/etc/zellij/zjstatus-hints.wasm"
+    zjstatus-hints location="file:/etc/zellij/zjstatus-hints.wasm" {
+        // Truncate the hint string so it fits the bar's center section on
+        // narrow windows (zjstatus can only hide the whole section otherwise).
+        max_length "70"
+        overflow_str "…"
+    }
     // Fuzzy tab switcher (Ctrl+t /) and fuzzy file finder (Ctrl+o f).
     room location="file:/etc/zellij/room.wasm"
     monocle location="file:/etc/zellij/monocle.wasm"
