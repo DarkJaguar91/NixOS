@@ -1,8 +1,4 @@
 # Headless server: Intel, RTX 2000 Ada, btrfs root + ZFS data pools.
-#
-# TODO: the service stack (servarr, SABnzbd, jellyfin/plex, immich, caddy,
-# netbird, ollama, netdata, homepage) still lives in the old repo
-# (~/NixOS). Port it before switching this host to the new flake.
 { config, ... }:
 {
   flake.modules.nixos."hosts/DJServer" =
@@ -12,6 +8,8 @@
         (with config.flake.modules.nixos; [
           base
           nvidia
+          netbird # mesh access alongside the PiKVM routing peer
+          server
         ])
         ++ [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -66,6 +64,12 @@
       services.zfs = {
         autoScrub.enable = true;
         trim.enable = true;
+      };
+
+      # immich's postgres on the fast pool (dataset has mountpoint=legacy)
+      fileSystems."/var/lib/postgresql" = {
+        device = "fast/immich-pg";
+        fsType = "zfs";
       };
 
       # Both ethernet ports bonded into one logical interface; balance-alb

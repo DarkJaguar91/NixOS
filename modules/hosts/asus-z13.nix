@@ -11,6 +11,7 @@
           gaming
           laptop
           amd
+          netbird
         ])
         ++ [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
