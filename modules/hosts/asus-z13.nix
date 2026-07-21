@@ -9,6 +9,7 @@
           base
           desktop
           gaming
+          printing
           laptop
           amd
           netbird

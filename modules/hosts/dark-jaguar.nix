@@ -9,6 +9,7 @@
           base
           desktop
           gaming
+          printing
           amd
         ])
         ++ [ (modulesPath + "/installer/scan/not-detected.nix") ];
