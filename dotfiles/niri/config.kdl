@@ -85,6 +85,14 @@ layer-rule {
     place-within-backdrop true
 }
 
+// mpvpaper (video/gif wallpapers) draws its own layer-shell surface under a
+// hardcoded "mpvpaper" namespace instead of noctalia's, so it needs its own
+// matching rule to get the same backdrop treatment.
+layer-rule {
+    match namespace="^mpvpaper$"
+    place-within-backdrop true
+}
+
 overview {
     // no drop shadows around the now-transparent workspace cards
     workspace-shadow {

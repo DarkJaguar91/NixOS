@@ -9,6 +9,7 @@ binds {
     Mod+Space { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
     Mod+V { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
     Mod+Comma { spawn "noctalia" "msg" "settings-toggle"; }
+    Mod+G { spawn "noctalia" "msg" "panel-toggle" "alexander/game-launcher:browser"; }
 
     // Screen recording (noctalia plugin: toggle focused monitor; script: slurp region)
     Mod+Shift+R { spawn "noctalia" "msg" "plugin" "noctalia/screen_recorder:service" "all" "toggle" "focused"; }

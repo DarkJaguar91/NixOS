@@ -7,8 +7,25 @@
 {
   flake.modules.nixos.desktop =
     { pkgs, ... }:
+    let
+      # game-launcher plugin hardcodes /usr/bin/cc (a Debian-ism) to build its
+      # scanner against libsqlite3; NixOS has no /usr/bin/cc and plain gcc
+      # doesn't see sqlite's headers/lib, so this symlink target wraps gcc
+      # with both baked in.
+      gamelauncherCc = pkgs.writeShellScript "gamelauncher-cc" ''
+        exec ${pkgs.gcc}/bin/gcc \
+          -I${pkgs.sqlite.dev}/include \
+          -L${pkgs.sqlite.out}/lib \
+          -Wl,-rpath,${pkgs.sqlite.out}/lib \
+          "$@"
+      '';
+    in
     {
       imports = [ inputs.noctalia.nixosModules.default ];
+
+      systemd.tmpfiles.rules = [
+        "L+ /usr/bin/cc - - - - ${gamelauncherCc}"
+      ];
 
       programs.noctalia = {
         enable = true;
@@ -25,6 +42,11 @@
 
         # region selection for the record-region keybind (dotfiles/niri/scripts)
         slurp
+
+        # backends for noctalia's mpvpaper plugin (video/gif wallpapers);
+        # plugin itself is enabled via Noctalia's Settings UI, not Nix
+        mpvpaper
+        mpv
 
         # noctalia's gtk template targets adw-gtk3; breeze fills in icons
         adw-gtk3
