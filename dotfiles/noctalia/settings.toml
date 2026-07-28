@@ -4,7 +4,7 @@ config_version = 7
 enable_overdrive = true
 
 [bar.default]
-center = [ "workspaces", "weather" ]
+center = [ "workspaces", "audio_visualizer", "weather" ]
 end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "volume", "brightness", "battery", "session" ]
 margin_ends = 0
 start = [ "control-center", "clock", "group:g1", "media" ]
@@ -14,11 +14,22 @@ start = [ "control-center", "clock", "group:g1", "media" ]
     fill = "surface_variant"
     id = "g1"
     members = [ "wallpaper", "mpvpaper", "launcher_2" ]
-    opacity = 1.0
+    opacity = 0.20000000298023224
     padding = 6.0
 
 [calendar]
 enabled = true
+
+[desktop_widgets]
+schema_version = 2
+widget_order = []
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget]
 
 [idle]
 behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
@@ -76,6 +87,10 @@ widget_order = [ "lockscreen-login-box@eDP-1" ]
 browser_placement = "attached"
 steampoacher_enabled = true
 
+[plugin_settings."h465855hgg/lyrics"]
+player_allowlist = [ "spotify" ]
+translation_language = "en"
+
 [plugin_settings."noctalia/mpvpaper"]
 video_directory = "~/Videos/Wallpapers"
 
@@ -111,8 +126,17 @@ directory = "/home/brandon/Pictures/Wallpapers"
     [wallpaper.monitors.eDP-1]
     path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_cozy_bedroom_at_night_3840x2160_mp4.jpg"
 
+[widget.audio_visualizer]
+bands = 32
+color_1 = "on_primary"
+interactive = false
+width = 100
+
 [widget.launcher_2]
 type = "alexander/game-launcher:launcher"
+
+[widget.media]
+hide_when_no_media = true
 
 [widget.mpvpaper]
 type = "noctalia/mpvpaper:mpvpaper"
