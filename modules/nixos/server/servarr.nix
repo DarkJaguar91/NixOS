@@ -1,6 +1,23 @@
 # Sonarr, Radarr, Prowlarr, SABnzbd — the download/automation stack.
 {
   flake.modules.nixos.server = {
+    # cheetah3 (a sabctools/sabnzbd dep) ships as PyPI project "CT3", so its
+    # .dist-info is ct3-*, but nixpkgs' pname is "cheetah3" — the metadata
+    # check hook looks up importlib.metadata.version("cheetah3") and fails.
+    # Was masked while python3.13 builds were cached; surfaced once
+    # python3.14 became default and it had to build from source.
+    nixpkgs.overlays = [
+      (final: prev: {
+        pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
+          (pyFinal: pyPrev: {
+            cheetah3 = pyPrev.cheetah3.overrideAttrs {
+              dontCheckPythonMetadata = true;
+            };
+          })
+        ];
+      })
+    ];
+
     users.groups.media = { };
 
     services = {
