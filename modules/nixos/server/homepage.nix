@@ -124,12 +124,6 @@
               };
             }
             {
-              AI = {
-                style = "row";
-                columns = 2;
-              };
-            }
-            {
               System = {
                 style = "row";
                 columns = 2;
@@ -265,24 +259,6 @@
                     url = "http://127.0.0.1:8080";
                     key = "{{HOMEPAGE_VAR_SABNZBD_KEY}}";
                   };
-                };
-              }
-            ];
-          }
-          {
-            AI = [
-              {
-                "Open WebUI" = {
-                  icon = "open-webui";
-                  href = "http://${lanHost}:8083";
-                  siteMonitor = "http://127.0.0.1:8083";
-                };
-              }
-              {
-                Ollama = {
-                  icon = "ollama";
-                  # the root path just answers "Ollama is running"
-                  siteMonitor = "http://127.0.0.1:11434";
                 };
               }
             ];

@@ -15,6 +15,19 @@
           # null lifts the systemd device sandbox so ffmpeg can reach the
           # /dev/nvidia* nodes (select NVENC under Admin > Video Transcoding)
           accelerationDevices = null;
+
+          settings = {
+            machineLearning = {
+              # bigger CLIP model than the ViT-B-32 default — meaningfully
+              # better "search by description" recall, still comfortably
+              # fits the RTX 2000 Ada's 16GB alongside face recognition
+              clip.modelName = "ViT-L-14-336__openai";
+              # default (3) skips suggesting anyone who appears in fewer
+              # than 3 photos as a person; 2 catches more real people
+              # without auto-suggesting on a single stray face match
+              facialRecognition.minFaces = 2;
+            };
+          };
         };
 
         # Postgres lives on the fast pool: the fast/immich-pg dataset
