@@ -92,10 +92,11 @@ player_allowlist = [ "spotify" ]
 translation_language = "en"
 
 [plugin_settings."noctalia/mpvpaper"]
+mpv_options = "vf=fps=30"
 video_directory = "~/Videos/Wallpapers"
 
 [plugins]
-enabled = [ "noctalia/screen_recorder", "noctalia/mpvpaper", "alexander/game-launcher" ]
+enabled = [ "noctalia/screen_recorder", "alexander/game-launcher", "noctalia/mpvpaper" ]
 
 [shell.panel]
 launcher_placement = "attached"
@@ -108,8 +109,8 @@ source = "wallpaper"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "cava", "gtk3", "gtk4", "kcolorscheme", "kitty", "niri", "qt" ]
-    community_ids = [ "neovim", "bat", "discord", "steam" ]
+    builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "kcolorscheme", "kitty", "niri", "qt" ]
+    community_ids = [ "opencode", "discord", "neovim", "steam", "bat" ]
 
 [wallpaper]
 directory = "/home/brandon/Pictures/Wallpapers"
@@ -121,10 +122,10 @@ directory = "/home/brandon/Pictures/Wallpapers"
     path = "/home/brandon/Pictures/Wallpapers/frieren-magical-3840x2160-15165.jpeg"
 
     [wallpaper.last]
-    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_serene_cherry_blossom_tree_3840x2160_mp4.jpg"
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_galbrena_dual_flame_eyes_awakening_wuthering_waves_moewalls_com_mp4.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_serene_cherry_blossom_tree_3840x2160_mp4.jpg"
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_galbrena_dual_flame_eyes_awakening_wuthering_waves_moewalls_com_mp4.jpg"
 
 [widget.audio_visualizer]
 bands = 32
