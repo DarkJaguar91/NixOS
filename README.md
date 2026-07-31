@@ -11,20 +11,26 @@ Dendritic-style flake for three hosts, no home-manager.
 ## Layout
 
 ```
-flake.nix                  flake-parts + import-tree; ~25 lines, never grows
+flake.nix                  flake-parts + import-tree; small, never grows
 dotfiles/                  live-editable configs, symlinked into ~ (see below)
 modules/
-  flake/                   glue: meta (owner facts), hosts -> nixosConfigurations
+  flake/                   glue: meta (owner facts), hosts -> nixosConfigurations,
+                           formatter (nix fmt), per-host eval checks
   hosts/                   one file per machine: hardware facts + aggregate imports
   nixos/
     base/                  every host: nix/nh, boot, network, user, fish+tide,
-                           git, neovim (LazyVim), claude-code, dots helper
+                           git, neovim (LazyVim), claude-code + opencode,
+                           dots helper
     desktop/               niri (flake, unstable), noctalia (flake), SDDM,
                            pipewire, bluetooth, USB automount, fonts, kitty,
                            brave/discord/spotify, network timezone
     gaming/                CachyOS kernel (chaotic) + scx, Steam stack, xpadneo
     hardware/              amd.nix, nvidia.nix
+    server/                DJServer: servarr stack, recyclarr, seerr, jellyfin +
+                           plex, immich, caddy, netdata, homepage, auto-upgrade
+    printing/              3D printing: FreeCAD, OpenSCAD, OrcaSlicer
     laptop.nix             auto-cpufreq, fwupd
+    netbird.nix            mesh VPN client (laptop + server)
 ```
 
 Every file under `modules/` is a flake-parts module. Feature files contribute
@@ -51,22 +57,24 @@ Deliberately unmanaged runtime state:
 nh os switch                    # rebuild current host (flake path is baked in)
 nh os switch -u                 # rebuild + update flake inputs
 sudo nixos-rebuild switch --flake ~/.config/NixOS#DarkJaguar   # explicit host
+nix flake check                 # evaluate all three hosts without building
+nix fmt                         # format the tree (nixfmt-rfc-style)
 ```
+
+DJServer additionally runs `system.autoUpgrade` daily against the pushed
+`dendritic` branch (no auto-reboot) — push from any machine and it picks up
+the change overnight. Desktops are rebuilt by hand.
 
 First boot on a fresh setup: tide auto-configures on the first shell, LazyVim
 installs plugins on the first `nvim` launch.
 
 ## Migration status (2026-07)
 
-The previous config lives at `~/NixOS` and stays untouched. Intentionally not
-ported (grab from the old repo if wanted later):
+The previous config lives at `~/NixOS` and stays untouched. Everything in
+daily use has been ported, including the full DJServer stack and netbird.
+Intentionally not ported (grab from the old repo if wanted later):
 
-- **DJServer services** — servarr stack, SABnzbd (planned), jellyfin/plex,
-  immich, caddy, ollama, netdata, homepage, netbird. **Do not switch DJServer
-  to this flake until these are ported** (tracked in `modules/hosts/dj-server.nix`).
-- netbird (was on laptop + server)
 - vkBasalt + ReShade shader setup, Decky Loader (jovian), mangowc compositor
-- 3D printing (OrcaSlicer), media extras (mpv, jellyfin-desktop, yacreader)
-- kmscon console, `claude-local` fish function (pointed at DJServer's ollama)
-
-Old `~/.config` symlinks into `~/NixOS/dots/*` are replaced on first switch.
+- media extras (mpv, jellyfin-desktop, yacreader)
+- kmscon console
+- `claude-local` fish function (pointed at DJServer's ollama, since removed)
