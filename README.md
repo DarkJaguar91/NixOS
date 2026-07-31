@@ -69,21 +69,31 @@ the change overnight. Desktops are rebuilt by hand.
 ## Fresh install / reinstall
 
 Hosts importing `disk-btrfs` (currently just AsusZ13) can be rebuilt from bare
-metal. Boot the NixOS minimal ISO, then:
+metal. Boot a NixOS ISO, then:
 
 ```sh
-sudo nix --extra-experimental-features "nix-command flakes" \
-  run github:nix-community/disko/latest#disko-install -- \
-  --flake github:DarkJaguar91/NixOS/dendritic#AsusZ13
+export NIX_CONFIG="experimental-features = nix-command flakes"
+
+# partition + format + mount to /mnt — DESTROYS the target disk; prompts for
+# the LUKS passphrase
+sudo nix run github:nix-community/disko/latest -- \
+  --mode disko --flake github:DarkJaguar91/NixOS/dendritic#AsusZ13
+
+# the live env's root is a tmpfs capped at ~50% RAM, smaller than the ~19GB
+# closure — let it overflow to a swapfile on the fresh disk
+sudo btrfs filesystem mkswapfile --size 32G /mnt/swap
+sudo swapon /mnt/swap
+sudo mount -o remount,size=48G /
+
+sudo nixos-install --flake github:DarkJaguar91/NixOS/dendritic#AsusZ13
+
+sudo swapoff /mnt/swap && sudo rm /mnt/swap && sudo umount -R /mnt
 ```
 
-This **destroys the target disk**, prompts for the LUKS passphrase, partitions
-and formats per the host's disko spec, and nixos-installs the configuration
-(prompts for a root password at the end). Then: reboot, unlock LUKS, log in
-(brandon / `nixos`, rotate immediately with `passwd`), re-enroll netbird.
-
-For a dry run, do it in a UEFI VM with a blank qcow2 disk and add
-`--disk main /dev/vda` to override the device path.
+Then: reboot, unlock LUKS, log in (brandon / `nixos`, rotate immediately with
+`passwd`), re-enroll netbird. For a dry run, do it in a UEFI VM with a blank
+qcow2 disk and add `--disk main /dev/vda` to the disko invocation to override
+the device path.
 
 First boot on a fresh setup: tide auto-configures on the first shell, LazyVim
 installs plugins on the first `nvim` launch.
