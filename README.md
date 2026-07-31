@@ -25,7 +25,8 @@ modules/
                            pipewire, bluetooth, USB automount, fonts, kitty,
                            brave/discord/spotify, network timezone
     gaming/                CachyOS kernel (chaotic) + scx, Steam stack, xpadneo
-    hardware/              amd.nix, nvidia.nix
+    hardware/              amd.nix, nvidia.nix, disk-btrfs.nix (disko: LUKS +
+                           btrfs layout, generates fileSystems, drives installs)
     server/                DJServer: servarr stack, recyclarr, seerr, jellyfin +
                            plex, immich, caddy, netdata, homepage, auto-upgrade
     printing/              3D printing: FreeCAD, OpenSCAD, OrcaSlicer
@@ -64,6 +65,25 @@ nix fmt                         # format the tree (nixfmt-rfc-style)
 DJServer additionally runs `system.autoUpgrade` daily against the pushed
 `dendritic` branch (no auto-reboot) — push from any machine and it picks up
 the change overnight. Desktops are rebuilt by hand.
+
+## Fresh install / reinstall
+
+Hosts importing `disk-btrfs` (currently just AsusZ13) can be rebuilt from bare
+metal. Boot the NixOS minimal ISO, then:
+
+```sh
+sudo nix --extra-experimental-features "nix-command flakes" \
+  run github:nix-community/disko/latest#disko-install -- \
+  --flake github:DarkJaguar91/NixOS/dendritic#AsusZ13
+```
+
+This **destroys the target disk**, prompts for the LUKS passphrase, partitions
+and formats per the host's disko spec, and nixos-installs the configuration
+(prompts for a root password at the end). Then: reboot, unlock LUKS, log in
+(brandon / `nixos`, rotate immediately with `passwd`), re-enroll netbird.
+
+For a dry run, do it in a UEFI VM with a blank qcow2 disk and add
+`--disk main /dev/vda` to override the device path.
 
 First boot on a fresh setup: tide auto-configures on the first shell, LazyVim
 installs plugins on the first `nvim` launch.

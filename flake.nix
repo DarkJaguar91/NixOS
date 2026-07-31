@@ -26,6 +26,12 @@
     # Loads every file under ./modules as a flake-parts module.
     import-tree.url = "github:vic/import-tree";
 
+    # Declarative disk layouts; also generates fileSystems from the same spec.
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # CachyOS kernel and other bleeding-edge packages, with binary cache.
     # Deliberately NOT following our nixpkgs: their cache is built against
     # their own pin, so following would mean compiling kernels locally.

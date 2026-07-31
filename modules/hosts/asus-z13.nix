@@ -1,4 +1,5 @@
-# ASUS ROG Flow Z13 (2025), Ryzen AI Max "Strix Halo", ext4.
+# ASUS ROG Flow Z13 (2025), Ryzen AI Max "Strix Halo". LUKS + btrfs
+# (disko-managed; was mistakenly installed ext4 before).
 { config, ... }:
 {
   flake.modules.nixos."hosts/AsusZ13" =
@@ -13,6 +14,7 @@
           laptop
           amd
           netbird
+          disk-btrfs
         ])
         ++ [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -40,18 +42,15 @@
         "iommu=pt"
       ];
 
-      fileSystems."/" = {
-        device = "/dev/disk/by-uuid/d2f9aca3-b93c-4e22-9e01-f6ccf89f2ac9";
-        fsType = "ext4";
+      # Consumed by the disk-btrfs module (LUKS + btrfs, subvols rootfs/nix/home)
+      local.disk = {
+        device = "/dev/disk/by-id/nvme-Sabrent_Rocket_Q4_48801681708472_1";
+        encrypted = true;
       };
-      fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/3392-6030";
-        fsType = "vfat";
-        options = [
-          "fmask=0077"
-          "dmask=0077"
-        ];
-      };
+
+      # Fresh installs get this login until rotated with passwd; inert once a
+      # password exists (all current machines have one). No sshd on this host.
+      users.users.brandon.initialPassword = "nixos";
 
       # screen auto-rotation
       hardware.sensor.iio.enable = true;
