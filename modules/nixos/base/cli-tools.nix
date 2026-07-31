@@ -7,7 +7,9 @@
     {
       environment.systemPackages = with pkgs; [
         bat
+        btop
         eza
+        ffmpeg
         fzf
         zoxide
       ];
