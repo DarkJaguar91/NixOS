@@ -118,7 +118,7 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/322510.jpg"
+    path = "/home/brandon/Pictures/Wallpapers/frieren-magical-3840x2160-15165.jpeg"
 
     [wallpaper.last]
     path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_serene_cherry_blossom_tree_3840x2160_mp4.jpg"
