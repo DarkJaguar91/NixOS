@@ -61,6 +61,27 @@
         "type": "github"
       }
     },
+    "flake-parts_2": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "hermes",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772408722,
+        "narHash": "sha256-rHuJtdcOjK7rAHpHphUb1iCvgkU3GpfvicLMwwnfMT0=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "f20dc5d9b8027381c474144ecabc9034d6a839a3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-schemas": {
       "locked": {
         "lastModified": 1780327564,
@@ -73,6 +94,29 @@
       "original": {
         "type": "tarball",
         "url": "https://flakehub.com/f/DeterminateSystems/flake-schemas/%3D0.5.0.tar.gz"
+      }
+    },
+    "hermes": {
+      "inputs": {
+        "flake-parts": "flake-parts_2",
+        "nixpkgs": "nixpkgs_2",
+        "npm-lockfile-fix": "npm-lockfile-fix",
+        "pyproject-build-systems": "pyproject-build-systems",
+        "pyproject-nix": "pyproject-nix",
+        "uv2nix": "uv2nix"
+      },
+      "locked": {
+        "lastModified": 1785477962,
+        "narHash": "sha256-JT7JiESo/HutqNdvoLSKfFLmLYLlPWsU00Y28wqLRgQ=",
+        "owner": "NousResearch",
+        "repo": "hermes-agent",
+        "rev": "f3cda0ceb18d8ba7465a6d223098ef0e56c8fee1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NousResearch",
+        "repo": "hermes-agent",
+        "type": "github"
       }
     },
     "home-manager": {
@@ -115,7 +159,7 @@
       "inputs": {
         "niri-stable": "niri-stable",
         "niri-unstable": "niri-unstable",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
         "xwayland-satellite-stable": "xwayland-satellite-stable",
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
@@ -201,6 +245,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1775036866,
+        "narHash": "sha256-ZojAnPuCdy657PbTq5V0Y+AHKhZAIwSIT2cb8UgAz/U=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6201e203d09599479a3b3450ed24fa81537ebc4e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1784796856,
         "narHash": "sha256-wWFrV5/Qbm+lyt5x20E/bSbfJiGKMo4RCxZV8cl/WZI=",
         "owner": "NixOS",
@@ -215,7 +275,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1785090369,
         "narHash": "sha256-m0pDuRJG7EDo9ri+4Ksu83VsI+PlxNC9lNBfydejce4=",
@@ -231,7 +291,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1784796856,
         "narHash": "sha256-vwxWgF+Gj276WznzGb1LxGsK/39HaQwgQXiU3EkC844=",
@@ -246,7 +306,7 @@
     },
     "noctalia": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_5"
       },
       "locked": {
         "lastModified": 1785128489,
@@ -262,15 +322,112 @@
         "type": "github"
       }
     },
+    "npm-lockfile-fix": {
+      "inputs": {
+        "nixpkgs": [
+          "hermes",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775903712,
+        "narHash": "sha256-2GV79U6iVH4gKAPWYrxUReB0S41ty/Y3dBLquU8AlaA=",
+        "owner": "jeslie0",
+        "repo": "npm-lockfile-fix",
+        "rev": "c6093acb0c0548e0f9b8b3d82918823721930fe8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jeslie0",
+        "repo": "npm-lockfile-fix",
+        "type": "github"
+      }
+    },
+    "pyproject-build-systems": {
+      "inputs": {
+        "nixpkgs": [
+          "hermes",
+          "nixpkgs"
+        ],
+        "pyproject-nix": [
+          "hermes",
+          "pyproject-nix"
+        ],
+        "uv2nix": [
+          "hermes",
+          "uv2nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772555609,
+        "narHash": "sha256-3BA3HnUvJSbHJAlJj6XSy0Jmu7RyP2gyB/0fL7XuEDo=",
+        "owner": "pyproject-nix",
+        "repo": "build-system-pkgs",
+        "rev": "c37f66a953535c394244888598947679af231863",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "build-system-pkgs",
+        "type": "github"
+      }
+    },
+    "pyproject-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "hermes",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1772865871,
+        "narHash": "sha256-/ZTSg97aouL0SlPHaokA4r3iuH9QzHVuWPACD2CUCFY=",
+        "owner": "pyproject-nix",
+        "repo": "pyproject.nix",
+        "rev": "e537db02e72d553cea470976b9733581bcf5b3ed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "pyproject.nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "chaotic": "chaotic",
         "disko": "disko",
         "flake-parts": "flake-parts",
+        "hermes": "hermes",
         "import-tree": "import-tree",
         "niri": "niri",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "noctalia": "noctalia"
+      }
+    },
+    "uv2nix": {
+      "inputs": {
+        "nixpkgs": [
+          "hermes",
+          "nixpkgs"
+        ],
+        "pyproject-nix": [
+          "hermes",
+          "pyproject-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773039484,
+        "narHash": "sha256-+boo33KYkJDw9KItpeEXXv8+65f7hHv/earxpcyzQ0I=",
+        "owner": "pyproject-nix",
+        "repo": "uv2nix",
+        "rev": "b68be7cfeacbed9a3fa38a2b5adc0cfb81d9bb1f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pyproject-nix",
+        "repo": "uv2nix",
+        "type": "github"
       }
     },
     "xwayland-satellite-stable": {

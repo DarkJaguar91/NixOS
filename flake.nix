@@ -41,6 +41,10 @@
     # nixpkgs pins.
     niri.url = "github:sodiboo/niri-flake";
     noctalia.url = "github:noctalia-dev/noctalia-shell";
+
+    # Self-hosted AI agent (OpenClaw successor), packaged via uv2nix; no
+    # binary cache, but builds are mostly prebuilt wheels.
+    hermes.url = "github:NousResearch/hermes-agent";
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
