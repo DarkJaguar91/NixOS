@@ -11,6 +11,8 @@
         eza
         ffmpeg
         fzf
+        unrar
+        unzip
         zoxide
       ];
     };
