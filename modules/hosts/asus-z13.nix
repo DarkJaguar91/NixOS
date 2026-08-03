@@ -10,6 +10,7 @@
           base
           desktop
           gaming
+          gamedev
           printing
           laptop
           amd
