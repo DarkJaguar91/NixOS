@@ -17,6 +17,9 @@
       networking.hostName = "DarkJaguar";
       nixpkgs.hostPlatform = "x86_64-linux";
 
+      # Ryzen 9 9900X: 12C/24T desktop with fast storage; use all 12 cores.
+      local.build.maxJobs = 12;
+
       boot.initrd.availableKernelModules = [
         "nvme"
         "xhci_pci"

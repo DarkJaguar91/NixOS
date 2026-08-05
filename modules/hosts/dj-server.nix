@@ -1,4 +1,7 @@
 # Headless server: Intel, RTX 2000 Ada, btrfs root + ZFS data pools.
+# CPU: 12th Gen Intel Core i5-1235U (2P+8E, 10C/12T). It inherits the base
+# default local.build.maxJobs=8 — right for this low-power mobile part; the 2
+# performance cores do the real work, so don't raise it just because nproc=12.
 { config, ... }:
 {
   flake.modules.nixos."hosts/DJServer" =

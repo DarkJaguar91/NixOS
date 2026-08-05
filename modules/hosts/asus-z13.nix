@@ -22,6 +22,10 @@
       networking.hostName = "AsusZ13";
       nixpkgs.hostPlatform = "x86_64-linux";
 
+      # Strix Halo: 16C/32T but a single memory-bound APU. 8 parallel
+      # derivations keeps the machine responsive during rebuilds.
+      local.build.maxJobs = 8;
+
       boot.initrd.availableKernelModules = [
         "nvme"
         "xhci_pci"
