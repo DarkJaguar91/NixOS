@@ -122,10 +122,10 @@ directory = "/home/brandon/Pictures/Wallpapers"
     path = "/home/brandon/Pictures/Wallpapers/frieren-magical-3840x2160-15165.jpeg"
 
     [wallpaper.last]
-    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_galbrena_dual_flame_eyes_awakening_wuthering_waves_moewalls_com_mp4.jpg"
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_neon_waterfall_moewalls_com_mp4.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_galbrena_dual_flame_eyes_awakening_wuthering_waves_moewalls_com_mp4.jpg"
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_neon_waterfall_moewalls_com_mp4.jpg"
 
 [widget.audio_visualizer]
 bands = 32
