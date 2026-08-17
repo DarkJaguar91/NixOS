@@ -5,7 +5,7 @@ workspace "web"
 workspace "games"
 
 window-rule {
-    match app-id="^brave-browser$"
+    match app-id="^firefox$"
     open-on-workspace "web"
 }
 

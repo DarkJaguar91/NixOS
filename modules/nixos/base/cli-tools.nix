@@ -11,6 +11,8 @@
         eza
         ffmpeg
         fzf
+        lsof
+        openssl
         unrar
         unzip
         zoxide

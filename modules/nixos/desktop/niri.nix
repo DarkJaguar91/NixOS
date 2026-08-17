@@ -4,6 +4,11 @@
 { config, inputs, ... }:
 let
   inherit (config.flake.meta) owner;
+  # niri-flake's overlay rebuilds niri against our nixpkgs, which removed
+  # libdisplay-info_0_2 (niri's build asserts version 0.2.0). Until niri-flake
+  # catches up, use its pre-built packages (against niri's own nixpkgs pin)
+  # from the flake output instead of the overlay.
+  niri-pkgs = inputs.niri.packages.x86_64-linux;
 in
 {
   flake.modules.nixos.desktop =
@@ -11,16 +16,14 @@ in
     {
       imports = [ inputs.niri.nixosModules.niri ];
 
-      nixpkgs.overlays = [ inputs.niri.overlays.niri ];
-
       programs.niri = {
         enable = true;
-        package = pkgs.niri-unstable;
+        package = niri-pkgs.niri-unstable;
       };
 
       environment.systemPackages = [
         # niri auto-spawns xwayland-satellite for X11 apps (Steam, games)
-        pkgs.xwayland-satellite-unstable
+        niri-pkgs.xwayland-satellite-unstable
       ];
 
       # xdg-desktop-portal-gnome's FileChooser is implemented by nautilus

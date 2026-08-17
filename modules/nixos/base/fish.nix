@@ -11,5 +11,6 @@
       environment.systemPackages = [ pkgs.fishPlugins.tide ];
 
       dots.files.".config/fish/config.fish" = "fish/config.fish";
+      dots.files.".config/fish/conf.d/local-bin.fish" = "fish/conf.d/local-bin.fish";
     };
 }
