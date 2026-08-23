@@ -1,0 +1,61 @@
+[keybinds]
+# Basics
+"Mod+Return" = "spawn:kitty"
+"Mod+Q" = "window-close"
+"Mod+Shift+F" = "window-toggle-floating"
+"Mod+P" = "window-toggle-pinned"
+"Mod+M" = "window-toggle-maximize-to-edges"
+"Mod+Tab" = "overview-toggle"
+
+# Screenshots (Noctalia)
+"Mod+S" = "spawn:noctalia msg screenshot-region"
+"Mod+Shift+S" = "spawn:noctalia msg screenshot-fullscreen"
+
+# Screen recording
+"Mod+R" = "spawn:/home/brandon/.local/bin/toggle-screenrecord"
+
+# Noctalia
+"Mod" = "spawn:noctalia msg panel-toggle launcher"
+
+# Focus navigation (vim-style)
+"Mod+H" = "window-focus-left"
+"Mod+J" = "window-focus-or-workspace-down"
+"Mod+K" = "window-focus-or-workspace-up"
+"Mod+L" = "window-focus-right"
+
+# Move windows / columns
+"Mod+Shift+H" = "column-move-left"
+"Mod+Shift+J" = "window-move-or-workspace-down"
+"Mod+Shift+K" = "window-move-or-workspace-up"
+"Mod+Shift+L" = "column-move-right"
+
+# Workspace switching (1-9)
+"Mod+1" = "workspace-switch:1"
+"Mod+2" = "workspace-switch:2"
+"Mod+3" = "workspace-switch:3"
+"Mod+4" = "workspace-switch:4"
+"Mod+5" = "workspace-switch:5"
+"Mod+6" = "workspace-switch:6"
+"Mod+7" = "workspace-switch:7"
+"Mod+8" = "workspace-switch:8"
+"Mod+9" = "workspace-switch:9"
+"Mod+Ctrl+J" = "workspace-next"
+"Mod+Ctrl+K" = "workspace-previous"
+
+# Move window to workspace
+"Mod+Shift+1" = "window-move-to-workspace:1"
+"Mod+Shift+2" = "window-move-to-workspace:2"
+"Mod+Shift+3" = "window-move-to-workspace:3"
+"Mod+Shift+4" = "window-move-to-workspace:4"
+"Mod+Shift+5" = "window-move-to-workspace:5"
+"Mod+Shift+6" = "window-move-to-workspace:6"
+"Mod+Shift+7" = "window-move-to-workspace:7"
+"Mod+Shift+8" = "window-move-to-workspace:8"
+"Mod+Shift+9" = "window-move-to-workspace:9"
+"Mod+Shift+Ctrl+J" = "window-move-to-workspace-next"
+"Mod+Shift+Ctrl+K" = "window-move-to-workspace-previous"
+
+# Scratchpad
+"Mod+Shift+Space" = "window-move-to-scratchpad"
+"Mod+Space" = "scratchpad-toggle"
+"Mod+Ctrl+Space" = "window-restore-from-scratchpad"
