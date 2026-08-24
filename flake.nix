@@ -11,6 +11,11 @@
 
     import-tree.url = "github:vic/import-tree";
 
+    # CachyOS kernel via Chaotic-Nyx (bleeding-edge packages with binary cache)
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    };
+
     # Noctalia ecosystem
     noctalia = {
       url = "github:noctalia-dev/noctalia";

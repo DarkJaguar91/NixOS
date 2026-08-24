@@ -67,6 +67,7 @@
         kitty                       # Terminal
         firefox                     # Browser
         wf-recorder                 # Screen recorder for Wayland
+        brightnessctl               # Backlight control for brightness keys
       ];
 
       # Set kitty as default terminal

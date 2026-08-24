@@ -14,10 +14,15 @@
         inputs.self.nixosModules.gaming
         # AMD GPU: amdgpu initrd KMS, XWayland driver, OpenCL, 32-bit
         inputs.self.nixosModules."graphics/amd"
+        # CachyOS kernel: newer kernel with hardware fixes for MT7925
+        inputs.chaotic.nixosModules.default
 
         # Generated hardware scan for this machine
         ../../hardware/AsusZ13-hardware.nix
       ];
+
+      # CachyOS kernel with MT7925 WiFi 7 fixes
+      boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
       # ------------------------------------------------------------------
       # Identity
