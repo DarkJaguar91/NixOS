@@ -10,12 +10,10 @@
           base
           desktop
           gaming
-          gamedev
           printing
           laptop
           amd
           netbird
-          disk-btrfs
         ])
         ++ [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
@@ -26,18 +24,6 @@
       # derivations keeps the machine responsive during rebuilds.
       local.build.maxJobs = 8;
 
-      boot.initrd.availableKernelModules = [
-        "nvme"
-        "xhci_pci"
-        "thunderbolt"
-        "usbhid"
-        "usb_storage"
-        "sd_mod"
-        "sdhci_pci"
-      ];
-      boot.kernelModules = [ "kvm-amd" ];
-      hardware.cpu.amd.updateMicrocode = true;
-
       # Strix Halo display/GPU quirks
       boot.kernelParams = [
         "amdgpu.sg_display=0"
@@ -46,16 +32,6 @@
         "amdgpu.cwsr_enable=0"
         "iommu=pt"
       ];
-
-      # Consumed by the disk-btrfs module (LUKS + btrfs, subvols rootfs/nix/home)
-      local.disk = {
-        device = "/dev/disk/by-id/nvme-Sabrent_Rocket_Q4_48801681708472_1";
-        encrypted = true;
-      };
-
-      # Fresh installs get this login until rotated with passwd; inert once a
-      # password exists (all current machines have one). No sshd on this host.
-      users.users.brandon.initialPassword = "nixos";
 
       # screen auto-rotation
       hardware.sensor.iio.enable = true;
@@ -67,21 +43,35 @@
         enable = true;
         user = "brandon";
         adjustor.enable = true;
-        # nixpkgs' 4.1.10 imports pkg_resources, gone from setuptools 82, so
-        # the service crash-loops; 4.1.11 moved to importlib.metadata.
-        # Drop this override once nixpkgs ships >= 4.1.11.
-        package = pkgs.handheld-daemon.overridePythonAttrs (old: rec {
-          version = "4.1.12";
-          src = pkgs.fetchFromGitHub {
-            owner = "hhd-dev";
-            repo = "hhd";
-            tag = "v${version}";
-            hash = "sha256-Cv6kDrPm8AIB+JleZ8e17NF3EX+lOFk4Ndc1eJO3J8Y=";
-          };
-        });
       };
       environment.systemPackages = [ pkgs.handheld-daemon-ui ];
 
+      # Hardware config
+      boot.initrd.availableKernelModules = [ "nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sdhci_pci" ];
+      boot.initrd.kernelModules = [ ];
+      boot.kernelModules = [ "kvm-amd" ];
+      boot.extraModulePackages = [ ];
+    
+      fileSystems."/" =
+        { device = "/dev/mapper/luks-431315d8-db32-42b3-abf2-2f89d170501d";
+          fsType = "ext4";
+        };
+    
+      boot.initrd.luks.devices."luks-431315d8-db32-42b3-abf2-2f89d170501d".device = "/dev/disk/by-uuid/431315d8-db32-42b3-abf2-2f89d170501d";
+      boot.initrd.luks.devices."luks-8ff9e3ed-9e9f-4929-b3ac-face66162ada".device = "/dev/disk/by-uuid/8ff9e3ed-9e9f-4929-b3ac-face66162ada";
+    
+      fileSystems."/boot" =
+        { device = "/dev/disk/by-uuid/0CE9-38D9";
+          fsType = "vfat";
+          options = [ "fmask=0077" "dmask=0077" ];
+        };
+    
+      swapDevices =
+        [ { device = "/dev/mapper/luks-8ff9e3ed-9e9f-4929-b3ac-face66162ada"; }
+        ];
+    
+      hardware.cpu.amd.updateMicrocode = true;
+  
       system.stateVersion = "26.05";
     };
 }

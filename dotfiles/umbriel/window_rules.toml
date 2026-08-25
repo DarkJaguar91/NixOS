@@ -1,0 +1,44 @@
+[[window_rule]]
+match.app_id = "^firefox$"
+default_workspace = 2
+
+[[window_rule]]
+match.app_id = "^[Ss]team$"
+match.title = "^Steam$"
+default_workspace = 3
+
+[[window_rule]]
+match.app_id = "^[Ss]team$"
+match.title = "[Hh][Oo][Yy][Oo][Pp][Ll][Aa][Yy]"
+default_floating = true
+
+[[window_rule]]
+match.app_id = "^[Ss]team$"
+match.title = "^(Properties|Settings|Configure)"
+default_floating = true
+
+[[window_rule]]
+match.app_id = "^[Ss]team$"
+match.title = "^[Ff]riends"
+default_floating = true
+
+[[window_rule]]
+match.app_id = "^steam_app_"
+default_fullscreen = true
+default_workspace = 3
+
+[[window_rule]]
+match.app_id = "^steam_app_"
+match.title = "^HoYoPlay$"
+default_floating = true
+default_fullscreen = false
+
+[[window_rule]]
+match.app_id = "^dev.noctalia.Noctalia$"
+default_floating = true
+default_size = [1020, 900]
+
+[[window_rule]]
+match.app_id = "^dev.noctalia.UmbrielSharePicker$"
+default_floating = true
+default_size = [800, 600]

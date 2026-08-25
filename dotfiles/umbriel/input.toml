@@ -1,0 +1,27 @@
+[input]
+middle_click_paste = true
+
+[input.keyboard]
+layout = ""
+variant = ""
+options = ""
+repeat_rate = 25
+repeat_delay = 600
+
+[input.touchpad]
+tap = true
+
+[input.mouse]
+accel_profile = "flat"
+sensitivity = 0.0
+scroll_wheel_step = 60
+
+[input.cursor]
+theme = ""
+size = 24
+hardware_cursor = true
+hide_when_typing = false
+hide_timeout_ms = 0
+
+[input.focus]
+follows_mouse = false

@@ -1,0 +1,22 @@
+[general]
+autostart = [
+  "gsettings set org.gnome.desktop.interface gtk-theme adw-gtk3",
+  "gsettings set org.gnome.desktop.interface color-scheme prefer-dark",
+]
+xwayland = true
+show_cheatsheet = true
+focus_on_activate = false
+
+[environment]
+GTK_THEME = "Adwaita:dark"
+QT_QPA_PLATFORMTHEME = "qt6ct"
+
+[workspaces]
+back_and_forth = true
+
+[appearance]
+corner_radius = 2
+border_width = 1
+
+[layout]
+gap = 6
