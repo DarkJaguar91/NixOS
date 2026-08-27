@@ -1,0 +1,28 @@
+# Build
+build*/
+cmake-build-*/
+
+# Meson subprojects (scenefx is a git submodule, not a wrap download)
+subprojects/*
+!subprojects/scenefx/
+compile_commands.json
+
+# Editor / IDE
+.vscode/
+.idea/
+.cache/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Nix
+.envrc
+.direnv/
+result/
+result
+result-*
+/TODO.md
