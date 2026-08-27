@@ -70,6 +70,20 @@
         [ { device = "/dev/mapper/luks-8ff9e3ed-9e9f-4929-b3ac-face66162ada"; }
         ];
     
+      programs.gamemode.settings = {
+        general = {
+          softrealtime = "auto";
+          renice = 10;
+        };
+        # Toggle APU GPU performance when entering / exiting a gamemode session.
+        # Keeps battery life sane outside of games while giving the Strix Halo
+        # full clocks when needed.
+        custom = {
+          start = "${pkgs.bash}/bin/bash -c 'for f in /sys/class/drm/card*/device/power_dpm_force_performance_level; do [ -w \"\$f\" ] && echo high > \"\$f\"; done'";
+          end   = "${pkgs.bash}/bin/bash -c 'for f in /sys/class/drm/card*/device/power_dpm_force_performance_level; do [ -w \"\$f\" ] && echo auto  > \"\$f\"; done'";
+        };
+      };
+
       hardware.cpu.amd.updateMicrocode = true;
   
       system.stateVersion = "26.05";

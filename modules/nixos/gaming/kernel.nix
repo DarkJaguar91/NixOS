@@ -1,19 +1,11 @@
-# CachyOS kernel from chaotic-nyx (BORE scheduler, gaming-tuned). The chaotic
-# module registers its overlay and binary cache, so the kernel comes prebuilt.
-{ inputs, ... }:
+# Standard NixOS latest kernel. Switched away from CachyOS + scx_lavd after
+# the BPF scheduler started showing linkage errors and starving GPU threads,
+# causing audio-continues / video-freezes behaviour in Proton games.
+{ ... }:
 {
   flake.modules.nixos.gaming =
     { pkgs, ... }:
     {
-      imports = [ inputs.chaotic.nixosModules.default ];
-
-      boot.kernelPackages = pkgs.linuxPackages_cachyos;
-
-      # sched-ext userspace scheduler; lavd is the latency-focused one CachyOS
-      # recommends for gaming
-      services.scx = {
-        enable = true;
-        scheduler = "scx_lavd";
-      };
+      boot.kernelPackages = pkgs.linuxPackages_latest;
     };
 }

@@ -2,7 +2,7 @@
 { config, ... }:
 {
   flake.modules.nixos."hosts/DarkJaguar" =
-    { modulesPath, ... }:
+    { modulesPath, pkgs, ... }:
     {
       imports =
         (with config.flake.modules.nixos; [
@@ -29,34 +29,36 @@
       boot.kernelModules = [ "kvm-amd" ];
       hardware.cpu.amd.updateMicrocode = true;
 
-      fileSystems."/" = {
-        device = "/dev/disk/by-uuid/4b362b4f-4e33-4eda-b02a-c085831ea3a9";
-        fsType = "btrfs";
+      # Keep the RX 9070 out of low-power P-states so shader compilation and
+      # frame submission never stall waiting for a clock ramp.  Host-specific
+      # because we do NOT want this on laptops (e.g. AsusZ13).
+      systemd.services.amdgpu-perf = {
+        description = "Force AMD GPU high performance level";
+        wantedBy = [ "multi-user.target" ];
+        after = [ "systemd-modules-load.service" ];
+        serviceConfig = {
+          Type = "oneshot";
+          RemainAfterExit = true;
+          ExecStart = "${pkgs.bash}/bin/bash -c 'for f in /sys/class/drm/card*/device/power_dpm_force_performance_level; do [ -w \"\$f\" ] && echo high > \"\$f\"; done'";
+        };
       };
-      fileSystems."/nix" = {
-        device = "/dev/disk/by-uuid/4b362b4f-4e33-4eda-b02a-c085831ea3a9";
-        fsType = "btrfs";
-        options = [ "subvol=nix" ];
-      };
-      fileSystems."/home" = {
-        device = "/dev/disk/by-uuid/4b362b4f-4e33-4eda-b02a-c085831ea3a9";
-        fsType = "btrfs";
-        options = [ "subvol=home" ];
-      };
-      fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/7F1D-3663";
-        fsType = "vfat";
-        options = [
-          "fmask=0077"
-          "dmask=0077"
+      
+      fileSystems."/" =
+        { device = "/dev/disk/by-uuid/bf057802-9996-4085-8c04-7a931eb05f41";
+          fsType = "ext4";
+        };
+    
+      fileSystems."/boot" =
+        { device = "/dev/disk/by-uuid/43C0-4920";
+          fsType = "vfat";
+          options = [ "fmask=0077" "dmask=0077" ];
+        };
+    
+      swapDevices =
+        [ { device = "/dev/disk/by-uuid/7863607d-0809-4418-bbe6-6f229ec1e7c0"; }
         ];
-      };
-      fileSystems."/storage" = {
-        device = "/dev/disk/by-uuid/c6ad7265-5c71-4fe1-85a9-4e5e77282909";
-        fsType = "btrfs";
-        options = [ "nofail" ];
-      };
 
       system.stateVersion = "26.05";
     };
 }
+
