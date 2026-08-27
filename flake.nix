@@ -29,10 +29,10 @@
     };
 
     umbriel = {
-      url = "github:DarkJaguar91/umbriel/cross-workspace-vertical-focus";
+      url = "github:noctalia-dev/umbriel";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    };
+  };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 }

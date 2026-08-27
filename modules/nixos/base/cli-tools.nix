@@ -11,6 +11,7 @@
         eza
         ffmpeg
         fzf
+        gh
         lsof
         openssl
         unrar
