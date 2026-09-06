@@ -44,6 +44,13 @@
         openFirewall = true; # 9696
       };
 
+      bazarr = {
+        enable = true;
+        group = "media";
+        openFirewall = true; # 6767
+        dataDir = "/fast/appdata/bazarr";
+      };
+
       sabnzbd = {
         enable = true;
         group = "media";

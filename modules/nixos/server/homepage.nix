@@ -266,16 +266,6 @@
           {
             System = [
               {
-                Netdata = {
-                  icon = "netdata";
-                  href = "http://${lanHost}:19999";
-                  widget = {
-                    type = "netdata";
-                    url = "http://127.0.0.1:19999";
-                  };
-                };
-              }
-              {
                 "ZFS Pools" = {
                   icon = "mdi-harddisk";
                   widget = {

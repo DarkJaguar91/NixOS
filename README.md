@@ -28,7 +28,7 @@ modules/
     hardware/              amd.nix, nvidia.nix, disk-btrfs.nix (disko: LUKS +
                            btrfs layout, generates fileSystems, drives installs)
     server/                DJServer: servarr stack, recyclarr, seerr, jellyfin +
-                           plex, immich, caddy, netdata, homepage, auto-upgrade
+                           plex, immich, caddy, homepage, auto-upgrade
     printing/              3D printing: FreeCAD, OpenSCAD, OrcaSlicer
     laptop.nix             auto-cpufreq, fwupd
     netbird.nix            mesh VPN client (laptop + server)
