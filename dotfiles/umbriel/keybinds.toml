@@ -11,8 +11,9 @@
 "Mod+S" = "spawn:noctalia msg screenshot-region"
 "Mod+Shift+S" = "spawn:noctalia msg screenshot-fullscreen"
 
-# Screen recording
-"Mod+R" = "spawn:/home/brandon/.local/bin/toggle-screenrecord"
+# Screen recording (toggle start/stop)
+"Mod+R" = "spawn:toggle-screenrecord fullscreen"
+"Mod+Shift+R" = "spawn:toggle-screenrecord region"
 
 # Noctalia
 "Mod" = "spawn:noctalia msg panel-toggle launcher"

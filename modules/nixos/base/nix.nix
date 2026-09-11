@@ -1,6 +1,6 @@
 {
   flake.modules.nixos.base =
-    { config, lib, ... }:
+    { config, lib, pkgs, ... }:
     let
       cfg = config.local.build;
     in
@@ -22,6 +22,8 @@
       };
 
       config = {
+        nix.package = pkgs.nixVersions.latest;
+
         nix.settings = {
           experimental-features = [
             "nix-command"

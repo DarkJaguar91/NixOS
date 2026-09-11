@@ -18,5 +18,11 @@
         unzip
         zoxide
       ];
+      programs.nix-ld.enable = true;
+      programs.nix-ld.libraries = with pkgs; [
+        zlib
+        libpcap
+        stdenv.cc.cc
+      ];
     };
 }

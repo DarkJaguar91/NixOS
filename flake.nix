@@ -12,11 +12,6 @@
     # Loads every file under ./modules as a flake-parts module.
     import-tree.url = "github:vic/import-tree";
 
-    # CachyOS kernel and other bleeding-edge packages, with binary cache.
-    # Deliberately NOT following our nixpkgs: their cache is built against
-    # their own pin, so following would mean compiling kernels locally.
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-
     # Noctalia ecosystem
     noctalia = {
       url = "github:noctalia-dev/noctalia";
@@ -29,7 +24,7 @@
     };
 
     umbriel = {
-      url = "github:noctalia-dev/umbriel";
+      url = "git+https://github.com/noctalia-dev/umbriel?submodules=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

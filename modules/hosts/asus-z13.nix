@@ -52,22 +52,20 @@
       boot.kernelModules = [ "kvm-amd" ];
       boot.extraModulePackages = [ ];
     
+
       fileSystems."/" =
-        { device = "/dev/mapper/luks-431315d8-db32-42b3-abf2-2f89d170501d";
+        { device = "/dev/disk/by-uuid/832168d0-ddbf-44c7-b1b2-363aaa448bcf";
           fsType = "ext4";
         };
     
-      boot.initrd.luks.devices."luks-431315d8-db32-42b3-abf2-2f89d170501d".device = "/dev/disk/by-uuid/431315d8-db32-42b3-abf2-2f89d170501d";
-      boot.initrd.luks.devices."luks-8ff9e3ed-9e9f-4929-b3ac-face66162ada".device = "/dev/disk/by-uuid/8ff9e3ed-9e9f-4929-b3ac-face66162ada";
-    
       fileSystems."/boot" =
-        { device = "/dev/disk/by-uuid/0CE9-38D9";
+        { device = "/dev/disk/by-uuid/73C4-099C";
           fsType = "vfat";
           options = [ "fmask=0077" "dmask=0077" ];
         };
     
       swapDevices =
-        [ { device = "/dev/mapper/luks-8ff9e3ed-9e9f-4929-b3ac-face66162ada"; }
+        [ { device = "/dev/disk/by-uuid/28cfb13e-e947-4cc0-af46-94734cd8c0f2"; }
         ];
     
       programs.gamemode.settings = {
@@ -79,8 +77,8 @@
         # Keeps battery life sane outside of games while giving the Strix Halo
         # full clocks when needed.
         custom = {
-          start = "${pkgs.bash}/bin/bash -c 'for f in /sys/class/drm/card*/device/power_dpm_force_performance_level; do [ -w \"\$f\" ] && echo high > \"\$f\"; done'";
-          end   = "${pkgs.bash}/bin/bash -c 'for f in /sys/class/drm/card*/device/power_dpm_force_performance_level; do [ -w \"\$f\" ] && echo auto  > \"\$f\"; done'";
+          start = "${pkgs.bash}/bin/bash -c 'for f in /sys/class/drm/card*/device/power_dpm_force_performance_level; do [ -w \"\\$f\" ] && echo high > \"\\$f\"; done'";
+          end   = "${pkgs.bash}/bin/bash -c 'for f in /sys/class/drm/card*/device/power_dpm_force_performance_level; do [ -w \"\\$f\" ] && echo auto  > \"\\$f\"; done'";
         };
       };
 
