@@ -20,3 +20,6 @@ border_width = 1
 
 [layout]
 gap = 6
+
+[layout.scrolling]
+default_extent_fraction = 0.5

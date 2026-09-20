@@ -142,8 +142,8 @@ source = "wallpaper"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "kcolorscheme", "kitty", "qt", "umbriel" ]
-    community_ids = [ "opencode", "discord", "neovim", "steam", "bat", "yazi" ]
+    builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "kcolorscheme", "kitty", "niri", "qt" ]
+    community_ids = [ "opencode", "discord", "neovim", "steam", "bat" ]
 
 [wallpaper]
 directory = "/home/brandon/Pictures/Wallpapers"
@@ -152,13 +152,13 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/Dynamic-Wallpapers/Light/Riverside_light.png"
+    path = "/home/brandon/Pictures/Wallpapers/Fantasy-Landscape1.png"
 
     [wallpaper.last]
-    path = "/home/brandon/Pictures/Wallpapers/Dynamic-Wallpapers/Light/Riverside_light.png"
+    path = "/home/brandon/Pictures/Wallpapers/Fantasy-Landscape1.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/brandon/Pictures/Wallpapers/Dynamic-Wallpapers/Light/Riverside_light.png"
+    path = "/home/brandon/Pictures/Wallpapers/Fantasy-Landscape1.png"
 
 [widget.audio_visualizer]
 bands = 32

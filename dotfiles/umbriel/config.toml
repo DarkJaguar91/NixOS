@@ -5,5 +5,4 @@ files = [
   "keybinds.toml",
   "window_rules.toml",
   "layer_rules.toml",
-  "noctalia.toml",
 ]

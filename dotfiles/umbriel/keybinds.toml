@@ -15,6 +15,9 @@
 "Mod+R" = "spawn:toggle-screenrecord fullscreen"
 "Mod+Shift+R" = "spawn:toggle-screenrecord region"
 
+# Return to Gaming Mode (gamescope Big Picture)
+"Mod+Shift+G" = "spawn:steamosctl switch-to-game-mode"
+
 # Noctalia
 "Mod" = "spawn:noctalia msg panel-toggle launcher"
 
