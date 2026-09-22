@@ -14,6 +14,9 @@
           laptop
           amd
           netbird
+          asus-copilot-key
+          asus-touchpad-precision-fix
+          backlight
         ])
         ++ [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
