@@ -67,6 +67,8 @@
           printf 'HOMEPAGE_VAR_SONARR_KEY=%s\n' "$(xml_key /fast/appdata/sonarr/config.xml)"
           printf 'HOMEPAGE_VAR_RADARR_KEY=%s\n' "$(xml_key /fast/appdata/radarr/config.xml)"
           printf 'HOMEPAGE_VAR_PROWLARR_KEY=%s\n' "$(xml_key /var/lib/prowlarr/config.xml)"
+          printf 'HOMEPAGE_VAR_BAZARR_KEY=%s\n' \
+            "$(yq -r '.auth.apikey // ""' /fast/appdata/bazarr/config/config.yaml 2>/dev/null)"
           printf 'HOMEPAGE_VAR_SABNZBD_KEY=%s\n' \
             "$(sed -n 's/^api_key *= *//p' /var/lib/sabnzbd/sabnzbd.ini 2>/dev/null | head -n1)"
           printf 'HOMEPAGE_VAR_JELLYFIN_KEY=%s\n' \
@@ -120,7 +122,7 @@
             {
               Downloads = {
                 style = "row";
-                columns = 4;
+                columns = 5;
               };
             }
             {
@@ -251,6 +253,17 @@
                 };
               }
               {
+                Bazarr = {
+                  icon = "bazarr";
+                  href = "http://${lanHost}:6767";
+                  widget = {
+                    type = "bazarr";
+                    url = "http://127.0.0.1:6767";
+                    key = "{{HOMEPAGE_VAR_BAZARR_KEY}}";
+                  };
+                };
+              }
+              {
                 SABnzbd = {
                   icon = "sabnzbd";
                   href = "http://${lanHost}:8080";
@@ -293,6 +306,7 @@
         path = with pkgs; [
           jq
           sqlite
+          yq-go
         ];
         serviceConfig = {
           Type = "oneshot";

@@ -1,5 +1,5 @@
 # Noctalia shell (bar, launcher, notifications, lock screen), latest from its
-# flake, running as a systemd user service bound to the niri session.
+# flake, running as a systemd user service bound to the umbriel session.
 # Its settings file is symlinked into this repo so UI changes land in the
 # checkout and sync between hosts; the rest of ~/.local/state/noctalia
 # (caches, notification history) stays runtime-only.
@@ -26,7 +26,7 @@
         wl-clipboard
         brightnessctl
 
-        # region selection for the record-region keybind (dotfiles/niri/scripts)
+        # region selection for toggle-screenrecord (umbriel.nix)
         slurp
 
         # backends for noctalia's mpvpaper plugin (video/gif wallpapers);

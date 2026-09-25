@@ -1,6 +1,11 @@
 {
   flake.modules.nixos.base =
-    { config, lib, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
     let
       cfg = config.local.build;
     in

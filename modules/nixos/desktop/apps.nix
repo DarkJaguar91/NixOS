@@ -7,17 +7,16 @@
         discord
         fladder
         loupe
-        mpv
         spotify
         zed-editor
       ];
 
-      # chromium/electron apps (all three above) run native wayland
+      # chromium/electron apps (discord, spotify, ...) run native wayland
       environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
-      # niri defaults to the "default" cursor theme, which isn't installed;
-      # without this, niri logs "error loading xcursor default@48: no default
-      # icon" and the cursor is invisible, making mouse interaction impossible.
+      # Compositors fall back to the "default" cursor theme, which isn't
+      # installed; without this the cursor can end up invisible ("error
+      # loading xcursor default@48: no default icon").
       # breeze_cursors is provided by kdePackages.breeze (installed for SDDM).
       environment.sessionVariables.XCURSOR_THEME = "breeze_cursors";
       environment.sessionVariables.XCURSOR_SIZE = "24";

@@ -1,7 +1,7 @@
 # wallpaper-optimize: re-encodes ~/Videos/Wallpapers clips to the display's
 # native resolution @ <=30fps h264 (no audio), so mpvpaper does zero scaling
-# and minimal VCN decode work. The target resolution is detected from niri
-# (or the first connected DRM connector), so it works on any host. Files
+# and minimal VCN decode work. The target resolution is the first connected
+# DRM connector's preferred mode, so it works on any host. Files
 # that already match are skipped, so it's safe to re-run after dropping in
 # new wallpapers; originals are preserved in <dir>/originals/. ffmpeg for
 # everyday use ships in base/cli-tools.nix.
@@ -16,16 +16,10 @@
           DIR=''${1:-$HOME/Videos/Wallpapers}
           TFPS=30   # frame-rate cap
 
-          # Target = the display's current mode: ask niri first (works for
-          # any monitor), then the first connected DRM connector's preferred
-          # mode, then fall back to the AsusZ13 panel.
+          # Target = the first connected DRM connector's preferred mode,
+          # falling back to the AsusZ13 panel.
           detect_res() {
             local mode
-            mode=$(niri msg outputs 2>/dev/null | grep -m1 'Current mode:' | grep -oE '[0-9]+x[0-9]+' || true)
-            if [ -n "$mode" ]; then
-              echo "$mode"
-              return
-            fi
             for status in /sys/class/drm/card*-*/status; do
               [ "$(cat "$status" 2>/dev/null)" = connected ] || continue
               mode=$(head -n1 "''${status%/status}/modes" 2>/dev/null)

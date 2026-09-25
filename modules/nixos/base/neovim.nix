@@ -8,10 +8,10 @@
       environment.systemPackages = with pkgs; [
         neovim
 
-        # build/runtime deps for lazy.nvim, treesitter, and mason
+        # build/runtime deps for lazy.nvim, treesitter, and mason (unzip and
+        # nix-ld, for mason's FHS-linked LSP binaries, come from cli-tools.nix)
         gcc
         gnumake
-        unzip
         curl
         nodejs
         lazygit
@@ -27,9 +27,6 @@
       ];
 
       environment.variables.EDITOR = "nvim";
-
-      # mason downloads prebuilt LSP binaries linked against FHS paths
-      programs.nix-ld.enable = true;
 
       dots.directories.".config/nvim" = "nvim";
     };

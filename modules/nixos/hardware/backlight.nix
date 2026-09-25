@@ -1,3 +1,7 @@
+{ config, ... }:
+let
+  inherit (config.flake.meta) owner;
+in
 {
   flake.modules.nixos.backlight =
     { pkgs, ... }:
@@ -12,6 +16,6 @@
         SUBSYSTEM=="backlight", ACTION=="add", RUN+="${pkgs.coreutils}/bin/chgrp video $sys$devpath/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w $sys$devpath/brightness"
       '';
 
-      users.users.brandon.extraGroups = [ "video" ];
+      users.users.${owner.username}.extraGroups = [ "video" ];
     };
 }

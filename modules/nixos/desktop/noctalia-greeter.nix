@@ -7,7 +7,7 @@
         inputs.noctalia-greeter.nixosModules.default
       ];
 
-      programs.noctalia-greeter = {
+      services.displayManager.noctalia-greeter = {
         enable = true;
         settings = {
           session.default = "umbriel";
@@ -29,6 +29,6 @@
         isSystemUser = true;
         group = "greeter";
       };
-      users.groups.greeter = {};
+      users.groups.greeter = { };
     };
 }
