@@ -1,8 +1,7 @@
-# Boots straight into Steam Big Picture (gamescope-wayland) via SDDM
-# auto-login, SteamOS-style. "Switch to Desktop" in Gaming Mode relogs into
-# umbriel via steamos-manager. This is the full Jovian steam stack (needed
-# for the Quick Access "Performance" panel and the desktop-switch button),
-# not just decky-loader.
+# Full Jovian steam stack (needed for the Quick Access "Performance" panel),
+# not just decky-loader. No autoStart: Steam Big Picture (gamescope-wayland)
+# is picked as a session from noctalia-greeter instead of SDDM auto-login.
+# "Switch to Desktop" in Gaming Mode won't reach umbriel without SDDM.
 { config, inputs, ... }:
 let
   inherit (config.flake) meta;
@@ -35,13 +34,6 @@ in
       jovian.steam = {
         enable = true;
         user = meta.owner.username;
-        autoStart = true;
-        desktopSession = "umbriel";
       };
-
-      # autoStart drives login/relogin through SDDM itself (steamosctl sets
-      # the next session, then triggers a relogin). Can't coexist with
-      # noctalia-greeter/greetd also trying to own the seat.
-      services.displayManager.noctalia-greeter.enable = lib.mkForce false;
     };
 }

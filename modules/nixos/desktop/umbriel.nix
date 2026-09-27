@@ -61,15 +61,55 @@
 
         start_recording "$MODE"
       '';
+
+      # Steam launch wrapper: `umbriel-game <launch opts> %command%`.
+      # On umbriel, turn on MangoHud (configured with MangoJuice); Gaming Mode
+      # has Steam's own performance overlay. Games stay on X11 by default:
+      # Steam picks the Steam Input layout from the focused X11 window, so a
+      # native Wayland game window makes it fall back to the Desktop layout.
+      # UMBRIEL_GAME_WAYLAND=1 opts into Proton's Wayland driver anyway.
+      # Gaming Mode is already inside gamescope, so pass straight through.
+      umbriel-game = pkgs.writeShellScriptBin "umbriel-game" ''
+        if [[ -z "''${GAMESCOPE_WAYLAND_DISPLAY:-}" && "''${XDG_CURRENT_DESKTOP:-}" != gamescope ]]; then
+            export MANGOHUD=1
+            if [[ "''${UMBRIEL_GAME_WAYLAND:-0}" == 1 ]]; then
+                export PROTON_ENABLE_WAYLAND=1
+            fi
+        fi
+        exec "$@"
+      '';
     in
     {
       imports = [
         inputs.umbriel.nixosModules.default
       ];
 
+      # xwayland-satellite 0.8.2 closes Steam's popup menus instantly; 0.8.3
+      # fixes it. Drop once nixpkgs has it (NixOS/nixpkgs#566386).
+      nixpkgs.overlays = [
+        (final: prev: {
+          xwayland-satellite = prev.xwayland-satellite.overrideAttrs (finalAttrs: old: {
+            version = "0.8.3";
+            src = old.src.override {
+              tag = "v${finalAttrs.version}";
+              hash = "sha256-eFEjCCniMCKeWU0PcZNv+tDYe08SLFPjRplyPY8OFt4=";
+            };
+            cargoDeps = final.rustPlatform.fetchCargoVendor {
+              inherit (finalAttrs) src;
+              hash = "sha256-gMGFvnbxM3hD5fmkSimaFd87GEf6BXFe/MGjoS6VNVU=";
+            };
+          });
+        })
+      ];
+
       # Enable Umbriel Wayland compositor
       programs.umbriel = {
         enable = true;
+        # umbriel's flake package bakes in its own xwayland-satellite; point it
+        # at ours so the overlay above applies.
+        package = inputs.umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+          inherit (pkgs) xwayland-satellite;
+        };
       };
 
       dots.directories.".config/umbriel" = "umbriel";
@@ -77,6 +117,7 @@
       environment.systemPackages = with pkgs; [
         wl-screenrec
         toggle-screenrecord
+        umbriel-game
       ];
     };
 }

@@ -152,13 +152,13 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/Fantasy-Landscape1.png"
+    path = "/home/brandon/Pictures/Wallpapers/Lofi - Study.png"
 
     [wallpaper.last]
-    path = "/home/brandon/Pictures/Wallpapers/Fantasy-Landscape1.png"
+    path = "/home/brandon/Pictures/Wallpapers/Lofi - Study.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/brandon/Pictures/Wallpapers/Fantasy-Landscape1.png"
+    path = "/home/brandon/Pictures/Wallpapers/Lofi - Study.png"
 
 [widget.audio_visualizer]
 bands = 32
