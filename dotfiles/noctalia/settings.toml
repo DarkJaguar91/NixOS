@@ -134,6 +134,9 @@ enabled = [ "noctalia/screen_recorder", "alexander/game-launcher", "noctalia/mpv
 [shell.panel]
 launcher_placement = "attached"
 
+[shell.greeter_sync]
+auto_sync = true
+
 [theme]
 builtin = "Noctalia"
 community_palette = "Oxocarbon"
@@ -142,8 +145,8 @@ source = "wallpaper"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "kcolorscheme", "kitty", "niri", "qt" ]
-    community_ids = [ "opencode", "discord", "neovim", "steam", "bat" ]
+    builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "kcolorscheme", "kitty", "niri", "qt", "umbriel" ]
+    community_ids = [ "claude-code", "opencode", "discord", "neovim", "steam", "bat", "fzf" ]
 
 [wallpaper]
 directory = "/home/brandon/Pictures/Wallpapers"
@@ -152,13 +155,13 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/Lofi - Study.png"
+    path = "/home/brandon/Pictures/Wallpapers/Northern Lights5.jpg"
 
     [wallpaper.last]
-    path = "/home/brandon/Pictures/Wallpapers/Lofi - Study.png"
+    path = "/home/brandon/Pictures/Wallpapers/Northern Lights5.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/brandon/Pictures/Wallpapers/Lofi - Study.png"
+    path = "/home/brandon/Pictures/Wallpapers/Northern Lights5.jpg"
 
 [widget.audio_visualizer]
 bands = 32

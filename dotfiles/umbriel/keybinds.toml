@@ -3,8 +3,14 @@
 "Mod+Return" = "spawn:kitty"
 "Mod+Q" = "window-close"
 "Mod+Shift+F" = "window-toggle-floating"
+"Mod+Shift+T" = { action = "window-focus-switch-floating", repeat = false }
 "Mod+P" = "window-toggle-pinned"
-"Mod+M" = "window-toggle-maximize-to-edges"
+"Mod+M" = { action = "window-toggle-maximize", repeat = false }
+"Mod+Shift+M" = { action = "window-toggle-maximize-to-edges", repeat = false }
+"Mod+F" = { action = "window-toggle-fullscreen", repeat = false }
+"Mod+W" = "window-cycle-primary-extent"
+"Mod+Shift+W" = "window-cycle-primary-extent-back"
+"Mod+Shift+Escape" = { action = "shortcuts-inhibit-toggle", allow_when_inhibited = true, repeat = false }
 "Mod+Tab" = "overview-toggle"
 
 # Screenshots (Noctalia)
@@ -26,12 +32,22 @@
 "Mod+J" = "window-focus-or-workspace-down"
 "Mod+K" = "window-focus-or-workspace-up"
 "Mod+L" = "window-focus-right"
+"Mod+Left" = "window-focus-left"
+"Mod+Down" = "window-focus-or-workspace-down"
+"Mod+Up" = "window-focus-or-workspace-up"
+"Mod+Right" = "window-focus-right"
+"Mod+WheelUp" = "window-focus-left"
+"Mod+WheelDown" = "window-focus-right"
 
 # Move windows / columns
 "Mod+Shift+H" = "column-move-left"
 "Mod+Shift+J" = "window-move-or-workspace-down"
 "Mod+Shift+K" = "window-move-or-workspace-up"
 "Mod+Shift+L" = "column-move-right"
+"Mod+Shift+Left" = "column-move-left"
+"Mod+Shift+Down" = "window-move-or-workspace-down"
+"Mod+Shift+Up" = "window-move-or-workspace-up"
+"Mod+Shift+Right" = "column-move-right"
 
 # Workspace switching (1-9)
 "Mod+1" = "workspace-switch:1"

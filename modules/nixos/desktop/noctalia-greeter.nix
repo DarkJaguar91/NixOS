@@ -9,6 +9,8 @@
 
       services.displayManager.noctalia-greeter = {
         enable = true;
+        # Let Noctalia auto-sync wallpaper/palette to the greeter without a polkit prompt
+        passwordless-sync-users = [ "brandon" ];
         settings = {
           session.default = "umbriel";
           appearance = {

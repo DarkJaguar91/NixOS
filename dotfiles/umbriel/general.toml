@@ -15,11 +15,19 @@ QT_QPA_PLATFORMTHEME = "qt6ct"
 back_and_forth = true
 
 [appearance]
-corner_radius = 2
+corner_radius = 5
 border_width = 1
+
+[appearance.blur]
+radius = 3
 
 [layout]
 gap = 6
 
 [layout.scrolling]
 default_extent_fraction = 0.5
+
+[hot_corners.top_left]
+enabled = true
+delay_ms = 500
+action = "overview-open"

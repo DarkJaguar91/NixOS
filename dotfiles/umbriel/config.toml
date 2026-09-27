@@ -6,3 +6,6 @@ files = [
   "window_rules.toml",
   "layer_rules.toml",
 ]
+
+[include.optional]
+files = ["noctalia.toml"]
