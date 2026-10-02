@@ -23,6 +23,16 @@
         zlib
         libpcap
         stdenv.cc.cc
+
+        # GUI libs dlopen'd by winit/egui apps (e.g. irminsul)
+        libx11
+        libxcursor
+        libxi
+        libxrender
+        libxcb
+        libxkbcommon
+        wayland
+        libGL
       ];
     };
 }
