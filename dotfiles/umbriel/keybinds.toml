@@ -1,6 +1,8 @@
 [keybinds]
 # Basics
 "Mod+Return" = "spawn:kitty"
+"Mod+E" = "spawn:kitty --class yazi yazi"
+"Mod+Shift+E" = "spawn:thunar"
 "Mod+Q" = "window-close"
 "Mod+Shift+F" = "window-toggle-floating"
 "Mod+Shift+T" = { action = "window-focus-switch-floating", repeat = false }

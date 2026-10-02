@@ -3,13 +3,25 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        firefox
         discord
         fladder
+        file-roller
         loupe
         spotify
         zed-editor
       ];
+
+      # GTK3, so noctalia's gtk3 template + adw-gtk3 theme it like everything
+      # else; gvfs/udisks2 for mounts and mtp/smb live in automount.nix
+      programs.thunar = {
+        enable = true;
+        plugins = with pkgs; [
+          thunar-archive-plugin # right-click extract/compress (needs file-roller)
+          thunar-volman
+        ];
+      };
+      programs.xfconf.enable = true; # thunar saves its preferences through xfconf
+      services.tumbler.enable = true; # thumbnails
 
       # chromium/electron apps (discord, spotify, ...) run native wayland
       environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -35,7 +47,7 @@
         image/svg+xml=org.gnome.Loupe.desktop
         image/avif=org.gnome.Loupe.desktop
         image/heif=org.gnome.Loupe.desktop
-        inode/directory=thunar.desktop
+        inode/directory=yazi-kitty.desktop;thunar.desktop
       '';
     };
 }

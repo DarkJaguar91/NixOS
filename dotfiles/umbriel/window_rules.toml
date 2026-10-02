@@ -55,3 +55,9 @@ match.title = "^notificationtoasts_.+_desktop"
 default_position = { x = 0, y = 0, anchor = "bottom_right" }
 default_focused = false
 default_pinned = true
+
+# yazi file picker (xdg-desktop-portal-termfilechooser, see yazi.nix)
+[[window_rule]]
+match.app_id = "^termfilechooser$"
+default_floating = true
+default_floating_size_px = { width = 1100, height = 700 }

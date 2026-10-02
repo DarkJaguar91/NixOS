@@ -134,6 +134,9 @@ enabled = [ "noctalia/screen_recorder", "alexander/game-launcher", "noctalia/mpv
 [shell.greeter_sync]
 auto_sync = true
 
+[shell.screenshot]
+directory = "~/Pictures/Screenshots"
+
 [shell.panel]
 launcher_placement = "attached"
 
@@ -146,7 +149,7 @@ wallpaper_scheme = "m3-content"
 
     [theme.templates]
     builtin_ids = [ "btop", "cava", "gtk3", "gtk4", "kcolorscheme", "kitty", "niri", "qt", "umbriel" ]
-    community_ids = [ "claude-code", "opencode", "discord", "neovim", "steam", "bat", "fzf" ]
+    community_ids = [ "claude-code", "opencode", "discord", "neovim", "steam", "bat", "fzf", "yazi" ]
 
 [wallpaper]
 directory = "/home/brandon/Pictures/Wallpapers"
@@ -155,13 +158,13 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/Techno-Geek.png"
+    path = "/home/brandon/Pictures/Wallpapers/Purple-swirls.jpg"
 
     [wallpaper.last]
-    path = "/home/brandon/Pictures/Wallpapers/Techno-Geek.png"
+    path = "/home/brandon/Pictures/Wallpapers/Purple-swirls.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/brandon/Pictures/Wallpapers/Techno-Geek.png"
+    path = "/home/brandon/Pictures/Wallpapers/Purple-swirls.jpg"
 
 [widget.audio_visualizer]
 bands = 32

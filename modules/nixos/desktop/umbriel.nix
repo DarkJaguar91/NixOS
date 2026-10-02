@@ -6,7 +6,7 @@
       toggle-screenrecord = pkgs.writeShellScriptBin "toggle-screenrecord" ''
         PIDFILE="/tmp/umbriel-screenrecord.pid"
         MODE="''${1:-fullscreen}"
-        VIDEOS_DIR="$HOME/Videos"
+        VIDEOS_DIR="$HOME/Videos/Recordings"
         mkdir -p "$VIDEOS_DIR"
 
         stop_recording() {
