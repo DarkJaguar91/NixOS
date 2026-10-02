@@ -131,11 +131,11 @@ video_directory = "~/Videos/Wallpapers"
 [plugins]
 enabled = [ "noctalia/screen_recorder", "alexander/game-launcher", "noctalia/mpvpaper" ]
 
-[shell.panel]
-launcher_placement = "attached"
-
 [shell.greeter_sync]
 auto_sync = true
+
+[shell.panel]
+launcher_placement = "attached"
 
 [theme]
 builtin = "Noctalia"
@@ -155,13 +155,13 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/Northern Lights5.jpg"
+    path = "/home/brandon/Pictures/Wallpapers/Sun-Setting-Horizon.png"
 
     [wallpaper.last]
-    path = "/home/brandon/Pictures/Wallpapers/Northern Lights5.jpg"
+    path = "/home/brandon/Pictures/Wallpapers/Sun-Setting-Horizon.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/brandon/Pictures/Wallpapers/Northern Lights5.jpg"
+    path = "/home/brandon/Pictures/Wallpapers/Sun-Setting-Horizon.png"
 
 [widget.audio_visualizer]
 bands = 32
