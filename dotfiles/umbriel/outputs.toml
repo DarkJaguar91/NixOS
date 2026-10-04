@@ -1,0 +1,6 @@
+# Keyed by make/model/serial (see `umbriel outputs` -> "Config name"), so
+# each block only matches that exact panel and other hosts are unaffected.
+
+# AsusZ13 built-in panel
+[output."Tianma Microelectronics Ltd. TL134ADXP03 Unknown"]
+scale = 1.2
