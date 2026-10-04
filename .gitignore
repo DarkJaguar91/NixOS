@@ -2,3 +2,7 @@
 dotfiles/kitty/current-theme.conf
 dotfiles/kitty/themes/noctalia.conf
 dotfiles/nvim/lua/matugen.lua
+
+# nix build output symlinks
+result
+result-*
