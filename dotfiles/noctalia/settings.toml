@@ -161,13 +161,13 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/Star-moon-wallpaper.jpg"
+    path = "/home/brandon/Pictures/Wallpapers/Candle-Photo.png"
 
     [wallpaper.last]
-    path = "/home/brandon/Pictures/Wallpapers/Star-moon-wallpaper.jpg"
+    path = "/home/brandon/Pictures/Wallpapers/Candle-Photo.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/brandon/Pictures/Wallpapers/Star-moon-wallpaper.jpg"
+    path = "/home/brandon/Pictures/Wallpapers/Candle-Photo.png"
 
 [widget.audio_visualizer]
 bands = 32
