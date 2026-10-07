@@ -32,6 +32,18 @@
       url = "github:Jovian-Experiments/Jovian-NixOS";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # ReShade shaders for vkBasalt: SweetFX effects + the ReShade.fxh headers
+    # they include (the "slim" branch is upstream's current minimal set)
+    sweetfx = {
+      url = "github:CeeJayDK/SweetFX";
+      flake = false;
+    };
+
+    reshade-shaders = {
+      url = "github:crosire/reshade-shaders/slim";
+      flake = false;
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);

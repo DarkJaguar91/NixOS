@@ -134,6 +134,23 @@
         "type": "github"
       }
     },
+    "reshade-shaders": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790205852,
+        "narHash": "sha256-etLUys7rIxZzEdvT6Kmj593+G/UaJWpHdSSnfMZWZTg=",
+        "owner": "crosire",
+        "repo": "reshade-shaders",
+        "rev": "fd0022170615ce0d8162d219bff07232fa6dd84f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "crosire",
+        "ref": "slim",
+        "repo": "reshade-shaders",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -142,7 +159,25 @@
         "nixpkgs": "nixpkgs",
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
+        "reshade-shaders": "reshade-shaders",
+        "sweetfx": "sweetfx",
         "umbriel": "umbriel"
+      }
+    },
+    "sweetfx": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1790453595,
+        "narHash": "sha256-7swuvINU8FvzT6SHj1U7av6H7p7Dxh5h0el7K7yUluE=",
+        "owner": "CeeJayDK",
+        "repo": "SweetFX",
+        "rev": "93ddf39b357f5da534ed6d34ba4ec8cc7dcfa361",
+        "type": "github"
+      },
+      "original": {
+        "owner": "CeeJayDK",
+        "repo": "SweetFX",
+        "type": "github"
       }
     },
     "umbriel": {
