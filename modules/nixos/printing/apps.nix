@@ -13,7 +13,20 @@ in
         # a non-null-terminated .debug_gdb_scripts section regardless of
         # LTO/build type, a toolchain bug rather than anything fixable here.
         openscad
-        orca-slicer
+        # Orca 2.4.2 segfaults on "Slice plate": plate-thumbnail rendering
+        # issues glDrawElements with no index buffer bound, so Mesa reads the
+        # indices from a NULL pointer (radeonsi; disabling glthread or
+        # GALLIUM_THREAD only moves the crash). Running under XWayland avoids
+        # it. Drop once fixed upstream:
+        # https://github.com/OrcaSlicer/OrcaSlicer/issues/14453
+        (symlinkJoin {
+          name = "orca-slicer-x11";
+          paths = [ orca-slicer ];
+          nativeBuildInputs = [ makeWrapper ];
+          postBuild = ''
+            wrapProgram $out/bin/orca-slicer --set GDK_BACKEND x11
+          '';
+        })
       ];
 
       # USB-serial access for printers connected directly rather than over the network
