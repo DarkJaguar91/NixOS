@@ -125,6 +125,7 @@ player_allowlist = [ "spotify" ]
 translation_language = "en"
 
 [plugin_settings."noctalia/mpvpaper"]
+auto_pause = "off"
 mpv_options = "vf=fps=30"
 video_directory = "~/Videos/Wallpapers"
 
@@ -161,13 +162,13 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/Fantasy-Lake3.png"
+    path = "/home/brandon/Pictures/Wallpapers/Lofi-Cafe2.png"
 
     [wallpaper.last]
-    path = "/home/brandon/Pictures/Wallpapers/Fantasy-Lake3.png"
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_Loop_mp4.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/brandon/Pictures/Wallpapers/Fantasy-Lake3.png"
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_Loop_mp4.jpg"
 
 [widget.audio_visualizer]
 bands = 32
