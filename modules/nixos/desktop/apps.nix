@@ -3,6 +3,7 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
+        chromium # WebUSB (e.g. openpuck configurator), which firefox lacks
         discord
         fladder
         file-roller
