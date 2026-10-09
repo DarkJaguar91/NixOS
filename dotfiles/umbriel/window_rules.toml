@@ -7,6 +7,15 @@ match.app_id = "^[Ss]team$"
 match.title = "^Steam$"
 default_workspace = 3
 
+# Big Picture maps already asking for _NET_WM_STATE_FULLSCREEN on a 32-bit
+# (ARGB) visual; tiled instead, it never gets a fullscreen configure and
+# stays fully transparent (audio plays, nothing on screen). Fullscreening
+# it makes it draw, and opaque_fullscreen keeps the alpha from showing.
+[[window_rule]]
+match.app_id = "^[Ss]team$"
+match.title = "^Steam Big Picture Mode$"
+default_fullscreen = true
+
 [[window_rule]]
 match.app_id = "^[Ss]team$"
 match.title = "[Hh][Oo][Yy][Oo][Pp][Ll][Aa][Yy]"
