@@ -162,7 +162,7 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/Lofi-Cafe2.png"
+    path = "/home/brandon/Pictures/Wallpapers/Purple-night-sky-river.jpg"
 
     [wallpaper.last]
     path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_Loop_mp4.jpg"
