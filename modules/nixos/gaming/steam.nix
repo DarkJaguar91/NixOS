@@ -13,6 +13,7 @@
 
       environment.systemPackages = with pkgs; [
         protonplus
+        heroic
         mangohud
         mangojuice
       ];
