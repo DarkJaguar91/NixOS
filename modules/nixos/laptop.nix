@@ -1,8 +1,12 @@
 {
   flake.modules.nixos.laptop =
-    { lib, ... }:
+    { config, lib, ... }:
     {
-      services.auto-cpufreq = {
+      # Handheld Daemon owns CPU governor/EPP itself (per power profile, next
+      # to TDP); auto-cpufreq fighting it pinned the governor to "performance",
+      # which makes amd-pstate reject hhd's EPP writes (EINVAL) and burns the
+      # shared APU power budget on the CPU instead of the iGPU.
+      services.auto-cpufreq = lib.mkIf (!config.services.handheld-daemon.enable) {
         enable = true;
         settings = {
           battery = {
@@ -16,8 +20,9 @@
         };
       };
 
-      # auto-cpufreq owns frequency scaling; noctalia's recommendedServices
-      # would otherwise enable power-profiles-daemon by default
+      # Either auto-cpufreq or hhd owns power profiles (hhd emulates PPD's
+      # D-Bus API); noctalia's recommendedServices would otherwise enable the
+      # real power-profiles-daemon by default.
       services.power-profiles-daemon.enable = false;
 
       services.fwupd.enable = true;

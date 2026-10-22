@@ -50,6 +50,28 @@ in
       };
       environment.systemPackages = [ pkgs.handheld-daemon-ui ];
 
+      # hhd emulates power-profiles-daemon (so noctalia's and Steam's power
+      # profile switches drive TDP) by spawning `python -m
+      # adjustor.drivers.gpu.ppd`. nixpkgs' wrapper only puts hhd's modules on
+      # sys.path inside the main process, so that child dies with "No module
+      # named 'adjustor'"; hand it the same path explicitly.
+      systemd.services.handheld-daemon.environment.PYTHONPATH =
+        let
+          py = pkgs.python3;
+          hhd = pkgs.handheld-daemon;
+        in
+        "${hhd}/${py.sitePackages}:${py.pkgs.makePythonPath hhd.dependencies}";
+
+      # ...and let it own PPD's bus names: the system bus denies ownership
+      # unless a policy allows it, and with the real daemon disabled nothing
+      # does. Policy files only, so D-Bus can't activate the real PPD.
+      services.dbus.packages = [
+        (pkgs.runCommand "hhd-ppd-dbus-policy" { } ''
+          mkdir -p $out/share/dbus-1
+          cp -r ${pkgs.power-profiles-daemon}/share/dbus-1/system.d $out/share/dbus-1/
+        '')
+      ];
+
       # Hardware config
       boot.initrd.availableKernelModules = [
         "nvme"
