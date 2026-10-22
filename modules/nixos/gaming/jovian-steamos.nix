@@ -49,6 +49,9 @@ in
       # Pulled in by jovian.steam but not started; kept off since scx_lavd
       # misbehaved here before (see ./kernel.nix).
       services.scx.enable = false;
+      # Jovian still defines a wantedBy-less systemd.services.scx stub, which
+      # (with no ExecStart) logs "Refusing" when something pokes it at boot.
+      systemd.services.scx.enable = false;
       # Screen reader for the Deck UI's accessibility settings; unused.
       services.orca.enable = false;
     };
