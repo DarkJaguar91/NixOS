@@ -4,7 +4,7 @@ let
 in
 {
   flake.modules.nixos.gaming =
-    { ... }:
+    { pkgs, ... }:
     {
       imports = [
         inputs.jovian.nixosModules.default
@@ -20,6 +20,11 @@ in
       # `~/.local` and `~/.config` and tells you to add `~/lsfg %command%` to
       # Steam launch options) then install into the wrong home entirely.
       jovian.decky-loader.user = meta.owner.username;
+
+      # Binaries plugins shell out to, added to the service's PATH.
+      # Decky-Framegen bundles OptiScaler as a .7z and unpacks it into
+      # ~/fgmod by calling `7z` (provided by p7zip, not _7zz's `7zz`).
+      jovian.decky-loader.extraPackages = [ pkgs.p7zip ];
 
       # Steam's CEF overlay needs remote debugging enabled or Decky can't
       # attach to inject its UI: https://github.com/Jovian-Experiments/Jovian-NixOS/issues/460
