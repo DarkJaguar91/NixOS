@@ -14,7 +14,12 @@
       # switch the DAC to the stream's native rate instead of resampling
       # everything to 48k (most music is 44.1k)
       extraConfig.pipewire."10-sample-rates"."context.properties" = {
-        "default.clock.allowed-rates" = [ 44100 48000 88200 96000 ];
+        "default.clock.allowed-rates" = [
+          44100
+          48000
+          88200
+          96000
+        ];
       };
     };
   };

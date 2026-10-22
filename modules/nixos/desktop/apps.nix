@@ -6,6 +6,7 @@
         chromium # WebUSB (e.g. openpuck configurator), which firefox lacks
         discord
         fladder
+        kdePackages.breeze # breeze_cursors, see XCURSOR_THEME below
         file-roller
         loupe
         spotify
@@ -30,7 +31,8 @@
       # Compositors fall back to the "default" cursor theme, which isn't
       # installed; without this the cursor can end up invisible ("error
       # loading xcursor default@48: no default icon").
-      # breeze_cursors is provided by kdePackages.breeze (installed for SDDM).
+      # breeze_cursors is provided by kdePackages.breeze (also the greeter's
+      # cursor, see noctalia-greeter.nix).
       environment.sessionVariables.XCURSOR_THEME = "breeze_cursors";
       environment.sessionVariables.XCURSOR_SIZE = "24";
 
