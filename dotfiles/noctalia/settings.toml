@@ -162,13 +162,13 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/Purple-night-sky-river.jpg"
+    path = "/home/brandon/Pictures/Wallpapers/CuteCat.png"
 
     [wallpaper.last]
-    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_Loop_mp4.jpg"
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_neon_sakura_night_mp4.jpg"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_Loop_mp4.jpg"
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_neon_sakura_night_mp4.jpg"
 
 [widget.audio_visualizer]
 bands = 32
