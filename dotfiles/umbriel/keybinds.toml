@@ -51,6 +51,20 @@
 "Mod+Shift+Up" = "window-move-or-workspace-up"
 "Mod+Shift+Right" = "column-move-right"
 
+# Minimize / show desktop (floating windows)
+"Mod+N" = { action = "window-minimize", repeat = false }
+"Mod+Shift+N" = { action = "window-restore-minimized", repeat = false }
+"Mod+D" = { action = "workspace-toggle-show-desktop", repeat = false }
+
+# Snap floating windows (repeat to restore)
+"Mod+Alt+H" = "window-snap:left"
+"Mod+Alt+L" = "window-snap:right"
+"Mod+Alt+K" = "window-snap:top"
+"Mod+Alt+J" = "window-snap:bottom"
+
+# Toggle workspace between scrolling and floating layouts
+"Mod+Ctrl+F" = { action = "workspace-set-layout:toggle:scrolling,floating", repeat = false }
+
 # Workspace switching (1-9)
 "Mod+1" = "workspace-switch:1"
 "Mod+2" = "workspace-switch:2"
@@ -82,12 +96,13 @@
 "Mod+Space" = "scratchpad-toggle"
 "Mod+Ctrl+Space" = "window-restore-from-scratchpad"
 
-# Media keys (volume)
-"XF86AudioRaiseVolume" = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-"XF86AudioLowerVolume" = "spawn:wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-"XF86AudioMute"        = "spawn:wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-"XF86AudioMicMute"     = "spawn:wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-
-# Media keys (brightness)
-"XF86MonBrightnessUp"   = "spawn:brightnessctl set +5%"
-"XF86MonBrightnessDown" = "spawn:brightnessctl set 5%-"
+# Media keys (routed through Noctalia for OSDs; safe while locked)
+"XF86AudioRaiseVolume" = { action = "spawn:noctalia msg volume-up", allow_when_locked = true }
+"XF86AudioLowerVolume" = { action = "spawn:noctalia msg volume-down", allow_when_locked = true }
+"XF86AudioMute" = { action = "spawn:noctalia msg volume-mute", allow_when_locked = true, repeat = false }
+"XF86AudioMicMute" = "spawn:wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+"XF86AudioPlay" = { action = "spawn:noctalia msg media toggle", allow_when_locked = true, repeat = false }
+"XF86AudioNext" = { action = "spawn:noctalia msg media next", allow_when_locked = true }
+"XF86AudioPrev" = { action = "spawn:noctalia msg media previous", allow_when_locked = true }
+"XF86MonBrightnessUp" = { action = "spawn:noctalia msg brightness-up", allow_when_locked = true }
+"XF86MonBrightnessDown" = { action = "spawn:noctalia msg brightness-down", allow_when_locked = true }
