@@ -50,7 +50,7 @@ behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
     timeout = 660.0
 
 [location]
-address = "Vancouver, Canada"
+auto_locate = true
 
 [lockscreen_widgets]
 enabled = false
@@ -162,13 +162,10 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/three-sword-style-3840x2160-26027.jpg"
+    path = "/home/brandon/Pictures/Wallpapers/Fantasy-Mountain.png"
 
     [wallpaper.last]
-    path = "/home/brandon/Pictures/Wallpapers/three-sword-style-3840x2160-26027.jpg"
-
-    [wallpaper.monitors.DP-3]
-    path = "/home/brandon/Pictures/Wallpapers/three-sword-style-3840x2160-26027.jpg"
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_neon_sakura_night_mp4.jpg"
 
     [wallpaper.monitors.eDP-1]
     path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_neon_sakura_night_mp4.jpg"
