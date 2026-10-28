@@ -1,4 +1,4 @@
-config_version = 15
+config_version = 16
 
 [audio]
 enable_overdrive = true
@@ -9,9 +9,13 @@ end = [ "tray", "notifications", "clipboard", "network", "bluetooth", "volume", 
 margin_ends = 0
 start = [ "control-center", "clock", "group:g1", "media" ]
 
+    [bar.default.monitor.xr-glasses]
+    enabled = false
+    match = "VITURE"
+
     [[bar.default.capsule_group]]
     enabled = true
-    fill = "surface_variant"
+    fill = "surface_container"
     id = "g1"
     members = [ "wallpaper", "mpvpaper", "launcher_2" ]
     opacity = 0.20000000298023224
@@ -55,12 +59,82 @@ auto_locate = true
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@eDP-1" ]
+widget_order = [
+    "lockscreen-login-box@DP-3",
+    "lockscreen-login-box@eDP-1",
+    "lockscreen-login-box@DP-2",
+    "lockscreen-login-box@xr",
+    "lockscreen-login-box@xr-top",
+    "lockscreen-login-box@xr-left",
+    "lockscreen-login-box@xr-right",
+    "lockscreen-login-box@xr.1.0",
+    "lockscreen-login-box@xr.0.1",
+    "lockscreen-login-box@xr.0.-1",
+    "lockscreen-login-box@xr.0.-2",
+    "lockscreen-login-box@xr.0.2",
+    "lockscreen-login-box@DP-1"
+]
 
     [lockscreen_widgets.grid]
     cell_size = 16
     major_interval = 4
     visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1318.6666259765625
+    output = "DP-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1920.0
+    cy = 1796.0
+    output = "DP-2"
+    placement_height = 2160.0
+    placement_width = 3840.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@DP-3"]
     box_height = 196.0
@@ -74,7 +148,7 @@ widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@eDP-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@DP-3".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -85,6 +159,7 @@ widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@eDP-1" ]
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
         show_weather = true
@@ -101,7 +176,7 @@ widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@eDP-1" ]
     type = "login_box"
 
         [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
-        background_color = "surface_variant"
+        background_color = "surface_container"
         background_opacity = 0.88
         background_radius = 12.0
         center_password_text = false
@@ -112,6 +187,259 @@ widget_order = [ "lockscreen-login-box@DP-3", "lockscreen-login-box@eDP-1" ]
         show_keyboard_layout = true
         show_login_button = true
         show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@xr"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1197.3333740234375
+    output = "xr"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@xr".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@xr-left"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "xr-left"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@xr-left".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@xr-right"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "xr-right"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@xr-right".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@xr-top"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "xr-top"
+    placement_height = 1080.0
+    placement_width = 1920.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@xr-top".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@xr.0.-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "xr.0.-1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@xr.0.-1".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@xr.0.-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "xr.0.-2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@xr.0.-2".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@xr.0.1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "xr.0.1"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@xr.0.1".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@xr.0.2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1258.0
+    output = "xr.0.2"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@xr.0.2".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@xr.1.0"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1280.0
+    cy = 1197.3333740234375
+    output = "xr.1.0"
+    placement_height = 1440.0
+    placement_width = 2560.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@xr.1.0".settings]
+        background_color = "surface_container"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_password_reveal = true
         show_session_buttons = true
         show_unlock_hint = true
         show_weather = true
@@ -162,13 +490,34 @@ directory = "/home/brandon/Pictures/Wallpapers"
     enabled = true
 
     [wallpaper.default]
-    path = "/home/brandon/Pictures/Wallpapers/Fantasy-Mountain.png"
+    path = "/home/brandon/Pictures/Wallpapers/Lofi-Cafe1.png"
 
     [wallpaper.last]
-    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_neon_sakura_night_mp4.jpg"
+    path = "/home/brandon/Pictures/Wallpapers/Lofi-Cafe1.png"
+
+    [wallpaper.monitors.DP-1]
+    path = "/home/brandon/Pictures/Wallpapers/Lofi-Cafe1.png"
+
+    [wallpaper.monitors.DP-2]
+    path = "/home/brandon/Pictures/Wallpapers/Arch-chan_to.png"
 
     [wallpaper.monitors.eDP-1]
-    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_neon_sakura_night_mp4.jpg"
+    path = "/home/brandon/Pictures/Wallpapers/Lofi-Cafe1.png"
+
+    [wallpaper.monitors.xr]
+    path = "/home/brandon/Pictures/Wallpapers/Arch-chan_to.png"
+
+    [wallpaper.monitors.xr-left]
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_red_eyes_anime_girl_4k_wallsflow_com_mp4.jpg"
+
+    [wallpaper.monitors.xr-right]
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_red_eyes_anime_girl_4k_wallsflow_com_mp4.jpg"
+
+    [wallpaper.monitors.xr-top]
+    path = "/home/brandon/.cache/noctalia/mpvpaper/_home_brandon_Videos_Wallpapers_red_eyes_anime_girl_4k_wallsflow_com_mp4.jpg"
+
+    [wallpaper.monitors."xr.1.0"]
+    path = "/home/brandon/Pictures/Wallpapers/Arch-chan_to.png"
 
 [widget.audio_visualizer]
 bands = 32
