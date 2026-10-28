@@ -4,3 +4,13 @@
 # AsusZ13 built-in panel
 [output."Tianma Microelectronics Ltd. TL134ADXP03 Unknown"]
 scale = 1.2
+position = [0, 0]
+
+# XR glasses: no entries here. xr-viewer positions the virtual screens (from
+# ~/.config/xr-session/layout.toml) and the glasses' own output while a
+# session runs; otherwise the glasses are placed automatically like any
+# monitor.
+
+# Portable 4K OLED (USB-C, touchscreen)
+[output."Invalid Vendor Codename - RTK Pi-X3 demoset-1"]
+scale = 1.5

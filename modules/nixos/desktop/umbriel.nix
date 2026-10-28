@@ -87,6 +87,14 @@
       # Enable Umbriel Wayland compositor
       programs.umbriel.enable = true;
 
+      # Map touchscreens to the output named by their WL_OUTPUT udev property
+      # (see hardware/touchscreen-outputs.nix); wlroots doesn't pass it through.
+      programs.umbriel.package =
+        inputs.umbriel.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs
+          (old: {
+            patches = (old.patches or [ ]) ++ [ ../../../patches/umbriel-touch-wl-output.patch ];
+          });
+
       dots.directories.".config/umbriel" = "umbriel";
 
       environment.systemPackages = with pkgs; [

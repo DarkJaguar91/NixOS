@@ -22,6 +22,7 @@ in
           netbird
           asus-copilot-key
           backlight
+          touchscreen-outputs
         ])
         ++ [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
