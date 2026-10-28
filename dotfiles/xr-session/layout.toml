@@ -1,0 +1,22 @@
+shape = "flat"
+size = 0.85
+gap = 0.0
+resolution = [
+    2560,
+    1440,
+]
+refresh = 60
+
+[[screen]]
+name = "xr"
+cell = [
+    0,
+    0,
+]
+
+[[screen]]
+name = "xr.1.0"
+cell = [
+    1,
+    0,
+]

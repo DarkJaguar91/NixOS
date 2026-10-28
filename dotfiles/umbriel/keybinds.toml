@@ -23,6 +23,12 @@
 "Mod+R" = "spawn:toggle-screenrecord fullscreen"
 "Mod+Shift+R" = "spawn:toggle-screenrecord region"
 
+# XR glasses: recenter the xr-viewer screens on where you're looking now
+# (see xr-glasses.nix)
+"Mod+C" = { action = "spawn:echo recenter_screen=true > /dev/shm/xr_driver_control", repeat = false }
+# ...and start/stop the virtual screens + viewer (xr-session, xr-glasses.nix)
+"Mod+Shift+C" = { action = "spawn:xr-session toggle", repeat = false }
+
 # Return to Gaming Mode (gamescope Big Picture)
 "Mod+Shift+G" = "spawn:steamosctl switch-to-game-mode"
 

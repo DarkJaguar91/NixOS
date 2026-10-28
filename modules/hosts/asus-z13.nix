@@ -23,6 +23,7 @@ in
           asus-copilot-key
           backlight
           touchscreen-outputs
+          xr-glasses
         ])
         ++ [ (modulesPath + "/installer/scan/not-detected.nix") ];
 

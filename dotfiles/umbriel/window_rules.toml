@@ -70,3 +70,11 @@ default_pinned = true
 match.app_id = "^termfilechooser$"
 default_floating = true
 default_floating_size_px = { width = 1100, height = 700 }
+
+# xr-viewer (see xr-glasses.nix): fullscreen on the VITURE glasses, showing
+# the `xr` virtual output as a screen that stays put
+[[window_rule]]
+match.app_id = "^xr-viewer$"
+default_output = "CVT VITURE 0x88888800"
+default_fullscreen = true
+default_focused = false
