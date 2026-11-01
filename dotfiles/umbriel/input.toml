@@ -1,6 +1,5 @@
 [input]
 middle_click_paste = true
-window_snapping = true
 mod_right_double_click = "maximize"
 
 [input.keyboard]

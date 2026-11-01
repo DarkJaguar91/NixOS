@@ -1,8 +1,8 @@
 [keybinds]
 # Basics
-"Mod+Return" = "spawn:kitty"
-"Mod+E" = "spawn:kitty --class yazi yazi"
-"Mod+Shift+E" = "spawn:thunar"
+"Mod+Return" = "spawn kitty"
+"Mod+E" = "spawn kitty --class yazi yazi"
+"Mod+Shift+E" = "spawn thunar"
 "Mod+Q" = "window-close"
 "Mod+Shift+F" = "window-toggle-floating"
 "Mod+Shift+T" = { action = "window-focus-switch-floating", repeat = false }
@@ -16,24 +16,24 @@
 "Mod+Tab" = "overview-toggle"
 
 # Screenshots (Noctalia)
-"Mod+S" = "spawn:noctalia msg screenshot-region"
-"Mod+Shift+S" = "spawn:noctalia msg screenshot-fullscreen"
+"Mod+S" = "spawn noctalia msg screenshot-region"
+"Mod+Shift+S" = "spawn noctalia msg screenshot-fullscreen"
 
 # Screen recording (toggle start/stop)
-"Mod+R" = "spawn:toggle-screenrecord fullscreen"
-"Mod+Shift+R" = "spawn:toggle-screenrecord region"
+"Mod+R" = "spawn toggle-screenrecord fullscreen"
+"Mod+Shift+R" = "spawn toggle-screenrecord region"
 
 # XR glasses: recenter the xr-viewer screens on where you're looking now
 # (see xr-glasses.nix)
-"Mod+C" = { action = "spawn:echo recenter_screen=true > /dev/shm/xr_driver_control", repeat = false }
+"Mod+C" = { action = "spawn echo recenter_screen=true > /dev/shm/xr_driver_control", repeat = false }
 # ...and start/stop the virtual screens + viewer (xr-session, xr-glasses.nix)
-"Mod+Shift+C" = { action = "spawn:xr-session toggle", repeat = false }
+"Mod+Shift+C" = { action = "spawn xr-session toggle", repeat = false }
 
 # Return to Gaming Mode (gamescope Big Picture)
-"Mod+Shift+G" = "spawn:steamosctl switch-to-game-mode"
+"Mod+Shift+G" = "spawn steamosctl switch-to-game-mode"
 
 # Noctalia
-"Mod" = "spawn:noctalia msg panel-toggle launcher"
+"Mod" = "spawn noctalia msg panel-toggle launcher"
 
 # Focus navigation (vim-style)
 "Mod+H" = "window-focus-left"
@@ -62,38 +62,38 @@
 "Mod+Shift+N" = { action = "window-restore-minimized", repeat = false }
 "Mod+D" = { action = "workspace-toggle-show-desktop", repeat = false }
 
-# Snap floating windows (repeat to restore)
-"Mod+Alt+H" = "window-snap:left"
-"Mod+Alt+L" = "window-snap:right"
-"Mod+Alt+K" = "window-snap:top"
-"Mod+Alt+J" = "window-snap:bottom"
+# Snap stacking windows to a half
+"Mod+Alt+H" = "window-set-region left"
+"Mod+Alt+L" = "window-set-region right"
+"Mod+Alt+K" = "window-set-region top"
+"Mod+Alt+J" = "window-set-region bottom"
 
-# Toggle workspace between scrolling and floating layouts
-"Mod+Ctrl+F" = { action = "workspace-set-layout:toggle:scrolling,floating", repeat = false }
+# Toggle workspace between scrolling and stacking layouts
+"Mod+Ctrl+F" = { action = "workspace-set-layout toggle scrolling stacking", repeat = false }
 
 # Workspace switching (1-9)
-"Mod+1" = "workspace-switch:1"
-"Mod+2" = "workspace-switch:2"
-"Mod+3" = "workspace-switch:3"
-"Mod+4" = "workspace-switch:4"
-"Mod+5" = "workspace-switch:5"
-"Mod+6" = "workspace-switch:6"
-"Mod+7" = "workspace-switch:7"
-"Mod+8" = "workspace-switch:8"
-"Mod+9" = "workspace-switch:9"
+"Mod+1" = "workspace-switch 1"
+"Mod+2" = "workspace-switch 2"
+"Mod+3" = "workspace-switch 3"
+"Mod+4" = "workspace-switch 4"
+"Mod+5" = "workspace-switch 5"
+"Mod+6" = "workspace-switch 6"
+"Mod+7" = "workspace-switch 7"
+"Mod+8" = "workspace-switch 8"
+"Mod+9" = "workspace-switch 9"
 "Mod+Ctrl+J" = "workspace-next"
 "Mod+Ctrl+K" = "workspace-previous"
 
 # Move window to workspace
-"Mod+Shift+1" = "window-move-to-workspace:1"
-"Mod+Shift+2" = "window-move-to-workspace:2"
-"Mod+Shift+3" = "window-move-to-workspace:3"
-"Mod+Shift+4" = "window-move-to-workspace:4"
-"Mod+Shift+5" = "window-move-to-workspace:5"
-"Mod+Shift+6" = "window-move-to-workspace:6"
-"Mod+Shift+7" = "window-move-to-workspace:7"
-"Mod+Shift+8" = "window-move-to-workspace:8"
-"Mod+Shift+9" = "window-move-to-workspace:9"
+"Mod+Shift+1" = "window-move-to-workspace 1"
+"Mod+Shift+2" = "window-move-to-workspace 2"
+"Mod+Shift+3" = "window-move-to-workspace 3"
+"Mod+Shift+4" = "window-move-to-workspace 4"
+"Mod+Shift+5" = "window-move-to-workspace 5"
+"Mod+Shift+6" = "window-move-to-workspace 6"
+"Mod+Shift+7" = "window-move-to-workspace 7"
+"Mod+Shift+8" = "window-move-to-workspace 8"
+"Mod+Shift+9" = "window-move-to-workspace 9"
 "Mod+Shift+Ctrl+J" = "window-move-to-workspace-next"
 "Mod+Shift+Ctrl+K" = "window-move-to-workspace-previous"
 
@@ -103,12 +103,12 @@
 "Mod+Ctrl+Space" = "window-restore-from-scratchpad"
 
 # Media keys (routed through Noctalia for OSDs; safe while locked)
-"XF86AudioRaiseVolume" = { action = "spawn:noctalia msg volume-up", allow_when_locked = true }
-"XF86AudioLowerVolume" = { action = "spawn:noctalia msg volume-down", allow_when_locked = true }
-"XF86AudioMute" = { action = "spawn:noctalia msg volume-mute", allow_when_locked = true, repeat = false }
-"XF86AudioMicMute" = "spawn:wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-"XF86AudioPlay" = { action = "spawn:noctalia msg media toggle", allow_when_locked = true, repeat = false }
-"XF86AudioNext" = { action = "spawn:noctalia msg media next", allow_when_locked = true }
-"XF86AudioPrev" = { action = "spawn:noctalia msg media previous", allow_when_locked = true }
-"XF86MonBrightnessUp" = { action = "spawn:noctalia msg brightness-up", allow_when_locked = true }
-"XF86MonBrightnessDown" = { action = "spawn:noctalia msg brightness-down", allow_when_locked = true }
+"XF86AudioRaiseVolume" = { action = "spawn noctalia msg volume-up", allow_when_locked = true }
+"XF86AudioLowerVolume" = { action = "spawn noctalia msg volume-down", allow_when_locked = true }
+"XF86AudioMute" = { action = "spawn noctalia msg volume-mute", allow_when_locked = true, repeat = false }
+"XF86AudioMicMute" = "spawn wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+"XF86AudioPlay" = { action = "spawn noctalia msg media toggle", allow_when_locked = true, repeat = false }
+"XF86AudioNext" = { action = "spawn noctalia msg media next", allow_when_locked = true }
+"XF86AudioPrev" = { action = "spawn noctalia msg media previous", allow_when_locked = true }
+"XF86MonBrightnessUp" = { action = "spawn noctalia msg brightness-up", allow_when_locked = true }
+"XF86MonBrightnessDown" = { action = "spawn noctalia msg brightness-down", allow_when_locked = true }
